@@ -380,6 +380,15 @@ public class ReadBean {
         private int braut;
         private String powerType;
         private List<String> gpio;
+        private int resetGpio;//复位管脚
+
+        public int getResetGpio() {
+            return resetGpio;
+        }
+
+        public void setResetGpio(int resetGpio) {
+            this.resetGpio = resetGpio;
+        }
 
         public String getSerialPort() {
             return serialPort;
