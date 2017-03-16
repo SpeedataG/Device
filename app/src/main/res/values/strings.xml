@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">ReadDeviceConfig</string>
+    <string name="app_name">Device Config</string>
     <string name="module">模块</string>
     <string name="serial_port">SerialPort</string>
     <string name="brd">波特率</string>
     <string name="power_type">类型</string>
     <string name="gpio">gpio</string>
     <string name="config_not_exists">配置文件不存在</string>
-    <string name="config_content">配置文件内容如下</string>
+    <string name="config_content">配置文件存在</string>
 </resources>

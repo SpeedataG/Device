@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
     <include
         android:id="@+id/ll_header"
-        layout="@layout/view_item"/>
+        layout="@layout/view_title"/>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nsv_content"

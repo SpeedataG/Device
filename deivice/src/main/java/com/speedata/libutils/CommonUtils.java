@@ -45,7 +45,7 @@ public class CommonUtils {
      *
      * @return 文件内容
      */
-    public static String readTxtFile() {
+    public  static String readTxtFile() {
         String content = "";
         File file = new File(FILE_PATH);
         try {
@@ -73,7 +73,8 @@ public class CommonUtils {
 
     public static String getFromAssets(Context context) {
         try {
-            InputStreamReader inputReader = new InputStreamReader(context.getResources().getAssets().open(getFile()));
+            InputStreamReader inputReader = new InputStreamReader(context.getResources()
+                    .getAssets().open(getFile()));
             BufferedReader bufReader = new BufferedReader(inputReader);
             String line;
             String result = "";
@@ -87,20 +88,28 @@ public class CommonUtils {
     }
 
     public static String getFile() {
-        switch (subDeviceType()) {
+        String subDeviceType = subDeviceType();
+        switch (subDeviceType) {
             case "kt40":
+            case "kt40_":
                 return "kt40.config";
             case "kt40q":
+            case "kt40q_":
                 return "kt40q.config";
             case "kt45":
+            case "kt45_":
                 return "kt45.config";
             case "kt45q":
+            case "kt45q_":
                 return "kt45q.config";
             case "kt50":
+            case "kt50_":
                 return "kt50.config";
             case "kt55":
+            case "kt55_":
                 return "kt55.config";
             case "kt80":
+            case "kt80_":
                 return "kt80.config";
             default:
                 return "kt55.config";

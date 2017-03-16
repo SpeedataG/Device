@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:minHeight="40dp"
+              android:showDividers="middle"
+              android:divider="@drawable/layout_divider_vertical"
+              android:gravity="center_vertical"
+              android:background="@color/colorTitle"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_module"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:text="@string/module"/>
+
+    <TextView
+        android:id="@+id/tv_serial_port"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        android:text="@string/serial_port"/>
+
+    <TextView
+        android:id="@+id/tv_braut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:text="@string/brd"/>
+
+    <TextView
+        android:id="@+id/tv_power_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        android:text="@string/power_type"/>
+
+    <TextView
+        android:id="@+id/tv_gpio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        android:text="@string/gpio"/>
+</LinearLayout>

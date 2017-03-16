@@ -3,6 +3,7 @@ package com.speedata.device;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.speedata.libutils.CommonUtils;
 import com.speedata.libutils.ConfigUtils;
 import com.speedata.libutils.ReadBean;
 
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showView() {
+        if(ConfigUtils.isConfigFileExists()){
+            setTitle("V"+CommonUtils.getAppVersionName(this) + "    " + getString(R.string.config_content));
+        }else{
+            setTitle("V"+CommonUtils.getAppVersionName(this) + "    " + getString(R.string.config_not_exists));
+        }
         mRead= ConfigUtils.readConfig(this);
         setView();
     }
