@@ -31,37 +31,118 @@ public class ReadBean {
 
 
     /**
-     * id2 : {"serialPort":"/dev/ttyMT1","braut":115200,"powerType":"MAIN","gpio":[88,7]}
-     * uhf : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * r6 : {"serialPort":"/dev/rc663","braut":0,"powerType":"","gpio":[0]}
-     * print : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * pasm : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * finger : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * dist : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * temp : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * lf1 : {"serialPort":"","braut":115200,"powerType":"MAIN","gpio":[0]}
-     * lf2 : {"serialPort":"","braut":115200,"powerType":"MAIN","gpio":[0]}
-     * sp433 : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * scan : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[94]}
-     * ur2k : {"serialPort":"/dev/ttyMT2","braut":115200,"powerType":"MAIN","gpio":[7]}
-     * zigbee : {"serialPort":"","braut":115200,"powerType":"MAIN","gpio":[0]}
-     * infrared : {"serialPort":"/dev/ttyMT0","braut":115200,"powerType":"MAIN","gpio":[106]}
+     * serialPort : /dev/ttyMT1
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [63]
      */
 
     private Id2Bean id2;
+    /**
+     * serialPort : /dev/ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [64]
+     * module : r2k
+     */
+
     private UhfBean uhf;
+    /**
+     * serialPort : /dev/rc663
+     * braut : 0
+     * powerType :
+     * gpio : [-1]
+     */
+
     private R6Bean r6;
+    /**
+     * serialPort : /dev/ttyMT1
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [64]
+     */
+
     private PrintBean print;
+    /**
+     * serialPort : /dev/ttyMT3
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [14]
+     * resetGpio : 44
+     */
+
     private PasmBean pasm;
+    /**
+     * serialPort : ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [64]
+     */
+
     private FingerBean finger;
+    /**
+     * serialPort : /dev/ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [94]
+     */
+
     private DistBean dist;
+    /**
+     * serialPort : /dev/ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [94]
+     */
+
     private TempBean temp;
+    /**
+     * serialPort : /dev/ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [64]
+     */
+
     private Lf1Bean lf1;
+    /**
+     * serialPort : /dev/ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [64]
+     */
+
     private Lf2Bean lf2;
+    /**
+     * serialPort : ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [64]
+     */
+
     private Sp433Bean sp433;
+    /**
+     * serialPort : /dev/ttyMT0
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [106]
+     */
+
     private ScanBean scan;
-    private Ur2kBean ur2k;
+    /**
+     * serialPort : /dev/ttyMT2
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [64]
+     */
+
     private ZigbeeBean zigbee;
+    /**
+     * serialPort : /dev/ttyMT0
+     * braut : 115200
+     * powerType : MAIN
+     * gpio : [106]
+     */
+
     private InfraredBean infrared;
 
     public Id2Bean getId2() {
@@ -160,14 +241,6 @@ public class ReadBean {
         this.scan = scan;
     }
 
-    public Ur2kBean getUr2k() {
-        return ur2k;
-    }
-
-    public void setUr2k(Ur2kBean ur2k) {
-        this.ur2k = ur2k;
-    }
-
     public ZigbeeBean getZigbee() {
         return zigbee;
     }
@@ -185,17 +258,10 @@ public class ReadBean {
     }
 
     public static class Id2Bean {
-        /**
-         * serialPort : /dev/ttyMT1
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [88,7]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -221,27 +287,21 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class UhfBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private String module;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -267,27 +327,28 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public String getModule() {
+            return module;
+        }
+
+        public void setModule(String module) {
+            this.module = module;
+        }
+
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class R6Bean {
-        /**
-         * serialPort : /dev/rc663
-         * braut : 0
-         * powerType :
-         * gpio : [0]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -313,27 +374,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class PrintBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -359,28 +413,45 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class PasmBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
-        private int resetGpio;//复位管脚
+        private int resetGpio;
+        private List<Integer> gpio;
+
+        public String getSerialPort() {
+            return serialPort;
+        }
+
+        public void setSerialPort(String serialPort) {
+            this.serialPort = serialPort;
+        }
+
+        public int getBraut() {
+            return braut;
+        }
+
+        public void setBraut(int braut) {
+            this.braut = braut;
+        }
+
+        public String getPowerType() {
+            return powerType;
+        }
+
+        public void setPowerType(String powerType) {
+            this.powerType = powerType;
+        }
 
         public int getResetGpio() {
             return resetGpio;
@@ -390,51 +461,20 @@ public class ReadBean {
             this.resetGpio = resetGpio;
         }
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class FingerBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -460,27 +500,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class DistBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -506,27 +539,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class TempBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -552,27 +578,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class Lf1Bean {
-        /**
-         * serialPort :
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [0]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -598,27 +617,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class Lf2Bean {
-        /**
-         * serialPort :
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [0]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -644,27 +656,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class Sp433Bean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -690,27 +695,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class ScanBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [94]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -736,73 +734,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
-            this.gpio = gpio;
-        }
-    }
-
-    public static class Ur2kBean {
-        /**
-         * serialPort : /dev/ttyMT2
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [7]
-         */
-
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<String> gpio;
-
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<String> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class ZigbeeBean {
-        /**
-         * serialPort :
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [0]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -828,27 +773,20 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
 
     public static class InfraredBean {
-        /**
-         * serialPort : /dev/ttyMT0
-         * braut : 115200
-         * powerType : MAIN
-         * gpio : [106]
-         */
-
         private String serialPort;
         private int braut;
         private String powerType;
-        private List<String> gpio;
+        private List<Integer> gpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -874,12 +812,13 @@ public class ReadBean {
             this.powerType = powerType;
         }
 
-        public List<String> getGpio() {
+        public List<Integer> getGpio() {
             return gpio;
         }
 
-        public void setGpio(List<String> gpio) {
+        public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
         }
     }
+
 }

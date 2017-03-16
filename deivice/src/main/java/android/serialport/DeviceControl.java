@@ -37,6 +37,21 @@ public class DeviceControl {
         this.power_type = power_type;
     }
 
+    public DeviceControl(String power_type, int... gpios) throws IOException {
+        this.gpios = gpios;
+        switch (power_type) {
+            case "MAIN":
+                this.power_type = PowerType.MAIN;
+                break;
+            case "EXPAND":
+                this.power_type = PowerType.EXPAND;
+                break;
+            case "MAIN_AND_EXPAND":
+                this.power_type = PowerType.MAIN_AND_EXPAND;
+                break;
+        }
+    }
+
     private void MainPowerOn(int gpio) throws IOException {
         DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_MAIN);
         deviceControl.setGpio(gpio);
@@ -93,7 +108,9 @@ public class DeviceControl {
                 break;
             case MAIN_AND_EXPAND:
                 MainPowerOn(gpios[0]);
-                ExpandPowerOn(gpios[1]);
+                for (int i = 1; i < gpios.length; i++) {
+                    ExpandPowerOn(gpios[i]);
+                }
                 break;
             default:
                 break;
@@ -112,14 +129,15 @@ public class DeviceControl {
                 break;
             case MAIN_AND_EXPAND:
                 MainPowerOff(gpios[0]);
-                ExpandPowerOff(gpios[1]);
+                for (int i = 1; i < gpios.length; i++) {
+                    ExpandPowerOff(gpios[i]);
+                }
                 break;
             default:
                 break;
         }
     }
 
-//    public void resetGPIO()
     public void DeviceClose() throws IOException        //close file
     {
         CtrlFile.close();

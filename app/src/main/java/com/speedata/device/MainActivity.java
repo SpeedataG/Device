@@ -83,13 +83,6 @@ public class MainActivity extends AppCompatActivity {
         mMvZigbee.setGpio(String.valueOf(mRead.getZigbee().getGpio()));
     }
 
-    private void setUr2k() {
-        mMvUr2k.setModule("UR2K");
-        mMvUr2k.setSerialPort(mRead.getUr2k().getSerialPort());
-        mMvUr2k.setBraut(String.valueOf(mRead.getUr2k().getBraut()));
-        mMvUr2k.setPowerType(mRead.getUr2k().getPowerType());
-        mMvUr2k.setGpio(String.valueOf(mRead.getUr2k().getGpio()));
-    }
 
     private void setScan() {
         mMvScan.setModule("串口扫头");
