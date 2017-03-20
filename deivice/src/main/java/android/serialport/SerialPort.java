@@ -99,13 +99,26 @@ public class SerialPort {
         }
         if (tmp != null) {
             logger.d("read---" + DataConversionUtils.byteArrayToStringLog(tmp, tmp.length));
-//            clearPortBuf(fd);
         } else {
             logger.d("read---null");
         }
-        /*
-         * for(byte x : tmp) { Log.w("xxxx", String.format("0x%x", x)); }
-		 */
+        return tmp;
+    }
+
+    public byte[] ReadSerial(int fd, int len,int delay)
+            throws UnsupportedEncodingException {
+        byte[] tmp = null;
+        tmp = readport(fd, len, delay);
+        int count = 0;
+        while (tmp == null && count < 10) {
+            tmp = readport(fd, len, delay);
+            count++;
+        }
+        if (tmp != null) {
+            logger.d("read---" + DataConversionUtils.byteArrayToStringLog(tmp, tmp.length));
+        } else {
+            logger.d("read---null");
+        }
         return tmp;
     }
 
@@ -188,7 +201,6 @@ public class SerialPort {
     }
 
     // JNI
-    // private native int openport_easy(String port, int brd);
 
     private native int openport(String port, int brd, int bit, int stop, int crc);
 
@@ -200,7 +212,6 @@ public class SerialPort {
 
     public native void clearportbuf(int fd);
 
-    // public native static int writestring(int fd, String wb, int len);
 
     static {
         System.loadLibrary("serial_port");
