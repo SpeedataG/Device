@@ -7,4 +7,9 @@
     <string name="gpio">gpio</string>
     <string name="config_not_exists">配置文件不存在</string>
     <string name="config_content">配置文件存在</string>
+    <string name="edit_config">编辑配置文件</string>
+    <string name="all_gpio">AllGPIO</string>
+    <string name="config">Config</string>
+    <string name="help">串口助手</string>
+    <string name="config_gpio">控制gpio</string>
 </resources>

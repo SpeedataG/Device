@@ -8,26 +8,32 @@ import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView tvGpio;
-    private TextView tvConfig;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        tvConfig = (TextView) findViewById(R.id.tv_config);
-        tvGpio = (TextView) findViewById(R.id.tv_gpio);
+        TextView tvConfig = (TextView) findViewById(R.id.tv_config);
+        TextView tvGpio = (TextView) findViewById(R.id.tv_gpio);
         tvConfig.setOnClickListener(this);
         tvGpio.setOnClickListener(this);
+        findViewById(R.id.tv_edit).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (view == tvConfig) {
+        switch (view.getId()) {
+            case R.id.tv_config:
+                startActivity(new Intent(this, ConfigAct.class));
+                break;
+            case R.id.tv_gpio:
+                startActivity(new Intent(this, AllGpiosAct.class));
+                break;
+            case R.id.tv_edit:
+                startActivity(new Intent(this, EditConfigActivity.class));
+                break;
 
-            startActivity(new Intent(this, ConfigAct.class));
-        } else if (view == tvGpio) {
-            startActivity(new Intent(this, AllGpiosAct.class));
+            default:
+                break;
         }
     }
 }
