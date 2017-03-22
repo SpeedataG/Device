@@ -7,7 +7,7 @@
     android:divider="@drawable/layout_divider_horizontal"
     android:orientation="vertical"
     android:showDividers="middle"
-    tools:context=".MainActivity">
+    tools:context=".ConfigAct">
     <include
         android:id="@+id/ll_header"
         layout="@layout/view_title"/>

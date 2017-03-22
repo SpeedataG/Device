@@ -7,7 +7,7 @@ import com.speedata.libutils.CommonUtils;
 import com.speedata.libutils.ConfigUtils;
 import com.speedata.libutils.ReadBean;
 
-public class MainActivity extends AppCompatActivity {
+public class ConfigAct extends AppCompatActivity {
 
 
     private ModuleView mMvId2;
