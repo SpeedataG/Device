@@ -5,22 +5,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context="com.speedata.device.EditConfigActivity">
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        style="?buttonBarButtonStyle"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/btn_save"
+        >
 
         <EditText
             android:id="@+id/et_edit"
-            android:gravity="top"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="top"
             android:hint="@string/edit_config"
             />
     </android.support.design.widget.TextInputLayout>

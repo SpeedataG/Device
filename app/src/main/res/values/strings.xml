@@ -12,4 +12,5 @@
     <string name="config">Config</string>
     <string name="help">串口助手</string>
     <string name="config_gpio">控制gpio</string>
+    <string name="save">保存</string>
 </resources>
