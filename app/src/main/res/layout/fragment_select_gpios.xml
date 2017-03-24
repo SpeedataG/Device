@@ -35,31 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Pull_SEL"
-            android:textColor="@color/colorWhite"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="DIN"
-            android:textColor="@color/colorWhite"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="DOUT"
-            android:textColor="@color/colorWhite"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="PULL_EN"
+            android:text="高低电平"
             android:textColor="@color/colorWhite"/>
 
         <TextView
@@ -68,22 +44,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="DIR"
-            android:textColor="@color/colorWhite"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="IES"
-            android:textColor="@color/colorWhite"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="SMT"
             android:textColor="@color/colorWhite"/>
     </LinearLayout>
 

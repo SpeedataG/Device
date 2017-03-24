@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllGpiosAct extends AppCompatActivity {
+public class AllGpiosAct extends BaseActivity {
 
     private ListView listView;
     private CommonAdapter<Gpio> adapter;
@@ -33,7 +32,7 @@ public class AllGpiosAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("GPIO View");
-        setContentView(R.layout.activity_all_gpios);
+        setContentView(R.layout.activity_gpios);
         listView = (ListView) findViewById(R.id.list);
         List list = MainGPIO();
         list.remove(0);

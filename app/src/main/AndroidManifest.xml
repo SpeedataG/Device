@@ -9,7 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ConfigAct">
-
         </activity>
         <activity android:name=".OperationActivity">
         </activity>
@@ -21,7 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".AllGpiosAct">
-
+        </activity>
+        <activity android:name=".GpiosAct">
+        </activity>
+        <activity android:name=".TestAct">
         </activity>
     </application>
 
