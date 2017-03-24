@@ -10,7 +10,7 @@
     <Button
         android:id="@+id/btn_save"
         android:layout_width="0dp"
-        style="?buttonBarButtonStyle"
+        style="?android:buttonStyle"
         android:layout_height="wrap_content"
         android:text="@string/save"
         app:layout_constraintLeft_toLeftOf="parent"

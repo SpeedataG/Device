@@ -129,7 +129,7 @@ public class AllGpioFragment extends BaseFrag implements RRefreshLayout.OnRefres
     public void onRefresh() {
         if (gpios != null) {
             gpios.clear();
-            gpios = GpioUtils.GetAllGPIO(GpioUtils.MAIN);
+            gpios.addAll(GpioUtils.GetAllGPIO(GpioUtils.MAIN));
             if (adapter != null)
                 adapter.notifyDataSetChanged();
             mRrlLayout.setRefreshing(false);

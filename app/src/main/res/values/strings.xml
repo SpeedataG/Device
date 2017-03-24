@@ -9,4 +9,10 @@
     <string name="config_content">配置文件存在</string>
 
     <string name="desc"/>
+    <string name="save">保存</string>
+    <string name="edit_config">编辑配置</string>
+    <string name="all_gpio">gpio</string>
+    <string name="config">配置</string>
+    <string name="help">帮助</string>
+    <string name="config_gpio">编辑gpio</string>
 </resources>

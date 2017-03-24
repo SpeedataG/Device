@@ -29,5 +29,6 @@ dependencies {
     compile 'com.android.support:design:25.0.1'
     compile project(path: ':deivice')
     compile 'xyz.reginer:refresh:1.0.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'xyz.reginer.baseadapter:baseadapter:1.1.2'
 }
