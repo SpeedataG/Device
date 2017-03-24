@@ -1,82 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/activity_menu"
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:baselineAligned="false"
     tools:context="com.speedata.device.MenuActivity">
 
-    <!--<GridView
-        android:id="@+id/grid"
-        android:layout_width="fill_parent"
-        android:numColumns="3"
-        android:layout_height="fill_parent"></GridView>-->
-    <LinearLayout
-        android:layout_width="fill_parent"
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
 
-        <TextView
-            android:id="@+id/tv_gpio"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_selector"
-            android:gravity="center"
-            android:text="AllGPIO"
-            android:textColor="@color/colorWhite"/>
+    <TextView
+        android:id="@+id/tv_gpio"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_selector"
+        android:gravity="center"
+        android:text="@string/all_gpio"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:id="@+id/tv_config"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_selector"
-            android:gravity="center"
-            android:text="Config"
-            android:textColor="@color/colorWhite"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_config"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_selector"
+        android:gravity="center"
+        android:text="@string/config"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tv_serial"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/help"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gpio"/>
 
-        <TextView
-            android:id="@+id/tv_serial"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_selector"
-            android:gravity="center"
-            android:text="串口助手"
-            android:textColor="@color/colorWhite"/>
+    <TextView
+        android:id="@+id/tv_set_gpio"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/config_gpio"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_config"/>
 
-        <TextView
-            android:id="@+id/tv_set_gpio"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_selector"
-            android:gravity="center"
-            android:text="控制gpio"
-            android:textColor="@color/colorWhite"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_edit"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_selector"
+        android:gravity="center"
+        android:text="@string/edit_config"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_serial"/>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
