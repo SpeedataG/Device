@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Device Config</string>
+    <string name="app_name">思必拓调试工具</string>
     <string name="module">模块</string>
     <string name="serial_port">SerialPort</string>
     <string name="brd">波特率</string>
