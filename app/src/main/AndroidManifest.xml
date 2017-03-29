@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".AllGpiosAct">
         </activity>
-        <activity android:name=".GpiosAct">
+        <activity android:name=".MainGpiosAct">
         </activity>
         <activity android:name=".TestAct">
 

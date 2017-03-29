@@ -12,7 +12,7 @@ import com.speedata.device.ui.header.PageHeaderView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GpiosAct extends BaseActivity {
+public class MainGpiosAct extends BaseActivity {
 
     private ViewPager mVpContainer;
     private TabLayout mTabMain;
@@ -27,7 +27,7 @@ public class GpiosAct extends BaseActivity {
         setContentView(R.layout.activity_gpios);
         mPhvHeader = (PageHeaderView) findViewById(R.id.phv_header);
         mPhvHeader.setTitleColor(getResources().getColor(R.color.colorWhite));
-        mPhvHeader.setTitle("GPIO");
+        mPhvHeader.setTitle("主板GPIO");
         initView();
         initEvents();
 

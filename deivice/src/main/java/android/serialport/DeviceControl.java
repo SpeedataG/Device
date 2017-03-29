@@ -18,6 +18,11 @@ public class DeviceControl {
     private String poweron = "";
     private String poweroff = "";
     private String currentPath = "";
+    public DeviceControl(String path) throws IOException {
+        File DeviceName = new File(path);
+        CtrlFile = new BufferedWriter(new FileWriter(DeviceName, false));    //open file
+        currentPath = path;
+    }
 
     public void setGpio(int gpio) {
         if (currentPath.equals(POWER_EXTERNAL)) {
@@ -52,28 +57,28 @@ public class DeviceControl {
         }
     }
 
-    private void MainPowerOn(int gpio) throws IOException {
+    public void MainPowerOn(int gpio) throws IOException {
         DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_MAIN);
         deviceControl.setGpio(gpio);
         deviceControl.writeON();
         deviceControl.DeviceClose();
     }
 
-    private void MainPowerOff(int gpio) throws IOException {
+    public void MainPowerOff(int gpio) throws IOException {
         DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_MAIN);
         deviceControl.setGpio(gpio);
         deviceControl.WriteOff();
         deviceControl.DeviceClose();
     }
 
-    private void ExpandPowerOn(int gpio) throws IOException {
+    public void ExpandPowerOn(int gpio) throws IOException {
         DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_EXTERNAL);
         deviceControl.setGpio(gpio);
         deviceControl.writeON();
         deviceControl.DeviceClose();
     }
 
-    private void ExpandPowerOff(int gpio) throws IOException {
+    public void ExpandPowerOff(int gpio) throws IOException {
         DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_EXTERNAL);
         deviceControl.setGpio(gpio);
         deviceControl.WriteOff();
@@ -81,11 +86,7 @@ public class DeviceControl {
     }
 
 
-    private DeviceControl(String path) throws IOException {
-        File DeviceName = new File(path);
-        CtrlFile = new BufferedWriter(new FileWriter(DeviceName, false));    //open file
-        currentPath = path;
-    }
+
 
     private void writeON() throws IOException {
         CtrlFile.write(poweron);
@@ -141,5 +142,15 @@ public class DeviceControl {
     public void DeviceClose() throws IOException        //close file
     {
         CtrlFile.close();
+    }
+
+    public void setMode(int num, int mode) throws IOException {
+        CtrlFile.write("-wmode" + num + " " + mode);   //设置为模式 0为GPIO模式
+        CtrlFile.flush();
+    }
+
+    public void setDir(int num, int mode) throws IOException {
+        CtrlFile.write("-wdir" + num + " " + mode);   //设置为输入输出
+        CtrlFile.flush();
     }
 }

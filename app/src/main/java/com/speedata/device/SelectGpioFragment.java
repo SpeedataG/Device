@@ -2,6 +2,7 @@ package com.speedata.device;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.serialport.DeviceControl;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.InputFilter;
@@ -9,6 +10,7 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,14 +21,19 @@ import com.speedata.libutils.SharedXmlUtil;
 import com.speedata.ui.adapter.CommonAdapter;
 import com.speedata.ui.adapter.ViewHolder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.serialport.DeviceControl.POWER_MAIN;
 
 /**
  * Created by brxu on 2017/3/23.
  */
 
 public class SelectGpioFragment extends BaseFrag {
+    final String FIELD_GPIO = "gpios";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,7 +45,7 @@ public class SelectGpioFragment extends BaseFrag {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         sharedXmlUtil = SharedXmlUtil.getInstance(getActivity(), Contants.SharedXmlName);
-        sharedXmlUtil.write("gpios", "22,88,94");
+//        sharedXmlUtil.write(FIELD_GPIO, "22,88,94");
         initView(view);
 
     }
@@ -53,9 +60,9 @@ public class SelectGpioFragment extends BaseFrag {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            GpiosAct.mPhvHeader.getmRightView().setVisibility(View.VISIBLE);
-            GpiosAct.mPhvHeader.setRightIcon(R.mipmap.icon_add);
-            GpiosAct.mPhvHeader.getmRightView().setOnClickListener(new View.OnClickListener() {
+            MainGpiosAct.mPhvHeader.getmRightView().setVisibility(View.VISIBLE);
+            MainGpiosAct.mPhvHeader.setRightIcon(R.mipmap.icon_add);
+            MainGpiosAct.mPhvHeader.getmRightView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
@@ -74,19 +81,40 @@ public class SelectGpioFragment extends BaseFrag {
                                     }
                                     List<Gpio> gpios = GpioUtils.GetAllGPIO(GpioUtils.MAIN);
                                     for (int i1 = 0; i1 < gpios.size(); i1++) {
-                                        if (gpios.get(i1).getNum().trim().equals(num + "")) {
+                                        if (gpios.get(i1).getNum().trim().replace(" ", "").equals
+                                                (num + "")) {
+                                            for (int i2 = 0; i2 < selectGpios.size(); i2++) {
+                                                if (selectGpios.get(i2).getNum().trim().replace("" +
+                                                        " ", "").equals(num + "")) {
+                                                    Toast.makeText(getActivity(), "已添加该管脚", Toast
+                                                            .LENGTH_SHORT).show();
+                                                    return;
+                                                }
+                                            }
                                             selectGpios.add(gpios.get(i1));
                                             adapter.notifyDataSetChanged();
                                         }
                                     }
+                                    sharedXmlUtil.write(FIELD_GPIO, getStringSelectGpio
+                                            (selectGpios));
                                 }
                             }).setNegativeButton("取消", null).show();
                 }
             });
         } else {
-            GpiosAct.mPhvHeader.setRightIcon(R.mipmap.icon_add);
-            GpiosAct.mPhvHeader.getmRightView().setVisibility(View.INVISIBLE);
+            MainGpiosAct.mPhvHeader.setRightIcon(R.mipmap.icon_add);
+            MainGpiosAct.mPhvHeader.getmRightView().setVisibility(View.INVISIBLE);
         }
+    }
+
+    private String getStringSelectGpio(List<Gpio> gpios) {
+        String result = "";
+        for (int i = 0; i < gpios.size(); i++) {
+            result += gpios.get(i).getNum().trim() + ",";
+        }
+        String substring = result.substring(0, result.length() - 1);
+        System.out.println("===result=" + substring);
+        return substring.toString();
     }
 
     List<Gpio> selectGpios = new ArrayList<Gpio>();
@@ -94,7 +122,12 @@ public class SelectGpioFragment extends BaseFrag {
     private CommonAdapter<Gpio> adapter;
 
     private void initData() {
-        String gpios = sharedXmlUtil.read("gpios", "");
+        try {
+            deviceControl = new DeviceControl(POWER_MAIN);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String gpios = sharedXmlUtil.read(FIELD_GPIO, "");
         if (!gpios.equals("")) {
             List<Gpio> temp = GpioUtils.GetAllGPIO(GpioUtils.MAIN);
             String[] gpioss = gpios.split(",");
@@ -107,18 +140,58 @@ public class SelectGpioFragment extends BaseFrag {
                     }
                 }
             }
-            adapter = new CommonAdapter<Gpio>(getActivity(), selectGpios, R.layout
-                    .adapter_select_gpios) {
-                @Override
-                public void convert(ViewHolder helper, Gpio item) {
-                    helper.setText(R.id.tv_1, item.getNum());
-                    helper.setText(R.id.tv_2, item.getMode());
-                    helper.setText(R.id.tv_3, item.getDout());
-                    helper.setText(R.id.tv_4, item.getDir());
-                }
-            };
-            listView.setAdapter(adapter);
         }
+        adapter = new CommonAdapter<Gpio>(getActivity(), selectGpios, R.layout
+                .adapter_select_gpios) {
+            @Override
+            public void convert(final ViewHolder helper, final Gpio item) {
+                helper.setText(R.id.tv_1, item.getNum());
+                if (item.getMode().equals(0)) {
+                    helper.setText(R.id.tv_2, "gpio");
+                } else {
+                    helper.setText(R.id.tv_2, item.getMode());
+                }
+                helper.setText(R.id.tv_3, item.getDout());
+                helper.setText(R.id.tv_4, item.getDir());
+                final String dout = item.getDout().trim().replace(" ", "");
+                //上电
+                helper.getView(R.id.tv_3).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int num = Integer.parseInt(item.getNum().trim().replace(" ", ""));
+                        try {
+                            deviceControl = new DeviceControl(DeviceControl.PowerType.MAIN, num);
+                            if (dout.equals("0")) {
+                                deviceControl.PowerOnDevice();
+                                helper.setText(R.id.tv_3, "1");
+                                item.setDout("1");
+                                helper.getView(R.id.tv_3).setBackgroundColor(getResources()
+                                        .getColor(R.color
+                                                .colorGreen));
+                            } else if (dout.equals("1")) {
+                                deviceControl.PowerOffDevice();
+                                helper.setText(R.id.tv_3, "0");
+                                item.setDout("0");
+                                helper.getView(R.id.tv_3).setBackgroundColor(getResources()
+                                        .getColor(R.color
+                                                .colorBlack));
+                            }
+                            adapter.notifyDataSetChanged();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                if (dout.equals("1")) {
+                    helper.getView(R.id.tv_3).setBackgroundColor(getResources().getColor(R.color
+                            .colorGreen));
+                } else {
+                    helper.getView(R.id.tv_3).setBackgroundColor(getResources().getColor(R.color
+                            .colorBlack));
+                }
+            }
+        };
+        listView.setAdapter(adapter);
 
     }
 
@@ -132,5 +205,17 @@ public class SelectGpioFragment extends BaseFrag {
     private void initView(View view) {
         listView = (ListView) view.findViewById(R.id.list);
         initData();
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectGpios.remove(i);
+                adapter.notifyDataSetChanged();
+                sharedXmlUtil.write(FIELD_GPIO, getStringSelectGpio
+                        (selectGpios));
+                return false;
+            }
+        });
     }
+
+    private DeviceControl deviceControl;//= new DeviceControl(DeviceControl.PowerType.MAIN);
 }

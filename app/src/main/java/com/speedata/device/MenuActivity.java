@@ -27,7 +27,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
             startActivity(new Intent(this, ConfigAct.class));
         } else if (view == tvGpio) {
-            startActivity(new Intent(this, GpiosAct.class));
+            startActivity(new Intent(this, MainGpiosAct.class));
         }
     }
 }

@@ -20,6 +20,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#FF909090"/>
+    <!--   <View
+           android:layout_width="match_parent"
+           android:layout_height="1dip"
+           android:background="#696969" />-->
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_main"
         android:layout_width="match_parent"
