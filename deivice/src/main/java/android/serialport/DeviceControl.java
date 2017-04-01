@@ -149,7 +149,9 @@ public class DeviceControl {
         CtrlFile.flush();
     }
 
-    public void setDir(int num, int mode) throws IOException {
+    public void setDir(int num, int mode,String path) throws IOException {
+        File DeviceName = new File(path);
+        CtrlFile = new BufferedWriter(new FileWriter(DeviceName, false));    //open file
         CtrlFile.write("-wdir" + num + " " + mode);   //设置为输入输出
         CtrlFile.flush();
     }

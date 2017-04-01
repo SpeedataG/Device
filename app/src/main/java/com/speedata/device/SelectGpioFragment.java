@@ -154,6 +154,7 @@ public class SelectGpioFragment extends BaseFrag {
                 helper.setText(R.id.tv_3, item.getDout());
                 helper.setText(R.id.tv_4, item.getDir());
                 final String dout = item.getDout().trim().replace(" ", "");
+                final String dir = item.getDir().trim().replace(" ", "");
                 //上电
                 helper.getView(R.id.tv_3).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -182,11 +183,45 @@ public class SelectGpioFragment extends BaseFrag {
                         }
                     }
                 });
+                helper.getView(R.id.tv_4).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int num = Integer.parseInt(item.getNum().trim().replace(" ", ""));
+                        try {
+                            deviceControl = new DeviceControl(DeviceControl.PowerType.MAIN);
+                            if (dir.equals("0")) {
+                                deviceControl.setDir(num, 1,POWER_MAIN);
+                                helper.setText(R.id.tv_4, "1");
+                                item.setDir("1");
+                                helper.getView(R.id.tv_4).setBackgroundColor(getResources()
+                                        .getColor(R.color
+                                                .colorGreen));
+                            } else if (dir.equals("1")) {
+                                deviceControl.setDir(num, 0,POWER_MAIN);
+                                helper.setText(R.id.tv_4, "0");
+                                item.setDir("0");
+                                helper.getView(R.id.tv_4).setBackgroundColor(getResources()
+                                        .getColor(R.color
+                                                .colorBlack));
+                            }
+                            adapter.notifyDataSetChanged();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
                 if (dout.equals("1")) {
                     helper.getView(R.id.tv_3).setBackgroundColor(getResources().getColor(R.color
                             .colorGreen));
                 } else {
                     helper.getView(R.id.tv_3).setBackgroundColor(getResources().getColor(R.color
+                            .colorBlack));
+                }
+                if (dir.equals("1")) {
+                    helper.getView(R.id.tv_4).setBackgroundColor(getResources().getColor(R.color
+                            .colorGreen));
+                } else {
+                    helper.getView(R.id.tv_4).setBackgroundColor(getResources().getColor(R.color
                             .colorBlack));
                 }
             }
