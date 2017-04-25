@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.speedata.device.helper.HelperActivity;
+
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvGpio;
     private TextView tvConfig;
+    private TextView tvSerialport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +20,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_menu);
         tvConfig = (TextView) findViewById(R.id.tv_config);
         tvGpio = (TextView) findViewById(R.id.tv_gpio);
+        tvSerialport = (TextView) findViewById(R.id.tv_serial_port);
         tvConfig.setOnClickListener(this);
         tvGpio.setOnClickListener(this);
+        tvSerialport.setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +33,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, ConfigAct.class));
         } else if (view == tvGpio) {
             startActivity(new Intent(this, MainGpiosAct.class));
+        } else if (view == tvSerialport) {
+            startActivity(new Intent(this, HelperActivity.class));
         }
     }
 }

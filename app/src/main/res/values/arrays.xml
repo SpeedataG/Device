@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2007 The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+
+    <string-array name="choose_key">
+        <item>key_scan</item>
+        <item>key_F1</item>
+        <item>key_F2</item>
+        <item>key_F3</item>
+        <item>key_F4</item>
+    </string-array>
+    <string-array name="serial_port">
+        <item>ttyMT1</item>
+        <item>ttyG0</item>
+        <item>ttyG1</item>
+        <item>ttyG2</item>
+        <item>ttyG3</item>
+        <item>ttyO0</item>
+        <item>ttyO1</item>
+        <item>ttyO2</item>
+        <item>ttyO3</item>
+        <item>eser0</item>
+        <item>eser1</item>
+        <item>eser2</item>
+        <item>eser3</item>
+        <item>ttyMT0</item>
+        <item>ttyMT2</item>
+        <item>ttyMT3</item>
+        <item>other</item>
+    </string-array>
+    <string-array name="power_path">
+        <item>GPIO 64</item>
+        <item>GPIO 106</item>
+        <item>/proc/driver/as3992</item>
+        <item>/proc/driver/scan</item>
+        <item>/proc/driver/tda8029</item>
+        <item>/proc/driver/sirf</item>
+        <item>/proc/driver/printer</item>
+        <item>/proc/geomobile/zigbee</item>
+        <item>/proc/geomobile/lf</item>
+        <item>other</item>
+    </string-array>
+    <string-array name="baudrate">
+        <item>1200</item>
+        <item>2400</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>other</item>
+    </string-array>
+    <string-array name="stopbit">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="crc">
+        <item>NONE</item>
+        <item>ODD</item>
+        <item>EVEN</item>
+    </string-array>
+
+</resources>
