@@ -338,4 +338,59 @@ public class DataConversionUtils {
         return byHex;
     }
 
+
+
+    /**
+     * 将一个4byte的数组转换成32位的int
+     *
+     * @param buf
+     *            bytes buffer
+     * @param pos
+     *            byte[]中开始转换的位置
+     * @return convert result
+     */
+    protected long unsigned4BytesToInt(byte[] buf, int pos) {
+        int firstByte = 0;
+        int secondByte = 0;
+        int thirdByte = 0;
+        int fourthByte = 0;
+        int index = pos;
+        firstByte = (0x000000FF & ((int) buf[index]));
+        secondByte = (0x000000FF & ((int) buf[index + 1]));
+        thirdByte = (0x000000FF & ((int) buf[index + 2]));
+        fourthByte = (0x000000FF & ((int) buf[index + 3]));
+        index = index + 4;
+        return ((long) (firstByte << 24 | secondByte << 16 | thirdByte << 8 | fourthByte)) & 0xFFFFFFFFL;
+    }
+
+
+    /**
+     * 将一个字符串命令反序排列
+     *
+     * 如：a8d1c8df4edf64---->64df4edfc8d1a8
+     *
+     * @param ss
+     * @return 反序的字符串
+     */
+    private String reverseOrder(String ss) {
+        String sum = "";
+        for (int i = 0; i < ss.length(); i = i + 2) {
+            String s = ss.substring(ss.length() - (2 + i), ss.length() - i);
+            sum = sum + s;
+        }
+        return sum;
+    }
+
+
+    /**
+     * 将byte值转化为int
+     * btoi(buf[0]) == 0x68
+     *
+     * @param a
+     * @return
+     */
+    private static int btoi(byte a) {
+        return (a < 0 ? a + 256 : a);
+    }
+
 }
