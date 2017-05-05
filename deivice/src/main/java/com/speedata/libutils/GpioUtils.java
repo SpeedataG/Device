@@ -31,10 +31,8 @@ public class GpioUtils {
         List lists = new ArrayList();
         String line = null;
         try {
-            for (int i = 1; i < 203; i++) {
-                if ((line = reader.readLine()) != null) {
+                while ((line = reader.readLine()) != null) {
                     lists.add(line);
-                }
             }
         } catch (IOException e) {
             e.printStackTrace();

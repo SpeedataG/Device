@@ -190,14 +190,14 @@ public class SelectGpioFragment extends BaseFrag {
                         try {
                             deviceControl = new DeviceControl(DeviceControl.PowerType.MAIN);
                             if (dir.equals("0")) {
-                                deviceControl.setDir(num, 1,POWER_MAIN);
+                                deviceControl.setDir(num, 1, POWER_MAIN);
                                 helper.setText(R.id.tv_4, "1");
                                 item.setDir("1");
                                 helper.getView(R.id.tv_4).setBackgroundColor(getResources()
                                         .getColor(R.color
                                                 .colorGreen));
                             } else if (dir.equals("1")) {
-                                deviceControl.setDir(num, 0,POWER_MAIN);
+                                deviceControl.setDir(num, 0, POWER_MAIN);
                                 helper.setText(R.id.tv_4, "0");
                                 item.setDir("0");
                                 helper.getView(R.id.tv_4).setBackgroundColor(getResources()
