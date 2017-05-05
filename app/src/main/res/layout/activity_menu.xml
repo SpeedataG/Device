@@ -89,14 +89,36 @@
         android:layout_height="50dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_selector"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
         android:text="@string/edit_config"
         android:textColor="@color/colorWhite"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tv_serial"/>
+
+
+    <TextView
+        android:id="@+id/tv_serial_port"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/serialport"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_set_gpio"/>
+
 
 
 </android.support.constraint.ConstraintLayout>

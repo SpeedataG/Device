@@ -1,0 +1,184 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".helper.HelperActivity" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/xxx"
+                 />
+
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="6"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="@string/acceptpart"
+                         />
+
+                    <CheckBox
+                        android:id="@+id/checkBox1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:layout_marginStart="@dimen/dp5"
+                        android:layout_toRightOf="@+id/textView1"
+                        android:layout_toEndOf="@+id/textView1"
+                        android:text="@string/CheckBox1"
+                         />
+
+                    <Button
+                        android:id="@+id/clear"
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/checkBox1"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:text="@string/clear" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <EditText
+                android:hint=""
+                android:layout_margin="@dimen/dp2"
+                android:background="@drawable/shape"
+                android:id="@+id/EditTextaccept"
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:cursorVisible="false"
+                android:editable="false"
+                android:textColorHint="#ffff00"
+                android:textSize="12sp" >
+            </EditText>
+
+            <LinearLayout
+                android:id="@+id/layout_11"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="6"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:text="@string/sentpart"
+                         />
+
+                    <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp5"
+                        android:layout_marginStart="@dimen/dp5"
+                        android:layout_toRightOf="@+id/textView2"
+                        android:layout_toEndOf="@+id/textView2"
+                        android:layout_weight="0.86"
+                        android:text="@string/CheckBox2"
+                         />
+                    <!-- android:layout_toRightOf="@+id/layout_11" -->
+
+                    <Button
+                        android:id="@+id/button1"
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/checkBox2"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/clear1" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <EditText
+                android:layout_margin="@dimen/dp2"
+                android:background="@drawable/shape"
+                android:id="@+id/EditTextsend"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:includeFontPadding="true"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="5"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/send"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:includeFontPadding="false"
+                        android:text="@string/send"
+                        android:textSize="15sp" />
+                    <Button
+                        android:id="@+id/set"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        
+                        android:text="@string/setpbp"
+                        android:textSize="15sp" />
+                    
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:orientation="horizontal" >
+                   
+                    <Button
+                        android:id="@+id/close"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/close"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
