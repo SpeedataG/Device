@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * SharePreference简单封装，比SPUtils简单，功能少
+ * SharePreference简单封装
  *
  * Created by xu on 2017/5/2.
  */
