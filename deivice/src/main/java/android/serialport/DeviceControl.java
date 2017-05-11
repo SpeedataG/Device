@@ -1,5 +1,7 @@
 package android.serialport;
 
+import android.os.SystemClock;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -103,14 +105,18 @@ public class DeviceControl {
         switch (power_type) {
             case MAIN:
                 MainPowerOn(gpios[0]);
+                SystemClock.sleep(200);
                 break;
             case EXPAND:
                 ExpandPowerOn(gpios[0]);
+                SystemClock.sleep(200);
                 break;
             case MAIN_AND_EXPAND:
                 MainPowerOn(gpios[0]);
+                SystemClock.sleep(200);
                 for (int i = 1; i < gpios.length; i++) {
                     ExpandPowerOn(gpios[i]);
+                    SystemClock.sleep(200);
                 }
                 break;
             default:
