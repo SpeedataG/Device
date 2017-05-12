@@ -1,6 +1,7 @@
 package com.speedata.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -56,17 +57,17 @@ public class ToolUtils {
     /**
      * 获取当前应用程序的版本号
      */
-    private String getVersion(Activity activity) {
-        PackageManager pm = activity.getPackageManager();
+    private String getVersion(Context context) {
+        PackageManager pm = context.getPackageManager();
         String version;
         String wrongVersion;
         try {
-            PackageInfo packinfo = pm.getPackageInfo(activity.getPackageName(), 0);
+            PackageInfo packinfo = pm.getPackageInfo(context.getPackageName(), 0);
             version = packinfo.versionName;
             return version;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            wrongVersion = activity.getString(R.string.wrong_version);
+            wrongVersion = context.getString(R.string.wrong_version);
             return wrongVersion;
         }
     }

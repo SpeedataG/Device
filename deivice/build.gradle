@@ -140,7 +140,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.alibaba:fastjson:1.2.24'
-    compile files('libs/jxl.jar')
+
 }
 
 
