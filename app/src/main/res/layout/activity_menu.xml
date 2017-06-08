@@ -135,13 +135,15 @@
 
     <TextView
         android:id="@+id/tv_i2c"
-        android:layout_width="368dp"
+        android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/bg_selector"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="I2C查看"
         android:textColor="@color/colorWhite"
         app:layout_constraintHorizontal_bias="0.503"
@@ -150,7 +152,23 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_edit"
         />
-
+    <TextView
+        android:id="@+id/tv_gps"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_selector"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/gps"
+        app:layout_constraintTop_toBottomOf="@+id/tv_i2c"
+        android:textColor="@color/colorWhite"
+         />
 
 
 </android.support.constraint.ConstraintLayout>

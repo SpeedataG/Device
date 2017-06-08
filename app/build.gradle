@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 25
@@ -17,10 +18,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+//    greendao {
+//        schemaVersion 1
+//        daoPackage 'com.zgl.greentest.gen'
+//        targetGenDir 'src/main/java'
+//    }
+    greendao{
+        schemaVersion 1
+        targetGenDir 'src/main/java'
+    }
+    signingConfigs {
+        release {
+            storeFile file("myreleasekey.keystore")
+            storePassword "speedata"
+            keyAlias "speedata"
+            keyPassword "speedata"
+            v2SigningEnabled false
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -31,4 +50,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'xyz.reginer.baseadapter:baseadapter:1.1.2'
     testCompile 'junit:junit:4.12'
+    compile 'org.greenrobot:greendao:3.2.0'
 }
+

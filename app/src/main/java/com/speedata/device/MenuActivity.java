@@ -6,7 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.speedata.device.gen.GPSSatellite;
 import com.speedata.device.helper.HelperActivity;
+import com.speedata.libutils.excel.ExcelUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jxl.write.Colour;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -14,6 +21,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvConfig;
     private TextView tvSerialport;
     private TextView tvI2C;
+    private TextView tvGPS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,17 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         tvGpio.setOnClickListener(this);
         tvSerialport.setOnClickListener(this);
         tvI2C.setOnClickListener(this);
+        tvGPS=(TextView) findViewById(R.id.tv_gps);
+        tvGPS.setOnClickListener(this);
+        List<GPSSatellite> list=new ArrayList<>();
+        GPSSatellite satellite=new GPSSatellite();
+        satellite.setCollectTime("12:30");
+        satellite.setSnr(11);
+        satellite.setPrn(123);
+        satellite.setAzimuth(27);
+        list.add(satellite);
+
+
     }
 
     @Override
@@ -39,6 +58,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, HelperActivity.class));
         } else if (view == tvI2C) {
             startActivity(new Intent(this, I2CActivity.class));
+        }else if(view==tvGPS){
+            startActivity(new Intent(this, GPSAct.class));
         }
     }
 

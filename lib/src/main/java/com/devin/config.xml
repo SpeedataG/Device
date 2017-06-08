@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="testBean" class="com.devin.TestBean">
+        <property name="userName">
+            <value>张三</value>
+        </property>
+        <property name="password">
+            <value>Jack</value>
+        </property>
+    </bean>
+</beans>

@@ -2,15 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.speedata.device">
 
-
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConfigAct"></activity>
-        <activity android:name=".OperationActivity"></activity>
+        <activity android:name=".ConfigAct" />
+        <activity android:name=".OperationActivity" />
         <activity android:name=".MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllGpiosAct"></activity>
-        <activity android:name=".MainGpiosAct"></activity>
-        <activity android:name=".helper.HelperActivity"></activity>
-        <activity android:name=".I2CActivity"></activity>
+        <activity android:name=".AllGpiosAct" />
+        <activity android:name=".MainGpiosAct" />
+        <activity android:name=".helper.HelperActivity" />
+        <activity android:name=".I2CActivity" />
+        <activity android:name=".GPSAct"></activity>
     </application>
-
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>
