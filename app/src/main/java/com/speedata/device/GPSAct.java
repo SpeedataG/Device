@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.speedata.device.gen.GPSSatellite;
 import com.speedata.device.gen.GPSSatelliteDao;
-import com.speedata.device.utils.ExcelUtils;
 import com.speedata.ui.adapter.CommonAdapter;
 import com.speedata.ui.adapter.ViewHolder;
 import com.speedata.utils.ProgressDialogUtils;
@@ -35,7 +34,6 @@ import java.util.List;
 
 import jxl.write.Colour;
 
-import static com.speedata.device.utils.ExcelUtils.getSDPath;
 
 public class GPSAct extends AppCompatActivity implements View.OnClickListener {
 

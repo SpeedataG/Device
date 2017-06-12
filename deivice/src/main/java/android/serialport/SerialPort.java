@@ -27,13 +27,21 @@ import java.io.UnsupportedEncodingException;
 public class SerialPort {
 
     public static final String TAG = "SerialPortNative";
+    //ttyMT0
     public static final String SERIAL_TTYMT0 = "/dev/ttyMT0";
+    //ttyMT1
     public static final String SERIAL_TTYMT1 = "/dev/ttyMT1";
+    //ttyMT2
     public static final String SERIAL_TTYMT2 = "/dev/ttyMT2";
+    //ttyMT3
     public static final String SERIAL_TTYMT3 = "/dev/ttyMT3";
+    //ttyG0
     public static final String SERIAL_TTYG0 = "/dev/ttyG0";
+    //ttyG1
     public static final String SERIAL_TTYG1 = "/dev/ttyG1";
+    //ttyG2
     public static final String SERIAL_TTYG2 = "/dev/ttyG2";
+    //ttyG3
     public static final String SERIAL_TTYG3 = "/dev/ttyG3";
 
     private MyLogger logger = MyLogger.jLog();
@@ -48,6 +56,13 @@ public class SerialPort {
     public SerialPort() {
     }
 
+    /**
+     *
+     * @param dev 串口路径 如：SERIAL_TTYMT0
+     * @param brd 波特率
+     * @throws SecurityException
+     * @throws IOException
+     */
     public void OpenSerial(String dev, int brd) throws SecurityException,
             IOException {
         // int result = 0;
@@ -58,6 +73,16 @@ public class SerialPort {
         }
     }
 
+    /**
+     *
+     * @param device 串口路径 如：SERIAL_TTYMT0
+     * @param baudrate 波特率
+     * @param databit 数据位 一般位8
+     * @param stopbit 停止位
+     * @param crc 校验方式
+     * @throws SecurityException
+     * @throws IOException
+     */
     public void OpenSerial(String device, int baudrate, int databit,
                            int stopbit, int crc) throws SecurityException, IOException {
         System.out.println("open");
@@ -68,10 +93,20 @@ public class SerialPort {
         }
     }
 
+    /**
+     * 获取文件句柄
+     * @return
+     */
     public int getFd() {
         return fdx;
     }
 
+    /**
+     *
+     * @param fd 文件句柄
+     * @param str 写入数据
+     * @return writelen 写入长度
+     */
     public int WriteSerialByte(int fd, byte[] str) {
         clearPortBuf(fd);
         logger.d("--WriteSerialByte---"
@@ -86,8 +121,16 @@ public class SerialPort {
     }
 
 
+    //读串口 最大延时
     private int timeout = 100;
 
+    /**
+     * 最大阻塞延时为100ms
+     * @param fd 文件句柄
+     * @param len 读取的最大长度
+     * @return 读取的数据 无数据返回null
+     * @throws UnsupportedEncodingException
+     */
     public byte[] ReadSerial(int fd, int len)
             throws UnsupportedEncodingException {
         byte[] tmp = null;
@@ -105,6 +148,14 @@ public class SerialPort {
         return tmp;
     }
 
+    /**
+     *
+     * @param fd 文件句柄
+     * @param len 读取的最大长度
+     * @param delay 最大阻塞延时
+     * @return
+     * @throws UnsupportedEncodingException
+     */
     public byte[] ReadSerial(int fd, int len,int delay)
             throws UnsupportedEncodingException {
         byte[] tmp = null;
@@ -122,6 +173,14 @@ public class SerialPort {
         return tmp;
     }
 
+    /**
+     * 读串口
+     * @param fd 文件句柄
+     * @param len 最大读取长度
+     * @param isClear 读取后是否清空串口
+     * @return byte[] 读取到的数据
+     * @throws UnsupportedEncodingException
+     */
     public byte[] ReadSerial(int fd, int len, boolean isClear)
             throws UnsupportedEncodingException {
         byte[] tmp = null;
@@ -145,6 +204,13 @@ public class SerialPort {
         return tmp;
     }
 
+    /**
+     * 读串口返回String 编码格式为utf8／gbk 阻塞延时为50ms
+     * @param fd 文件句柄
+     * @param len 读取最大长度
+     * @return String 读到的数据
+     * @throws UnsupportedEncodingException
+     */
     public String ReadSerialString(int fd, int len)
             throws UnsupportedEncodingException {
         byte[] tmp;
@@ -162,6 +228,10 @@ public class SerialPort {
         return str;
     }
 
+    /**
+     * 关闭串口
+     * @param fd  文件句柄
+     */
     public void CloseSerial(int fd) {
         closeport(fd);
     }

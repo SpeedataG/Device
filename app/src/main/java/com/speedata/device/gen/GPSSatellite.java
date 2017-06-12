@@ -1,7 +1,6 @@
 package com.speedata.device.gen;
 
 import com.speedata.libutils.excel.Excel;
-import com.speedata.libutils.excel.ExcelIgnore;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
@@ -14,39 +13,40 @@ import java.text.DecimalFormat;
  * Created by echo on 2017/5/15.
  */
 
-@Excel
+
 @Entity
 public class GPSSatellite {
 
-    @ExcelIgnore(ignore = false)
+    @Excel(ignore = false,name="id")
     @Id
     private Long id;
 
-    @ExcelIgnore(ignore = true)
+    @Excel(ignore = false,name="收集时间")
     @Property(nameInDb = "collectTime")
     String collectTime;
 
-    @ExcelIgnore(ignore = true)
+    @Excel(ignore = false,name="Ephemeris")
     @Property(nameInDb = "Ephemeris")
     boolean Ephemeris;
 
-    @ExcelIgnore(ignore = true)
+    @Excel(ignore = false,name="Almanac")
     @Property(nameInDb = "Almanac")
     boolean Almanac;
 
-    @ExcelIgnore(ignore = true)
+    @Excel(ignore = false,name="Prn")
     @Property(nameInDb = "Prn")
     int Prn;
 
-    @ExcelIgnore(ignore = true)
+    @Excel(ignore = false,name="Snr")
     @Property(nameInDb = "Snr")
     float Snr;
 
-    @ExcelIgnore(ignore = true)
+
+    @Excel(ignore = false,name="Elevation")
     @Property(nameInDb = "Elevation")
     float Elevation;
 
-    @ExcelIgnore(ignore = false)
+
     @Property(nameInDb = "Azimuth")
     float Azimuth;
 

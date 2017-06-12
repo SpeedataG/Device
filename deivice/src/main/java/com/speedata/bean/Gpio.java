@@ -2,6 +2,7 @@ package com.speedata.bean;
 
 /**
  * Created by brxu on 2017/3/22.
+ * gpio实体类
  */
 
 public class Gpio {
