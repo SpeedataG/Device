@@ -95,7 +95,7 @@ public class SerialPort {
 
     /**
      * 获取文件句柄
-     * @return
+     * @return int
      */
     public int getFd() {
         return fdx;
@@ -153,7 +153,7 @@ public class SerialPort {
      * @param fd 文件句柄
      * @param len 读取的最大长度
      * @param delay 最大阻塞延时
-     * @return
+     * @return  byte[]
      * @throws UnsupportedEncodingException
      */
     public byte[] ReadSerial(int fd, int len,int delay)

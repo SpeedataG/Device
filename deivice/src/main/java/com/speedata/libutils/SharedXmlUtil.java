@@ -47,6 +47,12 @@ public class SharedXmlUtil {
 //        }
 //    }
 
+    /**
+     * 获取实例
+     * @param context 上下文
+     * @param filename 文件名称
+     * @return SharedXmlUtil对象
+     */
     public static SharedXmlUtil getInstance(Context context, String filename) {
         synchronized (lock) {
             if (mSharedXmlUtil == null) {
@@ -56,6 +62,11 @@ public class SharedXmlUtil {
         }
     }
 
+    /**
+     * 写
+     * @param key key
+     * @param value String值
+     */
     public void write(String key, String value) {
         synchronized (lock) {
             mEditor.putString(key, value);
@@ -64,6 +75,11 @@ public class SharedXmlUtil {
         }
     }
 
+    /**
+     * 写
+     * @param key key
+     * @param value boolean值
+     */
     public void write(String key, boolean value) {
         synchronized (lock) {
             mEditor.putBoolean(key, value);
@@ -72,6 +88,11 @@ public class SharedXmlUtil {
         }
     }
 
+    /**
+     * 写
+     * @param key
+     * @param value int值
+     */
     public void write(String key, int value) {
         synchronized (lock) {
             mEditor.putInt(key, value);
@@ -80,6 +101,11 @@ public class SharedXmlUtil {
         }
     }
 
+    /**
+     * 写
+     * @param key
+     * @param value float值
+     */
     public void write(String key, float value) {
         synchronized (lock) {
             mEditor.putFloat(key, value);
@@ -88,6 +114,11 @@ public class SharedXmlUtil {
         }
     }
 
+    /**
+     * 写
+     * @param key
+     * @param value long值
+     */
     public void write(String key, long value) {
         synchronized (lock) {
             mEditor.putLong(key, value);
@@ -96,6 +127,12 @@ public class SharedXmlUtil {
         }
     }
 
+    /**
+     * 读
+     * @param key
+     * @param defValue  String值
+     * @return String
+     */
     public String read(String key, String defValue) {
 //        synchronized (lock) {
             String string = defValue;
@@ -108,30 +145,57 @@ public class SharedXmlUtil {
 //        }
     }
 
+    /**
+     * 读
+     * @param key
+     * @param defValue  boolean 值
+     * @return boolean
+     */
     public boolean read(String key, boolean defValue) {
         synchronized (lock) {
             return mShared.getBoolean(key, defValue);
         }
     }
 
+    /**
+     * 读
+     * @param key
+     * @param defValue int值
+     * @return int
+     */
     public int read(String key, int defValue) {
         synchronized (lock) {
             return mShared.getInt(key, defValue);
         }
     }
-
+    /**
+     * 读
+     * @param key
+     * @param defValue float值
+     * @return float
+     */
     public float read(String key, float defValue) {
         synchronized (lock) {
             return mShared.getFloat(key, defValue);
         }
     }
 
+    /**
+     * 读
+     * @param key
+     * @param defValue long值
+     * @return long
+     */
     public long read(String key, long defValue) {
         synchronized (lock) {
             return mShared.getLong(key, defValue);
         }
     }
 
+    /**
+     * 删除
+     * @param key key
+     */
     public void delete(String key) {
         synchronized (lock) {
             mEditor.remove(key);

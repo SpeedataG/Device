@@ -16,11 +16,14 @@ import java.util.List;
 public class GpioUtils {
     /**
      * 主板上电文件
-     *
-     * @return
      */
     public static String MAIN = "sys/class/misc/mtgpio/pin";
 
+    /**
+     * 读取制定文件 解析List<Gpio>返回
+     * @param path 上电文件
+     * @return List<Gpio>
+     */
     public static List<Gpio> GetAllGPIO(String path) {
         BufferedReader reader = null;
         try {

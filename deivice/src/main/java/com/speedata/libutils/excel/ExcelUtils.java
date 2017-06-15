@@ -16,6 +16,15 @@ import jxl.format.VerticalAlignment;
 
 /**
  * Created by carl_yang on 2017/5/23.
+ * 使用示例
+ * ExcelUtils.getInstance()
+ * .setSHEET_NAME("测试Sheet")//设置表格名称
+ * .setFONT_COLOR(Colour.BLUE)//设置标题字体颜色
+ * .setFONT_TIMES(8)//设置标题字体大小
+ * .setFONT_BOLD(true)//设置标题字体是否斜体
+ * .setBACKGROND_COLOR(Colour.GRAY_25)//设置标题背景颜色
+ * .setContent_list_Strings(list)//设置excel内容
+ * .createExcel(MenuActivity.this);
  */
 
 public class ExcelUtils<T> implements Serializable {
@@ -34,17 +43,8 @@ public class ExcelUtils<T> implements Serializable {
     jxl.format.VerticalAlignment FONT_VERTICAL = VerticalAlignment.CENTRE;//默认上下居中
 
     /**
-     * 使用示例
-     * ExcelUtils.getInstance()
-     * .setSHEET_NAME("测试Sheet")//设置表格名称
-     * .setFONT_COLOR(Colour.BLUE)//设置标题字体颜色
-     * .setFONT_TIMES(8)//设置标题字体大小
-     * .setFONT_BOLD(true)//设置标题字体是否斜体
-     * .setBACKGROND_COLOR(Colour.GRAY_25)//设置标题背景颜色
-     * .setContent_list_Strings(list)//设置excel内容
-     * .createExcel(MenuActivity.this);
-     *
-     * @return
+     * 单实例
+     * @return ExcelUtils
      */
     public static ExcelUtils getInstance() {
         if (mInstance == null) {
@@ -77,7 +77,7 @@ public class ExcelUtils<T> implements Serializable {
     /**
      * 设置sheet 名称
      * @param SHEET_NAME
-     * @return
+     * @return ExcelUtils
      */
     public ExcelUtils setSHEET_NAME(String SHEET_NAME) {
         this.SHEET_NAME = SHEET_NAME;
@@ -86,7 +86,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 标题字体是否斜体
-     * @return
+     * @return boolean
      */
     public boolean isFONT_BOLD() {
         return FONT_BOLD;
@@ -95,7 +95,7 @@ public class ExcelUtils<T> implements Serializable {
     /**
      * 设置标题字体是否斜体
      * @param FONT_BOLD
-     * @return
+     * @return ExcelUtils
      */
     public ExcelUtils setFONT_BOLD(boolean FONT_BOLD) {
         this.FONT_BOLD = FONT_BOLD;
@@ -109,7 +109,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 设置标题字体大小
-     * @return
+     * @return ExcelUtils
      */
     public ExcelUtils setFONT_TIMES(int FONT_TIMES) {
         this.FONT_TIMES = FONT_TIMES;
@@ -132,7 +132,7 @@ public class ExcelUtils<T> implements Serializable {
     /**
      * 设置标题背景颜色
      * @param BACKGROND_COLOR
-     * @return
+     * @return ExcelUtils
      */
     public ExcelUtils setBACKGROND_COLOR(Colour BACKGROND_COLOR) {
         this.BACKGROND_COLOR = BACKGROND_COLOR;
@@ -164,7 +164,7 @@ public class ExcelUtils<T> implements Serializable {
     /**
      * 创建表格
      * @param ac
-     * @return
+     * @return ExcelUtils
      */
     public ExcelUtils createExcel(Activity ac) {
         new ExcelManager(ac, mInstance);
@@ -182,7 +182,7 @@ public class ExcelUtils<T> implements Serializable {
     /**
      * 设置excel内容
      * @param content_list_all
-     * @return
+     * @return ExcelUtils
      */
     public ExcelUtils setContent_list_Strings(List<T> content_list_all) {
         clearData();

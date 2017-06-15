@@ -163,7 +163,7 @@ task proguard(type: proguard.gradle.ProGuardTask, dependsOn: makeJar) {
 //  输入路径
     injars "build/libs/un_proguard.jar"
 //  输出路径
-    outjars 'libs/device_1.4.6.jar'
+    outjars 'libs/device_1.4.7.jar'
 //  添加配置信息
     configuration 'proguard-rules.pro'
 }

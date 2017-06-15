@@ -88,7 +88,7 @@ public class ExcelManager {
 
     /**
      * 获取标题格式
-     * @return
+     * @return WritableCellFormat
      */
     public WritableCellFormat getHeader() {
         WritableFont font = new WritableFont(WritableFont.TIMES, excelUtil.getFONT_TIMES(),

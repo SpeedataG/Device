@@ -18,7 +18,7 @@ public class ConfigUtils {
     /**
      * 判断配置文件是否存在
      *
-     * @return
+     * @return  boolean
      */
     public static boolean isConfigFileExists() {
         return FileUtils.fileExists();

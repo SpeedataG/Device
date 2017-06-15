@@ -61,7 +61,7 @@ public class DataConversionUtils {
      * hexString-byte[] "130632199104213021"->{0x13,0x06....,0x21}
      *
      * @param hex
-     * @return
+     * @return byte[]
      */
     public static byte[] hexStringToByteArray(String hex) {
         int len = (hex.length() / 2);
@@ -79,7 +79,7 @@ public class DataConversionUtils {
      * byte[]->String {0x23,0x32,0x12}-->"233212" 比如从卡里解析出身份证
      *
      * @param src
-     * @return
+     * @return String
      */
     public static String byteArrayToString(byte[] src) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -107,7 +107,7 @@ public class DataConversionUtils {
      *
      * @param res
      * @param len
-     * @return
+     * @return String
      */
     public static String byteArrayToStringLog(byte[] res, int len) {
         String result = "";
@@ -121,7 +121,7 @@ public class DataConversionUtils {
      * byte[]->ascii String {0x71,0x72,0x73,0x41,0x42}->"qrsAB"
      *
      * @param cmds
-     * @return
+     * @return String
      */
     public static String byteArrayToAscii(byte[] cmds) {
         int tRecvCount = cmds.length;
@@ -141,7 +141,7 @@ public class DataConversionUtils {
      * byte[]转int
      *
      * @param bytes
-     * @return
+     * @return int
      */
     public static int byteArrayToInt(byte[] bytes, boolean high_) {
         int value = 0;
@@ -164,7 +164,7 @@ public class DataConversionUtils {
 	 * byte[]转int
 	 *
 	 * @param bytes
-	 * @return
+	 * @return int
 	 */
 	public static int byteArrayToInt(byte[] bytes) {
 		int value = 0;
@@ -179,7 +179,7 @@ public class DataConversionUtils {
 
     /**
      * @param format example:yyyyMMddHHmmss
-     * @return
+     * @return String
      */
 
     public static String getCurrentTime(String format) {
@@ -188,7 +188,8 @@ public class DataConversionUtils {
     }
 
     /**
-     * @return
+     * 获取当前时间 yyyyMMddHHmmss
+     * @return String
      */
 
     public static String getDefautCurrentTime() {
@@ -223,6 +224,12 @@ public class DataConversionUtils {
     }
 
     //String型apdu指令如0084000008转成完整指令
+
+    /**
+     * 针对psam3310 的方法  指令打包
+     * @param strCmd02 apdu指令
+     * @return 3310格式的指令
+     */
     public static byte[] packageCommand(String strCmd02) {
         //长度 changdu
         int changdu01 = strCmd02.length() / 2 + 3;//长度

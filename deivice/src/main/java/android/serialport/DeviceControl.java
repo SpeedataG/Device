@@ -42,6 +42,11 @@ public class DeviceControl {
         currentPath = path;
     }
 
+    /**
+     * 此方法可单独设置gpio
+     * @param gpio 设置gpio
+     *
+     */
     public void setGpio(int gpio) {
         if (currentPath.equals(POWER_EXTERNAL)) {
             poweron = gpio + "on";
@@ -156,7 +161,7 @@ public class DeviceControl {
 
     /**
      * 构造函数之后 可带调用此方法上电
-     * @throws IOException
+     * @throws IOException 抛出异常
      */
     public void PowerOnDevice() throws IOException        //poweron id device
     {
@@ -185,7 +190,7 @@ public class DeviceControl {
 
     /**
      * 构造函数后 程序退出时可调用此方法下电
-     * @throws IOException
+     * @throws IOException 抛出异常
      */
     public void PowerOffDevice() throws IOException        //poweroff id device
     {
@@ -218,8 +223,8 @@ public class DeviceControl {
 
     /**
      * 设置制定管脚模式  0为gpio模式
-     * @param num
-     * @param mode
+     * @param num 管脚
+     * @param mode 0为gpio模式
      * @throws IOException
      */
     public void setMode(int num, int mode) throws IOException {
