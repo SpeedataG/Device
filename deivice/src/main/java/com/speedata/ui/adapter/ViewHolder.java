@@ -29,7 +29,7 @@ public class ViewHolder {
      * @param parent
      * @param layoutId
      * @param position
-     * @return
+     * @return ViewHolder
      */
     public static ViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
         if (convertView == null) {
@@ -49,7 +49,7 @@ public class ViewHolder {
      * 通过控件的Id获取对于的控件，如果没有则加入views
      *
      * @param viewId
-     * @return
+     * @return <T extends View>
      */
     @SuppressWarnings("unchecked")
     public <T extends View> T getView(int viewId) {
@@ -70,7 +70,7 @@ public class ViewHolder {
      *
      * @param viewId
      * @param text
-     * @return
+     * @return ViewHolder
      */
     public ViewHolder setText(int viewId, String text) {
         TextView view = getView(viewId);
@@ -83,7 +83,7 @@ public class ViewHolder {
      *
      * @param viewId
      * @param drawableId
-     * @return
+     * @return ViewHolder
      */
     public ViewHolder setImageResource(int viewId, int drawableId) {
         ImageView view = getView(viewId);
@@ -97,7 +97,7 @@ public class ViewHolder {
      *
      * @param viewId
      * @param bm
-     * @return
+     * @return ViewHolder
      */
     public ViewHolder setImageBitmap(int viewId, int bm) {
         ImageView view = getView(viewId);
