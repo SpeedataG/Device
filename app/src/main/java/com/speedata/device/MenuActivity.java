@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.speedata.device.gen.GPSSatellite;
 import com.speedata.device.helper.HelperActivity;
@@ -37,14 +39,14 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         tvGpio.setOnClickListener(this);
         tvSerialport.setOnClickListener(this);
         tvI2C.setOnClickListener(this);
-        tvGPS=(TextView) findViewById(R.id.tv_gps);
+        tvGPS = (TextView) findViewById(R.id.tv_gps);
         tvGPS.setOnClickListener(this);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<GPSSatellite> list=new ArrayList<>();
-                GPSSatellite satellite=new GPSSatellite();
+                List<GPSSatellite> list = new ArrayList<>();
+                GPSSatellite satellite = new GPSSatellite();
                 satellite.setCollectTime("12:30");
                 satellite.setSnr(11);
                 satellite.setPrn(123);
@@ -53,7 +55,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 satellite.setElevation(112);
                 satellite.setId((long) 2);
                 list.add(satellite);
-                satellite=new GPSSatellite();
+                satellite = new GPSSatellite();
                 satellite.setCollectTime("11:30");
                 satellite.setSnr(1);
                 satellite.setPrn(2);
@@ -86,9 +88,15 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             startActivity(new Intent(this, HelperActivity.class));
         } else if (view == tvI2C) {
             startActivity(new Intent(this, I2CActivity.class));
-        }else if(view==tvGPS){
+        } else if (view == tvGPS) {
             startActivity(new Intent(this, GPSAct.class));
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Toast.makeText(this, keyCode + "", Toast.LENGTH_SHORT).show();
+        return super.onKeyDown(keyCode, event);
+
+    }
 }
