@@ -9,7 +9,7 @@
     </style>
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/sp11</item>
-    </style>
+    </style>android:theme="@style/AppTheme"
 
 
 

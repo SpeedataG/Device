@@ -2,28 +2,44 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.speedata.device">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="true">
         <activity android:name=".ConfigAct" />
         <activity android:name=".OperationActivity" />
         <activity android:name=".MenuActivity">
+
+        </activity>
+        <activity android:name=".AllGpiosAct" />
+        <activity android:name=".MainGpiosAct" />
+        <activity android:name=".helper.HelperActivity" />
+        <activity android:name=".I2CActivity" />
+        <activity android:name=".GPSAct" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5975c781a3251104020017b9" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" />
+
+        <activity android:name=".TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllGpiosAct" />
-        <activity android:name=".MainGpiosAct" />
-        <activity android:name=".helper.HelperActivity" />
-        <activity android:name=".I2CActivity" />
-        <activity android:name=".GPSAct"></activity>
     </application>
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 </manifest>

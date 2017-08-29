@@ -1,6 +1,8 @@
 package com.speedata.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -110,22 +112,22 @@ public class ViewHolder {
      * 为ImageView设置图片
      *
      * @param viewId
-     * @param drawableId
      * @return
      */
-//    public ViewHolder setImageURL(int viewId, String url) {
-//        ImageView view = getView(viewId);
-//        AsyncBitmapLoader abl = new AsyncBitmapLoader();
-//        abl.loadBitmap(view, url, new ImageCallBack() {
+    public  ViewHolder setImageURL(int viewId, String url) {
+        final ImageView view = getView(viewId);
+        AsyncImageLoader abl = new AsyncImageLoader();
+        view.setImageDrawable(abl.loadImageFromUrl(url));
+//        abl.loadBitmap(view, url, new AsyncImageLoader.ImageCallback() {
 //
 //            @Override
 //            public void imageLoad(ImageView imageView, Bitmap bitmap) {
 //                imageView.setImageBitmap(bitmap);
 //            }
 //        });
-//
-//        return this;
-//    }
+
+        return this;
+    }
 
 }
 
