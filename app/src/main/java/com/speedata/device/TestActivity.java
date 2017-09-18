@@ -27,16 +27,16 @@ public class TestActivity extends Activity {
         setContentView(R.layout.activity_test);
 
 
-        String path = "http://218.247.237.138:8083/jgweb/file/device/20170821133219615.jpg";
-        list.add(path);
-        noScrollgridview = (GridView) findViewById(R.id.noScrollgridview);
-        noScrollgridview.setSelector(new ColorDrawable(Color.TRANSPARENT));
-        adapter = new CommonAdapter<String>(TestActivity.this, list, R.layout.adapter_bitmap) {
-            @Override
-            public void convert(ViewHolder helper, String item) {
-                helper.setImageURL(R.id.img, item);
-            }
-        };
+//        String path = "http://218.247.237.138:8083/jgweb/file/device/20170821133219615.jpg";
+//        list.add(path);
+//        noScrollgridview = (GridView) findViewById(R.id.noScrollgridview);
+//        noScrollgridview.setSelector(new ColorDrawable(Color.TRANSPARENT));
+//        adapter = new CommonAdapter<String>(TestActivity.this, list, R.layout.adapter_bitmap) {
+//            @Override
+//            public void convert(ViewHolder helper, String item) {
+//                helper.setImageURL(R.id.img, item);
+//            }
+//        };
 
         noScrollgridview.setAdapter(adapter);
     }
