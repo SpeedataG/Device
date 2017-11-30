@@ -245,4 +245,20 @@ public class DeviceControl {
         CtrlFile.write("-wdir" + num + " " + mode);   //设置为输入输出
         CtrlFile.flush();
     }
+
+    /**
+     * 设置上拉下拉
+     * @param num
+     * @param mode
+     * @param path
+     * @throws IOException
+     */
+    public void setPull(int num, int mode,String path)throws IOException {
+        File DeviceName = new File(path);
+        CtrlFile = new BufferedWriter(new FileWriter(DeviceName, false));    //open file
+        CtrlFile.write("-wpsel" + num + " " + mode);   //设置为输入输出
+        CtrlFile.flush();
+        CtrlFile.write("-wpen" + num + " " + mode);   //设置为输入输出
+        CtrlFile.flush();
+    }
 }
