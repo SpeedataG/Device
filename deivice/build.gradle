@@ -43,7 +43,7 @@ android {
 def siteUrl = 'https://github.com/SpeedataG/Device' // 项目的主页
 def gitUrl = 'https://github.com/SpeedataG/Device.git' // Git仓库的url
 group = "com.speedata" //一般填你唯一的包名
-version = "1.4.9"
+version = "1.5"
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -149,7 +149,7 @@ task makeJar(type: Jar, dependsOn:['compileReleaseJavaWithJavac']) {
     from file('build/intermediates/classes/release')
     from fileTree(dir: 'src/main', includes: ['assets/**'])
     //目标文件名称
-    archiveName = 'un_proguard.jar'
+    archiveName = 'device_1.5.jar'
     destinationDir = file('build/libs')
     exclude "lbs/tmplibary/BuildConfig.class"
     exclude "lbs/tmplibary/BuildConfig\$*.class"
