@@ -52,6 +52,8 @@ public class DeviceControl {
             poweron = gpio + "on";
             poweroff = gpio + "off";
         } else {
+            poweron = "-wmode " + gpio + " 0";//将GPIO99设置为GPIO模式
+            poweron = "-wdir " + gpio + " 1";//将GPIO99设置为输出模式
             poweron = "-wdout " + gpio + " 1";
             poweroff = "-wdout " + gpio + " 0";
         }
