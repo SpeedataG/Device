@@ -157,10 +157,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
-                        
+
                         android:text="@string/setpbp"
                         android:textSize="15sp" />
-                    
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -168,7 +168,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="5"
                     android:orientation="horizontal" >
-                   
+
                     <Button
                         android:id="@+id/close"
                         android:layout_width="0dp"

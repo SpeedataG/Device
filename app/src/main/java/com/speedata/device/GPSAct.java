@@ -47,7 +47,7 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
     private ListView listView;
     private CommonAdapter<GpsSatellite> adapter;
 
-    private TextView tvSrn,tvPrn,tvElevation,tvAzimuth;
+    private TextView tvSrn, tvPrn, tvElevation, tvAzimuth;
 
     private TextView tvTime;
     private CheckBox checkBox;
@@ -66,15 +66,15 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
         btnExport = (Button) findViewById(R.id.bt_export);
         btnExport.setOnClickListener(this);
 
-        tvSrn= (TextView) findViewById(R.id.tv_srn);
-        tvPrn= (TextView) findViewById(R.id.tv_prn);
-        tvElevation= (TextView) findViewById(R.id.tv_elevation);
-        tvAzimuth= (TextView) findViewById(R.id.tv_azimuth);
+        tvSrn = (TextView) findViewById(R.id.tv_srn);
+        tvPrn = (TextView) findViewById(R.id.tv_prn);
+        tvElevation = (TextView) findViewById(R.id.tv_elevation);
+        tvAzimuth = (TextView) findViewById(R.id.tv_azimuth);
         tvPrn.setOnClickListener(this);
         tvSrn.setOnClickListener(this);
         tvElevation.setOnClickListener(this);
         tvAzimuth.setOnClickListener(this);
-        checkBox= (CheckBox) findViewById(R.id.checkbox_order);
+        checkBox = (CheckBox) findViewById(R.id.checkbox_order);
         openGPSSettings();
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -259,7 +259,7 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
                 tvCount.setText("记录" + dap.count());
 //                }
             }
-         paixu(CODE_ELEVATION,false);
+            paixu(CODE_ELEVATION, false);
 //            numSatelliteList.get(0).
         }
 
@@ -285,12 +285,11 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
     private final int CODE_AZIMUTH = 3;
 
     /**
-     *
      * @param code           按照某个字段排序
      * @param is_order_sheng 升序或者降序
      * @return
      */
-    private void paixu( int code, final boolean is_order_sheng) {
+    private void paixu(int code, final boolean is_order_sheng) {
 
         switch (code) {
             case CODE_SNR:
@@ -358,14 +357,14 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
 //                    String[] test = {"id", "srn", "prn", "elevation", "azimuth", "time"};
 ////                    ExcelUtils.initExcel(getSDPath() + "/test.xls", test);
 //                    ExcelUtils.writeListToExcel(dap.loadAll(), getSDPath() + "/test.xls", GPSAct.this, "GPSSatellite", test);
-                   com.speedata.libutils.excel.ExcelUtils.getInstance()
-                           .setSHEET_NAME("测试Sheet")//设置表格名称
-                           .setFONT_COLOR(Colour.BLUE)//设置标题字体颜色
-                           .setFONT_TIMES(8)//设置标题字体大小
-                           .setFONT_BOLD(true)//设置标题字体是否斜体
-                           .setBACKGROND_COLOR(Colour.GRAY_25)//设置标题背景颜色
-                           .setContent_list_Strings(dap.loadAll())//设置excel内容
-                           .createExcel(GPSAct.this);
+                    com.speedata.libutils.excel.ExcelUtils.getInstance()
+                            .setSHEET_NAME("测试Sheet")//设置表格名称
+                            .setFONT_COLOR(Colour.BLUE)//设置标题字体颜色
+                            .setFONT_TIMES(8)//设置标题字体大小
+                            .setFONT_BOLD(true)//设置标题字体是否斜体
+                            .setBACKGROND_COLOR(Colour.GRAY_25)//设置标题背景颜色
+                            .setContent_list_Strings(dap.loadAll())//设置excel内容
+                            .createExcel(GPSAct.this);
 //                    runOnUiThread(new Runnable() {
 //                        @Override
 //                        public void run() {
@@ -376,30 +375,30 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
                 }
             }).start();
 
-        }else if(v==tvSrn){
+        } else if (v == tvSrn) {
             tvSrn.setBackgroundColor(getResources().getColor(R.color.colorRed));
             tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvPrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvElevation.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            paixu(CODE_SNR,checkBox.isChecked());
-        }else if(v==tvElevation){
+            paixu(CODE_SNR, checkBox.isChecked());
+        } else if (v == tvElevation) {
             tvSrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvPrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvElevation.setBackgroundColor(getResources().getColor(R.color.colorRed));
-            paixu(CODE_ELEVATION,checkBox.isChecked());
-        }else if(v==tvPrn){
+            paixu(CODE_ELEVATION, checkBox.isChecked());
+        } else if (v == tvPrn) {
             tvSrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvPrn.setBackgroundColor(getResources().getColor(R.color.colorRed));
             tvElevation.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            paixu(CODE_PRN,checkBox.isChecked());
-        }else if(v==tvAzimuth){
+            paixu(CODE_PRN, checkBox.isChecked());
+        } else if (v == tvAzimuth) {
             tvSrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorRed));
             tvPrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
             tvElevation.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            paixu(CODE_AZIMUTH,checkBox.isChecked());
+            paixu(CODE_AZIMUTH, checkBox.isChecked());
         }
 
     }

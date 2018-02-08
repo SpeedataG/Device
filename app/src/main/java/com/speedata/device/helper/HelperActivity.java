@@ -89,7 +89,7 @@ public class HelperActivity extends Activity {
 
 		sendButton.setEnabled(false);
 
-		EditTextsend.setText("aaaaaa96690003200122");
+		EditTextsend.setText("&FF0214 ");
 
 		fd = mSerialPort.getFd();
 
