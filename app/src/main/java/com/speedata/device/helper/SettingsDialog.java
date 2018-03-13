@@ -4,7 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.serialport.SerialPortBackup;
+import android.serialport.SerialPort;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,7 +20,8 @@ import com.speedata.device.R;
 
 import java.io.IOException;
 
-import static android.serialport.SerialPortBackup.TAG;
+import static android.serialport.SerialPort.TAG;
+
 
 class SettingsDialog extends Dialog implements
 		View.OnClickListener, MyInterface {
@@ -34,7 +35,7 @@ class SettingsDialog extends Dialog implements
 	private SetOtherSerialPort setDialog;
 	private SetOtherPowerPath setPowerDialog;
 	private Setbaudrate setBaudrate;
-	private SerialPortBackup mSerialPortBackup;
+	private SerialPort mSerialPortBackup;
 	private int fd;
 
 	SettingsDialog(HelperActivity HelperActivity, Context context) {

@@ -24,7 +24,7 @@ import com.speedata.libutils.MyLogger;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-public class SerialPortBackup {
+public class SerialPort {
 
     public static final String TAG = "SerialPortNative";
     //ttyMT0
@@ -53,7 +53,7 @@ public class SerialPortBackup {
     private int writelen;
     private String str;
 
-    public SerialPortBackup() {
+    public SerialPort() {
     }
 
     /**
@@ -284,7 +284,7 @@ public class SerialPortBackup {
 
 
     static {
-        System.loadLibrary("SP");
+        System.loadLibrary("serial_port");
     }
 
 }
