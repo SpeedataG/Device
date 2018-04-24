@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion '26.0.2'
 
 
     defaultConfig {
@@ -43,7 +43,7 @@ android {
 def siteUrl = 'https://github.com/SpeedataG/Device' // 项目的主页
 def gitUrl = 'https://github.com/SpeedataG/Device.git' // Git仓库的url
 group = "com.speedata" //一般填你唯一的包名
-version = "1.5.2"
+version = "1.5.4"
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -121,31 +121,7 @@ bintray {
     }
 }
 
-//
-//task makeJar(dependsOn: ['compileReleaseJavaWithJavac'], type: Jar) {
-//    delete 'build/libs/yourname1.jar'
-//    delete 'build/libs/yourname2.jar'
-//    appendix = "demo"
-//    baseName = "device"
-//    version = "1.4.6"
-//    classifier = "release"
-//    //后缀名
-//    extension = "jar"
-//    //最终的 Jar 包名，如果没设置，默认为 [baseName]-[appendix]-[version]-[classifier].[extension]
-////    archiveName = "yourname1.jar"
-//    //需打包的资源所在的路径集
-//    def srcClassDir = [project.buildDir.absolutePath + "/intermediates/classes/release"];
-//    //初始化资源路径集
-//    from srcClassDir
-//    //去除路径集下部分的资源
-//    exclude "okhttphelper/clz/com/okhttphelper/BuildConfig.class"
-//    exclude "**/R.class"
-//    exclude "**/R\$*.class"
-//    //只导入资源路径集下的部分资源
-//    include "okhttphelper/clz/com/okhttphelper/**/*.class"
-//
-//}
-task makeJar(type: Jar, dependsOn:['compileReleaseJavaWithJavac']) {
+task makeJar(type: Jar, dependsOn: ['compileReleaseJavaWithJavac']) {
     from file('build/intermediates/classes/release')
     from fileTree(dir: 'src/main', includes: ['assets/**'])
     //目标文件名称

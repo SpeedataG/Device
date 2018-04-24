@@ -57,7 +57,6 @@ public class SerialPort {
     }
 
     /**
-     *
      * @param dev 串口路径 如：SERIAL_TTYMT0
      * @param brd 波特率
      * @throws SecurityException
@@ -74,12 +73,11 @@ public class SerialPort {
     }
 
     /**
-     *
-     * @param device 串口路径 如：SERIAL_TTYMT0
+     * @param device   串口路径 如：SERIAL_TTYMT0
      * @param baudrate 波特率
-     * @param databit 数据位 一般位8
-     * @param stopbit 停止位
-     * @param crc 校验方式
+     * @param databit  数据位 一般位8
+     * @param stopbit  停止位
+     * @param crc      校验方式
      * @throws SecurityException
      * @throws IOException
      */
@@ -94,7 +92,44 @@ public class SerialPort {
     }
 
     /**
+     * 重设参数（波特率）
+     *
+     * @param fd       文件句柄
+     * @param baudrate 波特率
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public void resetParam(int fd, int baudrate) throws SecurityException, IOException {
+        fdx = setparam(fd, baudrate, 8, 1, 0);
+        if (fdx < 0) {
+            Log.e(TAG, "native setparam returns null");
+            throw new IOException();
+        }
+    }
+
+    /**
+     * 重设参数
+     *
+     * @param fd       文件句柄
+     * @param baudrate 波特率
+     * @param databit  数据位 一般位8
+     * @param stopbit  停止位
+     * @param crc      校验方式
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public void resetParam(int fd, int baudrate, int databit,
+                           int stopbit, int crc) throws SecurityException, IOException {
+        fdx = setparam(fd, baudrate, databit, stopbit, crc);
+        if (fdx < 0) {
+            Log.e(TAG, "native setparam returns null");
+            throw new IOException();
+        }
+    }
+
+    /**
      * 获取文件句柄
+     *
      * @return int
      */
     public int getFd() {
@@ -102,8 +137,7 @@ public class SerialPort {
     }
 
     /**
-     *
-     * @param fd 文件句柄
+     * @param fd  文件句柄
      * @param str 写入数据
      * @return writelen 写入长度
      */
@@ -126,7 +160,8 @@ public class SerialPort {
 
     /**
      * 最大阻塞延时为100ms
-     * @param fd 文件句柄
+     *
+     * @param fd  文件句柄
      * @param len 读取的最大长度
      * @return 读取的数据 无数据返回null
      * @throws UnsupportedEncodingException
@@ -149,14 +184,13 @@ public class SerialPort {
     }
 
     /**
-     *
-     * @param fd 文件句柄
-     * @param len 读取的最大长度
+     * @param fd    文件句柄
+     * @param len   读取的最大长度
      * @param delay 最大阻塞延时
-     * @return  byte[]
+     * @return byte[]
      * @throws UnsupportedEncodingException
      */
-    public byte[] ReadSerial(int fd, int len,int delay)
+    public byte[] ReadSerial(int fd, int len, int delay)
             throws UnsupportedEncodingException {
         byte[] tmp = null;
         tmp = readport(fd, len, delay);
@@ -175,8 +209,9 @@ public class SerialPort {
 
     /**
      * 读串口
-     * @param fd 文件句柄
-     * @param len 最大读取长度
+     *
+     * @param fd      文件句柄
+     * @param len     最大读取长度
      * @param isClear 读取后是否清空串口
      * @return byte[] 读取到的数据
      * @throws UnsupportedEncodingException
@@ -206,7 +241,8 @@ public class SerialPort {
 
     /**
      * 读串口返回String 编码格式为utf8／gbk 阻塞延时为50ms
-     * @param fd 文件句柄
+     *
+     * @param fd  文件句柄
      * @param len 读取最大长度
      * @return String 读到的数据
      * @throws UnsupportedEncodingException
@@ -230,7 +266,8 @@ public class SerialPort {
 
     /**
      * 关闭串口
-     * @param fd  文件句柄
+     *
+     * @param fd 文件句柄
      */
     public void CloseSerial(int fd) {
         closeport(fd);
@@ -271,6 +308,7 @@ public class SerialPort {
     }
 
     // JNI
+    private native int setparam(int fd, int brd, int bit, int stop, int crc);
 
     private native int openport(String port, int brd, int bit, int stop, int crc);
 
