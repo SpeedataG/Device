@@ -154,6 +154,58 @@ public class SerialPort {
         return writelen;
     }
 
+    /**
+     * 读写一起 平时不建议使用
+     *
+     * @param fd    文件句柄
+     * @param buf   要写入指令
+     * @param count 要读取最大数据量
+     * @param delay 延时时间
+     * @param brd   波特率
+     * @param bit   数据位 一般位8
+     * @param stop  停止位
+     * @param crc   校验方式
+     * @return
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public byte[] writeThenRead(int fd, byte[] buf, int count, int delay, int brd, int bit, int stop, int crc) throws SecurityException, IOException {
+        clearPortBuf(fd);
+        logger.d("--WriteSerialByte---"
+                + DataConversionUtils.byteArrayToString(buf));
+        byte[] result = write_then_read(fd, buf, count, delay, brd, bit, stop, crc);
+        if (result != null) {
+            logger.d("write success");
+        } else {
+            logger.e("write failed");
+        }
+        return result;
+    }
+
+    /**
+     * 读写一起 平时不建议使用
+     *
+     * @param fd    文件句柄
+     * @param buf   要写入指令
+     * @param count 要读取最大数据量
+     * @param delay 延时时间
+     * @param brd   波特率
+     * @return
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public byte[] writeThenRead(int fd, byte[] buf, int count, int delay, int brd) throws SecurityException, IOException {
+        clearPortBuf(fd);
+        logger.d("--WriteSerialByte---"
+                + DataConversionUtils.byteArrayToString(buf));
+        byte[] result = write_then_read(fd, buf, count, delay, brd, 8, 1, 0);
+        if (result != null) {
+            logger.d("write success");
+        } else {
+            logger.e("write failed");
+        }
+        return result;
+    }
 
     //读串口 最大延时
     private int timeout = 100;
@@ -309,6 +361,8 @@ public class SerialPort {
 
     // JNI
     private native int setparam(int fd, int brd, int bit, int stop, int crc);
+
+    private native byte[] write_then_read(int fd, byte[] buf, int count, int delay, int brd, int bit, int stop, int crc);
 
     private native int openport(String port, int brd, int bit, int stop, int crc);
 
