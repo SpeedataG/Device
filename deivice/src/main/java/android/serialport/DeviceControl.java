@@ -252,6 +252,12 @@ public class DeviceControl {
                     SystemClock.sleep(100);
                 }
                 break;
+            case EXPAND2:
+                for (int i = 0; i < gpios.length; i++) {
+                    Expand2PowerOn(gpios[i]);
+                    SystemClock.sleep(100);
+                }
+                break;
             case MAIN_AND_EXPAND2:
                 MainPowerOn(gpios[0]);
                 SystemClock.sleep(100);
@@ -283,6 +289,12 @@ public class DeviceControl {
             case EXPAND:
                 for (int i = 0; i < gpios.length; i++) {
                     ExpandPowerOff(gpios[i]);
+                    SystemClock.sleep(100);
+                }
+                break;
+            case EXPAND2:
+                for (int i = 0; i < gpios.length; i++) {
+                    Expand2PowerOff(gpios[i]);
                     SystemClock.sleep(100);
                 }
                 break;
