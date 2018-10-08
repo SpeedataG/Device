@@ -359,7 +359,7 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
 //                    ExcelUtils.writeListToExcel(dap.loadAll(), getSDPath() + "/test.xls", GPSAct.this, "GPSSatellite", test);
                     com.speedata.libutils.excel.ExcelUtils.getInstance()
                             .setSHEET_NAME("测试Sheet")//设置表格名称
-                            .setFONT_COLOR(Colour.BLUE)//设置标题字体颜色
+                            .setFONT_COLOR(jxl.format.Colour.BLUE)//设置标题字体颜色
                             .setFONT_TIMES(8)//设置标题字体大小
                             .setFONT_BOLD(true)//设置标题字体是否斜体
                             .setBACKGROND_COLOR(Colour.GRAY_25)//设置标题背景颜色

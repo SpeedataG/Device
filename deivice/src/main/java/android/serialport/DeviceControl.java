@@ -14,12 +14,16 @@ import java.io.IOException;
 public class DeviceControl {
     //kt系列
     public static final String POWER_MAIN = "/sys/class/misc/mtgpio/pin";
-    //tt系列
+    //背夹 以及 SD60
     public static final String POWER_EXTERNAL = "/sys/class/misc/aw9523/gpio";
     //sk80 新添加
     public static final String POWER_EXTERNAL2 = "/sys/class/misc/aw9524/gpio";
     //新设备上电路径
     public static final String POWER_NEWMAIN = "/sys/bus/platform/drivers/mediatek-pinctrl/10005000.pinctrl/mt_gpio";
+
+    //SD100上电路径
+    public static final String POWER_NEWMAIN2 = "/sys/class/gpio";
+
 
     /**
      * 上电类型

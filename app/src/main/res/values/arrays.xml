@@ -43,6 +43,10 @@
         <item>ttyMT0</item>
         <item>ttyMT2</item>
         <item>ttyMT3</item>
+        <item>ttyHSL0</item>
+        <item>ttyHSL1</item>
+        <item>ttyHSL2</item>
+        <item>ttyGS0</item>
         <item>other</item>
     </string-array>
     <string-array name="power_path">
