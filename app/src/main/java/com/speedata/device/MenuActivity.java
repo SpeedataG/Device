@@ -3,21 +3,17 @@ package com.speedata.device;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.speedata.device.gen.GPSSatellite;
+import com.speedata.device.telephony.BaseStationActivity;
 import com.speedata.device.helper.HelperActivity;
 import com.speedata.libutils.excel.ExcelUtils;
-import com.speedata.ui.adapter.CommonAdapter;
-import com.speedata.ui.adapter.ViewHolder;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
@@ -33,6 +29,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     private TextView tvSerialport;
     private TextView tvI2C;
     private TextView tvGPS;
+    private TextView tvGsm;
     private Context mContext;
 
     @Override
@@ -61,7 +58,9 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         tvSerialport.setOnClickListener(this);
         tvI2C.setOnClickListener(this);
         tvGPS = (TextView) findViewById(R.id.tv_gps);
+        tvGsm= (TextView) findViewById(R.id.tv_gsmcell);
         tvGPS.setOnClickListener(this);
+        tvGsm.setOnClickListener(this);
 
         new Thread(new Runnable() {
             @Override
@@ -113,6 +112,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             startActivity(new Intent(this, I2CActivity.class));
         } else if (view == tvGPS) {
             startActivity(new Intent(this, GPSAct.class));
+        }else if(view==tvGsm){
+            startActivity(new Intent(this, BaseStationActivity.class));
         }
     }
 
