@@ -15,14 +15,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-buildTypes {
-  release {
-    signingConfig signingConfigs.release
-    minifyEnabled true
-    proguardFiles getDefaultProguardFile(‘proguard-android.txt‘), ‘proguard-rules.pro‘
-  }
-}
-2，在proguard-rules.pro中加入以下代码，基本可以涵盖所有
+
 
 -optimizationpasses 5          # 指定代码的压缩级别
 -dontusemixedcaseclassnames   # 是否使用大小写混合
