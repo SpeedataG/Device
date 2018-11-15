@@ -1,17 +1,17 @@
 /*
  * Copyright 2009 Cedric Priscal
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License. 
+ * limitations under the License.
  */
 
 package android.serialport;
@@ -57,7 +57,6 @@ public class SerialPort {
     }
 
     /**
-     *
      * @param dev 串口路径 如：SERIAL_TTYMT0
      * @param brd 波特率
      * @throws SecurityException
@@ -74,12 +73,11 @@ public class SerialPort {
     }
 
     /**
-     *
-     * @param device 串口路径 如：SERIAL_TTYMT0
+     * @param device   串口路径 如：SERIAL_TTYMT0
      * @param baudrate 波特率
-     * @param databit 数据位 一般位8
-     * @param stopbit 停止位
-     * @param crc 校验方式
+     * @param databit  数据位 一般位8
+     * @param stopbit  停止位
+     * @param crc      校验方式
      * @throws SecurityException
      * @throws IOException
      */
@@ -94,7 +92,44 @@ public class SerialPort {
     }
 
     /**
+     * 重设参数（波特率）
+     *
+     * @param fd       文件句柄
+     * @param baudrate 波特率
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public void resetParam(int fd, int baudrate) throws SecurityException, IOException {
+        fdx = setparam(fd, baudrate, 8, 1, 0);
+        if (fdx < 0) {
+            Log.e(TAG, "native setparam returns null");
+            throw new IOException();
+        }
+    }
+
+    /**
+     * 重设参数
+     *
+     * @param fd       文件句柄
+     * @param baudrate 波特率
+     * @param databit  数据位 一般位8
+     * @param stopbit  停止位
+     * @param crc      校验方式
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public void resetParam(int fd, int baudrate, int databit,
+                           int stopbit, int crc) throws SecurityException, IOException {
+        fdx = setparam(fd, baudrate, databit, stopbit, crc);
+        if (fdx < 0) {
+            Log.e(TAG, "native setparam returns null");
+            throw new IOException();
+        }
+    }
+
+    /**
      * 获取文件句柄
+     *
      * @return int
      */
     public int getFd() {
@@ -102,8 +137,7 @@ public class SerialPort {
     }
 
     /**
-     *
-     * @param fd 文件句柄
+     * @param fd  文件句柄
      * @param str 写入数据
      * @return writelen 写入长度
      */
@@ -120,13 +154,66 @@ public class SerialPort {
         return writelen;
     }
 
+    /**
+     * 读写一起 平时不建议使用
+     *
+     * @param fd    文件句柄
+     * @param buf   要写入指令
+     * @param count 要读取最大数据量
+     * @param delay 延时时间
+     * @param brd   波特率
+     * @param bit   数据位 一般位8
+     * @param stop  停止位
+     * @param crc   校验方式
+     * @return
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public byte[] writeThenRead(int fd, byte[] buf, int count, int delay, int brd, int bit, int stop, int crc) throws SecurityException, IOException {
+        clearPortBuf(fd);
+        logger.d("--WriteSerialByte---"
+                + DataConversionUtils.byteArrayToString(buf));
+        byte[] result = write_then_read(fd, buf, count, delay, brd, bit, stop, crc);
+        if (result != null) {
+            logger.d("write success");
+        } else {
+            logger.e("write failed");
+        }
+        return result;
+    }
+
+    /**
+     * 读写一起 平时不建议使用
+     *
+     * @param fd    文件句柄
+     * @param buf   要写入指令
+     * @param count 要读取最大数据量
+     * @param delay 延时时间
+     * @param brd   波特率
+     * @return
+     * @throws SecurityException
+     * @throws IOException
+     */
+    public byte[] writeThenRead(int fd, byte[] buf, int count, int delay, int brd) throws SecurityException, IOException {
+        clearPortBuf(fd);
+        logger.d("--WriteSerialByte---"
+                + DataConversionUtils.byteArrayToString(buf));
+        byte[] result = write_then_read(fd, buf, count, delay, brd, 8, 1, 0);
+        if (result != null) {
+            logger.d("write success");
+        } else {
+            logger.e("write failed");
+        }
+        return result;
+    }
 
     //读串口 最大延时
     private int timeout = 100;
 
     /**
      * 最大阻塞延时为100ms
-     * @param fd 文件句柄
+     *
+     * @param fd  文件句柄
      * @param len 读取的最大长度
      * @return 读取的数据 无数据返回null
      * @throws UnsupportedEncodingException
@@ -149,14 +236,13 @@ public class SerialPort {
     }
 
     /**
-     *
-     * @param fd 文件句柄
-     * @param len 读取的最大长度
+     * @param fd    文件句柄
+     * @param len   读取的最大长度
      * @param delay 最大阻塞延时
-     * @return  byte[]
+     * @return byte[]
      * @throws UnsupportedEncodingException
      */
-    public byte[] ReadSerial(int fd, int len,int delay)
+    public byte[] ReadSerial(int fd, int len, int delay)
             throws UnsupportedEncodingException {
         byte[] tmp = null;
         tmp = readport(fd, len, delay);
@@ -175,8 +261,9 @@ public class SerialPort {
 
     /**
      * 读串口
-     * @param fd 文件句柄
-     * @param len 最大读取长度
+     *
+     * @param fd      文件句柄
+     * @param len     最大读取长度
      * @param isClear 读取后是否清空串口
      * @return byte[] 读取到的数据
      * @throws UnsupportedEncodingException
@@ -199,14 +286,15 @@ public class SerialPort {
         }
         /*
          * for(byte x : tmp) { Log.w("xxxx", String.format("0x%x", x)); }
-		 */
+         */
 
         return tmp;
     }
 
     /**
      * 读串口返回String 编码格式为utf8／gbk 阻塞延时为50ms
-     * @param fd 文件句柄
+     *
+     * @param fd  文件句柄
      * @param len 读取最大长度
      * @return String 读到的数据
      * @throws UnsupportedEncodingException
@@ -230,7 +318,8 @@ public class SerialPort {
 
     /**
      * 关闭串口
-     * @param fd  文件句柄
+     *
+     * @param fd 文件句柄
      */
     public void CloseSerial(int fd) {
         closeport(fd);
@@ -271,6 +360,9 @@ public class SerialPort {
     }
 
     // JNI
+    private native int setparam(int fd, int brd, int bit, int stop, int crc);
+
+    private native byte[] write_then_read(int fd, byte[] buf, int count, int delay, int brd, int bit, int stop, int crc);
 
     private native int openport(String port, int brd, int bit, int stop, int crc);
 

@@ -31,7 +31,7 @@ class DeviceType {
     /**
      * 获取串口.
      *
-     * @return SerialPort
+     * @return SerialPortBackup
      */
     static String getSerialPort() {
         switch (android.os.Build.MODEL) {

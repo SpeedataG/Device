@@ -3,6 +3,7 @@ package com.speedata.libutils;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.text.TextUtils;
 
 import java.io.BufferedReader;
@@ -45,7 +46,7 @@ public class CommonUtils {
      *
      * @return 文件内容
      */
-    public  static String readTxtFile() {
+    public static String readTxtFile() {
         String content = "";
         File file = new File(FILE_PATH);
         try {
@@ -89,43 +90,72 @@ public class CommonUtils {
 
     public static String getFile() {
         String subDeviceType = subDeviceType();
-        switch (subDeviceType) {
-            case "kt40":
-            case "kt40_":
-                return "kt40.config";
-            case "kt40q":
-            case "kt40q_":
+
+        if (subDeviceType.contains("40")) {
+            if (subDeviceType.contains("40q")) {
                 return "kt40q.config";
-            case "kt45":
-            case "kt45_":
-                return "kt45.config";
-            case "kt45q":
-            case "kt45q_":
+            } else {
+                return "kt40.config";
+            }
+        } else if (subDeviceType.contains("45")) {
+            if (subDeviceType.contains("45q")) {
                 return "kt45q.config";
-            case "kt50":
-            case "kt50_":
-                return "kt50.config";
-            case "kt55":
-            case "kt55_":
-                return "kt55.config";
-            case "kt80":
-            case "kt80_":
-                return "kt80.config";
-            default:
-                return "kt55.config";
+            } else {
+                return "kt45.config";
+            }
+        } else if (subDeviceType.contains("50")) {
+            return "kt50.config";
+        } else if (subDeviceType.contains("55")) {
+            return "kt55.config";
+        } else if (subDeviceType.contains("80")) {
+            return "kt80.config";
+        } else {
+            return "kt50.config";
         }
+
+//        switch (subDeviceType) {
+//            case "kt40":
+//            case "kt40_":
+//                return "kt40.config";
+//            case "kt40q":
+//            case "kt40q_":
+//                return "kt40q.config";
+//            case "kt45":
+//            case "kt45_":
+//                return "kt45.config";
+//            case "kt45q":
+//            case "kt45q_":
+//                return "kt45q.config";
+//            case "kt50":
+//            case "kt50_":
+//            case "t50":
+//            case "t50_":
+//                return "kt50.config";
+//            case "kt55":
+//            case "kt55_":
+//                return "kt55.config";
+//            case "kt80":
+//            case "kt80_":
+//            case "t80":
+//            case "t80_":
+//                return "kt80.config";
+//            default:
+//                return "kt55.config";
+//        }
     }
 
     public static String subDeviceType() {
-        if (android.os.Build.MODEL.length() < 4) {
-            return "kt45";
-        }
-        if (android.os.Build.MODEL.length() > 4) {
-            return android.os.Build.MODEL.toLowerCase().subSequence(0, 5).toString();
-        } else {
-            return android.os.Build.MODEL.toLowerCase().subSequence(0, 4).toString();
-        }
+//        String model = Build.MODEL;
+//        if (model.length() < 4) {
+//            return model.toLowerCase();
+//        }
+//        if (model.length() > 4) {
+//            return model.toLowerCase().subSequence(0, 5).toString();
+//        } else {
+//            return model.toLowerCase().subSequence(0, 4).toString();
+//        }
 
+        return Build.MODEL.toLowerCase();
     }
 
     /**

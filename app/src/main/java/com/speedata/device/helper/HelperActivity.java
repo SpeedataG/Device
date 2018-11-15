@@ -38,9 +38,9 @@ public class HelperActivity extends Activity {
 	private EditText EditTextsend;
 	public String sendstring = "";
 
-	static final String TAG = "SerialPort";
+	static final String TAG = "SerialPortBackup";
 	int fd;
-	SerialPort mSerialPort;
+	SerialPort mSerialPortBackup;
 
 	private SettingsDialog setPBP;
 	private Handler handler = null;
@@ -65,7 +65,7 @@ public class HelperActivity extends Activity {
 		setContentView(R.layout.activity_helper);
 
 		mContext = this;
-		mSerialPort = new SerialPort();
+		mSerialPortBackup = new SerialPort();
 
 
 		mReadSerialTimer = new Timer();
@@ -94,9 +94,9 @@ public class HelperActivity extends Activity {
 				"0x44 0x7D 0x00 0xD0 0xCB 0x4E 0x00 0x1B 0x83 0x94 0x00 0x28 0x3B 0xDF 0x00 0x04 0xA4 " +
 				"0x0D 0x00 0x3A 0x2D 0xCB 0x00 0xBF 0xB6 0x6C 0x00 0xD6 0x74 0x00 0x6B 0xC6 0x00 0xCC 0xCC 0xCC 0xCC");
 
-		fd = mSerialPort.getFd();
+		fd = mSerialPortBackup.getFd();
 
-		mSerialPort.WriteSerialByte(mSerialPort.getFd(),
+		mSerialPortBackup.WriteSerialByte(mSerialPortBackup.getFd(),
 				HexString2Bytes(sendstring));
 
 		handler = new Handler() {
@@ -195,8 +195,8 @@ public class HelperActivity extends Activity {
 				});
 	}
 
-	public SerialPort getmSerialPort() {
-		return mSerialPort;
+	public SerialPort getmSerialPortBackup() {
+		return mSerialPortBackup;
 	}
 
 	public DeviceControl getDevCtrl() {
@@ -219,7 +219,7 @@ public class HelperActivity extends Activity {
 
 					} else {
 						Log.d(TAG, "send_hex " + sendstring);
-						mSerialPort.WriteSerialByte(mSerialPort.getFd(),
+						mSerialPortBackup.WriteSerialByte(mSerialPortBackup.getFd(),
 								HexString2Bytes(sendstring));
 					}
 				}
@@ -259,9 +259,9 @@ public class HelperActivity extends Activity {
 		@Override
 		public void run() {
 			try {
-				fd = mSerialPort.getFd();
+				fd = mSerialPortBackup.getFd();
 
-				temp1 = mSerialPort.ReadSerial(fd, 1024);
+				temp1 = mSerialPortBackup.ReadSerial(fd, 1024);
 				if (temp1 != null) {
 
 					temp2 = temp1;
@@ -286,7 +286,7 @@ public class HelperActivity extends Activity {
 			while (!isInterrupted()) {
 
 				try {
-					temp1 = mSerialPort.ReadSerial(fd, 2048);
+					temp1 = mSerialPortBackup.ReadSerial(fd, 2048);
 					if (temp1 != null) {
 
 						temp2 = temp1;
@@ -395,7 +395,7 @@ public class HelperActivity extends Activity {
 
 	int send(String passwd) {
 		byte[] pss = passwd.getBytes();
-		mSerialPort.WriteSerialByte(fd, pss);
+		mSerialPortBackup.WriteSerialByte(fd, pss);
 		return 0;
 	}
 

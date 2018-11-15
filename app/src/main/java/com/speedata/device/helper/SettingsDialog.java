@@ -22,6 +22,7 @@ import java.io.IOException;
 
 import static android.serialport.SerialPort.TAG;
 
+
 class SettingsDialog extends Dialog implements
 		View.OnClickListener, MyInterface {
 
@@ -34,7 +35,7 @@ class SettingsDialog extends Dialog implements
 	private SetOtherSerialPort setDialog;
 	private SetOtherPowerPath setPowerDialog;
 	private Setbaudrate setBaudrate;
-	private SerialPort mSerialPort;
+	private SerialPort mSerialPortBackup;
 	private int fd;
 
 	SettingsDialog(HelperActivity HelperActivity, Context context) {
@@ -44,7 +45,7 @@ class SettingsDialog extends Dialog implements
 		setDialog = new SetOtherSerialPort(this, context);
 		setPowerDialog = new SetOtherPowerPath(this, context);
 		setBaudrate = new Setbaudrate(this, context);
-		mSerialPort = HelperActivity.getmSerialPort();
+		mSerialPortBackup = HelperActivity.getmSerialPortBackup();
 		DevCtrl = HelperActivity.getDevCtrl();
 		ArrayBaudrate = mContext.getResources()
 				.getStringArray(R.array.baudrate);
@@ -316,13 +317,13 @@ class SettingsDialog extends Dialog implements
 		if (v == openSerial) {
 			try {
 				System.out.println("open_port:" + serial_path);
-				HelperActivity.getmSerialPort().OpenSerial(serial_path, baudrate,
+				HelperActivity.getmSerialPortBackup().OpenSerial(serial_path, baudrate,
 						8, stopbitt, crc_num);
 				// System.out.println(Getstopbit() + "!!!!!!!ceshi");
 				DisplayToast("open " + serial_path + " by  " + baudrate
 						+ " baurate success");
 				Log.d(TAG, "openSerialPort");
-				fd = mSerialPort.getFd();
+				fd = mSerialPortBackup.getFd();
 				Log.d(TAG, "open fd=" + fd);
 				// 使能发送按键
 				HelperActivity.sendButton.setEnabled(true);
@@ -368,7 +369,7 @@ class SettingsDialog extends Dialog implements
 		}
 
 		if (v == closeSerial) {
-			mSerialPort.CloseSerial(fd);
+			mSerialPortBackup.CloseSerial(fd);
 			openSerial.setEnabled(true);
 			closeSerial.setEnabled(false);
 			b_Spinner.setEnabled(true);
@@ -453,7 +454,7 @@ class SettingsDialog extends Dialog implements
 	void closeSerial() {
 
 		if (serial != 0) {
-			mSerialPort.CloseSerial(fd);
+			mSerialPortBackup.CloseSerial(fd);
 		}
 	}
 
