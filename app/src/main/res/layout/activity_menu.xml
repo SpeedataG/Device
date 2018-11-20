@@ -61,6 +61,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         android:background="@drawable/bg_selector"
         android:clickable="true"
         android:focusable="true"
@@ -72,6 +73,9 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_gpio"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+
+
 
     <TextView
         android:id="@+id/tv_set_gpio"
@@ -85,6 +89,7 @@
         android:focusable="true"
         android:gravity="center"
         android:text="@string/config_gpio"
+        android:visibility="gone"
         android:textColor="@color/colorWhite"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
@@ -141,6 +146,7 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
+        android:visibility="gone"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -152,23 +158,46 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_edit"
         />
+
+
     <TextView
         android:id="@+id/tv_gps"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_selector"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
         android:text="@string/gps"
-        app:layout_constraintTop_toBottomOf="@+id/tv_i2c"
         android:textColor="@color/colorWhite"
-         />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_i2c"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+    <TextView
+        android:id="@+id/tv_gsmcell"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_selector"
+        android:gravity="center"
+        android:text="@string/gsmcell"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_i2c"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+
+
 
 
 </android.support.constraint.ConstraintLayout>

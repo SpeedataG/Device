@@ -4,12 +4,18 @@ import android.app.Activity;
 import android.os.Environment;
 
 
+import java.io.File;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
 import jxl.format.Alignment;
 import jxl.format.Colour;
 import jxl.format.VerticalAlignment;
@@ -27,13 +33,13 @@ import jxl.format.VerticalAlignment;
  * .createExcel(MenuActivity.this);
  */
 
-public class ExcelUtils<T> implements Serializable {
+public class ExcelUtils<T extends Object> implements Serializable {
 
     private static ExcelUtils mInstance;
     String SHEET_NAME;//建立的表名
     //    String[] title_lsit;//标题栏的内容
     List<String> title_lsit = new ArrayList<>();
-    List<String[]> CONTENT_LIST=new ArrayList<>();//主体内容
+    List<String[]> CONTENT_LIST = new ArrayList<>();//主体内容
     String wirteExcelPath = Environment.getExternalStorageDirectory() + "/testExcel.xls";
     boolean FONT_BOLD = false;//设置标题字体是否为斜体，默认不是
     int FONT_TIMES = 10;//设置字体大小，默认为10
@@ -44,6 +50,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 单实例
+     *
      * @return ExcelUtils
      */
     public static ExcelUtils getInstance() {
@@ -76,6 +83,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 设置sheet 名称
+     *
      * @param SHEET_NAME
      * @return ExcelUtils
      */
@@ -86,6 +94,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 标题字体是否斜体
+     *
      * @return boolean
      */
     public boolean isFONT_BOLD() {
@@ -94,6 +103,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 设置标题字体是否斜体
+     *
      * @param FONT_BOLD
      * @return ExcelUtils
      */
@@ -109,6 +119,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 设置标题字体大小
+     *
      * @return ExcelUtils
      */
     public ExcelUtils setFONT_TIMES(int FONT_TIMES) {
@@ -131,6 +142,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 设置标题背景颜色
+     *
      * @param BACKGROND_COLOR
      * @return ExcelUtils
      */
@@ -163,6 +175,7 @@ public class ExcelUtils<T> implements Serializable {
 
     /**
      * 创建表格
+     *
      * @param ac
      * @return ExcelUtils
      */
@@ -174,13 +187,14 @@ public class ExcelUtils<T> implements Serializable {
     /**
      * 清除缓存
      */
-    public void clearData(){
+    public void clearData() {
         title_lsit.clear();
         CONTENT_LIST.clear();
     }
 
     /**
      * 设置excel内容
+     *
      * @param content_list_all
      * @return ExcelUtils
      */
@@ -190,7 +204,7 @@ public class ExcelUtils<T> implements Serializable {
         for (int i = 0; i < content_list_all.size(); i++) {
             T current_content_object = content_list_all.get(i);
             Field[] fields = c.getDeclaredFields();
-            List<String> single_obj=new ArrayList<String>();
+            List<String> single_obj = new ArrayList<String>();
             for (Field temp : fields) {
                 boolean hasAnnotation = temp.isAnnotationPresent(Excel.class);
                 if (hasAnnotation) {
@@ -201,7 +215,7 @@ public class ExcelUtils<T> implements Serializable {
                     String type = temp.getGenericType().toString();
                     System.out.println("-----------" + type);
                     String fieldName = temp.getName() + "";
-                    if(!title_lsit.contains(annotation.name())) {
+                    if (!title_lsit.contains(annotation.name())) {
                         title_lsit.add(annotation.name());
                     }
                     String getMethodName;
@@ -218,39 +232,74 @@ public class ExcelUtils<T> implements Serializable {
                             single_obj.add(value);
                         } else if (type.equals("int")) {
                             int value = (int) method.invoke(current_content_object);
-                            single_obj.add(value+"");
+                            single_obj.add(value + "");
                         } else if (type.equals("double")) {
                             double value = (double) method.invoke(current_content_object);
-                            single_obj.add(value+"");
+                            single_obj.add(value + "");
                         } else if (type.equals("long")) {
                             long value = (long) method.invoke(current_content_object);
-                            single_obj.add(value+"");
+                            single_obj.add(value + "");
                         } else if (type.equals("boolean")) {
                             boolean value = (boolean) method.invoke(current_content_object);
-                            single_obj.add(value+"");
+                            single_obj.add(value + "");
                         } else if (type.equals("float")) {
                             float value = (float) method.invoke(current_content_object);
-                            single_obj.add(value+"");
-                        }else if (type.equals("class java.lang.Long")) {
+                            single_obj.add(value + "");
+                        } else if (type.equals("class java.lang.Long")) {
                             long value = (long) method.invoke(current_content_object);
-                            single_obj.add(value+"");
+                            single_obj.add(value + "");
                         }
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
-                }else{
+                } else {
                     System.out.println("-------Field no Annotation= " + temp.getName());
                 }
             }
-            String[] tt=new String[single_obj.size()];
+            String[] tt = new String[single_obj.size()];
             for (int i1 = 0; i1 < single_obj.size(); i1++) {
-                tt[i1]=single_obj.get(i1);
+                tt[i1] = single_obj.get(i1);
             }
             CONTENT_LIST.add(tt);
         }
         return this;
     }
+
+
+    private Class<T> clazz;
+
+    /**
+     * 读取excel内容
+     *
+     * @param os excel
+     * @return List<T>
+     */
+    public List<HashMap<String, Object>> getContentList(File os, String sheetName) throws Exception {
+        clearData();
+        List<HashMap<String, Object>> result = new ArrayList<>();
+        HashMap<String, Object> hashMap=new HashMap<>();
+
+        Workbook wb = Workbook.getWorkbook(os);
+        Sheet s = wb.getSheet(sheetName);
+        int columns = s.getColumns();
+        int raws = s.getRows() - 1;    //除去首行
+        String[][] readData = new String[raws][columns];
+        for (int i = 0; i < raws; i++) {
+            for (int j = 0; j < columns; j++) {
+                readData[i][j] = s.getCell(j, i).getContents();
+//                hashMap.put()
+            }
+        }
+        // 使用反射技术得到T的真实类型
+        ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass(); // 获取当前new的对象的 泛型的父类 类型
+
+        this.clazz = (Class<T>) pt.getActualTypeArguments()[0]; // 获取第一个类型参数的真实类型
+//        Cell c = s.getCell(0, 0);
+//        System.out.println(c.getContents());
+        return result;
+    }
+
 
 }

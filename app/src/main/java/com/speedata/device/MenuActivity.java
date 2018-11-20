@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.speedata.device.gen.GPSSatellite;
 import com.speedata.device.helper.HelperActivity;
+import com.speedata.device.telephony.BaseStationActivity;
 import com.speedata.libutils.excel.ExcelUtils;
 import com.umeng.analytics.MobclickAgent;
 
@@ -28,7 +29,10 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     private TextView tvSerialport;
     private TextView tvI2C;
     private TextView tvGPS;
+    private TextView tvGsm;
+    private TextView tvEditConfig;
     private Context mContext;
+    private String mPageName = "speedata_tools";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +42,16 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         // SDK在统计Fragment时，需要关闭Activity自带的页面统计，
         // 然后在每个页面中重新集成页面统计的代码(包括调用了 onResume 和 onPause 的Activity)。
         MobclickAgent.openActivityDurationTrack(false);
-
-
-        // MobclickAgent.setAutoLocation(true);
-        // MobclickAgent.setSessionContinueMillis(1000);
-        // MobclickAgent.startWithConfigure(
-        // new UMAnalyticsConfig(mContext, "4f83c5d852701564c0000011", "Umeng",
-        // EScenarioType.E_UM_NORMAL));
         MobclickAgent.setScenarioType(mContext, MobclickAgent.EScenarioType.E_UM_NORMAL);
+
+        initView();
+
+        //        excelTest();
+
+
+    }
+
+    private void initView() {
         setContentView(R.layout.activity_menu);
         tvConfig = (TextView) findViewById(R.id.tv_config);
         tvGpio = (TextView) findViewById(R.id.tv_gpio);
@@ -56,8 +62,14 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         tvSerialport.setOnClickListener(this);
         tvI2C.setOnClickListener(this);
         tvGPS = (TextView) findViewById(R.id.tv_gps);
+        tvGsm = (TextView) findViewById(R.id.tv_gsmcell);
         tvGPS.setOnClickListener(this);
+        tvGsm.setOnClickListener(this);
+        tvEditConfig = (TextView) findViewById(R.id.tv_edit);
+        tvEditConfig.setOnClickListener(this);
+    }
 
+    private void excelTest() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -87,28 +99,34 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                         .setFONT_BOLD(true)//设置标题字体是否斜体
                         .setBACKGROND_COLOR(Colour.GRAY_25)//设置标题背景颜色
                         .setContent_list_Strings(list)//设置excel内容
-                        .setWirteExcelPath(Environment.getExternalStorageDirectory()+ File.separator+"abc.xls")
+                        .setWirteExcelPath(Environment.getExternalStorageDirectory() + File.separator + "abc.xls")
                         .createExcel(MenuActivity.this);
             }
         }).start();
-
-
     }
 
     @Override
     public void onClick(View view) {
         if (view == tvConfig) {
-            "123".substring(10);
+            //配置文件
             startActivity(new Intent(this, ConfigAct.class));
         } else if (view == tvGpio) {
+            //GPIO控制
             startActivity(new Intent(this, MainGpiosAct.class));
         } else if (view == tvSerialport) {
+            //串口助手
             startActivity(new Intent(this, HelperActivity.class));
-        } else if (view == tvI2C) {
-            startActivity(new Intent(this, I2CActivity.class));
         } else if (view == tvGPS) {
             startActivity(new Intent(this, GPSAct.class));
+        } else if (view == tvGsm) {
+            //基站
+            startActivity(new Intent(this, BaseStationActivity.class));
+        } else if (view == tvEditConfig) {
+            Toast.makeText(this, "尚未开发", Toast.LENGTH_SHORT).show();
         }
+        //        else if (view == tvI2C) {
+        //            startActivity(new Intent(this, I2CActivity.class));
+        //        }
     }
 
     @Override
@@ -118,7 +136,6 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
     }
 
-    private String mPageName="speedata_tools";
     @Override
     protected void onResume() {
         super.onResume();
