@@ -23,7 +23,10 @@ public class DeviceControl {
 
     //SD100上电路径
     public static final String POWER_NEWMAIN2 = "/sys/class/gpio";
-
+    /**
+     * 高通平台上电
+     */
+    public static final String POWER_GAOTONG = "/sys/class/switch/app_switch/app_state";
 
     /**
      * 上电类型
@@ -52,8 +55,11 @@ public class DeviceControl {
         /**
          * 主板和9524上电
          */
-        MAIN_AND_EXPAND2
-
+        MAIN_AND_EXPAND2,
+        /**
+         * 高通平台上电
+         */
+        GAOTONG_MAIN
 
     }
 
@@ -131,8 +137,31 @@ public class DeviceControl {
             case "MAIN_AND_EXPAND2":
                 this.power_type = PowerType.MAIN_AND_EXPAND2;
                 break;
+            case "GAOTONG_MAIN":
+                this.power_type = PowerType.GAOTONG_MAIN;
+                break;
+            default:
+                break;
 
         }
+    }
+
+    /**
+     * 高通平台 uhf上电下电
+     *
+     * @param s open uhf上电； close uhf下电
+     */
+    public void gtPower(String s) {
+        try {
+            File DeviceName = new File(POWER_GAOTONG);
+            CtrlFile = new BufferedWriter(new FileWriter(DeviceName, false));    //open file
+            CtrlFile.write(s);
+            CtrlFile.flush();
+            CtrlFile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -270,6 +299,9 @@ public class DeviceControl {
                     SystemClock.sleep(100);
                 }
                 break;
+            case GAOTONG_MAIN:
+
+                break;
             default:
                 break;
         }
@@ -318,6 +350,9 @@ public class DeviceControl {
                 for (int i = 0; i < gpios.length; i++) {
                     newSetGpioOff(gpios[i]);
                 }
+                break;
+            case GAOTONG_MAIN:
+
                 break;
             default:
                 break;

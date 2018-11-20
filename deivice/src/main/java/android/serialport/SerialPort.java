@@ -44,6 +44,12 @@ public class SerialPort {
     //ttyG3
     public static final String SERIAL_TTYG3 = "/dev/ttyG3";
 
+    public static final String SERIAL_TTYHSL0 = "/dev/ttyHSL0";
+
+    public static final String SERIAL_TTYHSL1 = "/dev/ttyHSL1";
+
+    public static final String SERIAL_TTYHSL2 = "/dev/ttyHSL2";
+
     private MyLogger logger = MyLogger.jLog();
     /*
      * Do not remove or rename the field mFd: it is used by native method
@@ -279,8 +285,9 @@ public class SerialPort {
         }
         if (tmp != null) {
             logger.d("read---" + DataConversionUtils.byteArrayToStringLog(tmp, tmp.length));
-            if (isClear)
+            if (isClear) {
                 clearPortBuf(fd);
+            }
         } else {
             logger.d("read---null");
         }
