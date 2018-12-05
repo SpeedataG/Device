@@ -39,7 +39,7 @@ import java.io.InputStreamReader;
  *         功能描述:文件流
  */
 public class CommonUtils {
-    private static final String FILE_PATH = "/system/speedata.config";
+    private static final String FILE_PATH = "/system/SK80.config";
 
     /**
      * 读取文本文件中的内容 .
@@ -109,8 +109,25 @@ public class CommonUtils {
             return "kt55.config";
         } else if (subDeviceType.contains("80")) {
             return "kt80.config";
-        } else {
-            return "kt50.config";
+        } else if (subDeviceType.contains("SD35")){
+            return "SD35.config";
+        }
+        else if (subDeviceType.contains("SD55")){
+            return "SD55.config";
+        }
+        else if (subDeviceType.contains("SD55L")){
+            return "SD55L.config";
+        }
+        else if (subDeviceType.contains("SD60")){
+            return "SD60.config";
+        }
+        else if (subDeviceType.contains("SD80")){
+            return "SD80.config";
+        }
+        else if (subDeviceType.contains("SD100")){
+            return "SD100.config";
+        }else {
+            return "TC01.config";
         }
 
 //        switch (subDeviceType) {

@@ -38,7 +38,7 @@ class FileUtils {
 
     private static final String TAG = "Reginer";
 
-    private static final String FILE_PATH = "/system/speedata.config";
+    private static final String FILE_PATH = "/system/SK80.config";
 
     /**
      * 读取文本文件中的内容 .

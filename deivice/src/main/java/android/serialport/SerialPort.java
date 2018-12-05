@@ -25,32 +25,24 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public class SerialPort {
-
     public static final String TAG = "SerialPortNative";
-    //ttyMT0
     public static final String SERIAL_TTYMT0 = "/dev/ttyMT0";
-    //ttyMT1
     public static final String SERIAL_TTYMT1 = "/dev/ttyMT1";
-    //ttyMT2
     public static final String SERIAL_TTYMT2 = "/dev/ttyMT2";
-    //ttyMT3
     public static final String SERIAL_TTYMT3 = "/dev/ttyMT3";
-    //ttyG0
     public static final String SERIAL_TTYG0 = "/dev/ttyG0";
-    //ttyG1
     public static final String SERIAL_TTYG1 = "/dev/ttyG1";
-    //ttyG2
     public static final String SERIAL_TTYG2 = "/dev/ttyG2";
-    //ttyG3
     public static final String SERIAL_TTYG3 = "/dev/ttyG3";
-
+    public static final String SERIAL_TTYUSB0 = "/dev/ttyUSB0";
+    public static final String SERIAL_TTYUSB1 = "/dev/ttyUSB1";
+    public static final String SERIAL_TTYUSB2 = "/dev/ttyUSB2";
     public static final String SERIAL_TTYHSL0 = "/dev/ttyHSL0";
-
     public static final String SERIAL_TTYHSL1 = "/dev/ttyHSL1";
-
     public static final String SERIAL_TTYHSL2 = "/dev/ttyHSL2";
 
     private MyLogger logger = MyLogger.jLog();
+
     /*
      * Do not remove or rename the field mFd: it is used by native method
      * close();

@@ -302,6 +302,7 @@ public class ReadBean {
         private String powerType;
         private String module;
         private List<Integer> gpio;
+        private List<String> gtGpio;
 
         public String getSerialPort() {
             return serialPort;
@@ -341,6 +342,14 @@ public class ReadBean {
 
         public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
+        }
+
+        public List<String> getGtGpio() {
+            return gtGpio;
+        }
+
+        public void setGtGpio(List<String> gtGpio) {
+            this.gtGpio = gtGpio;
         }
     }
 
@@ -428,6 +437,9 @@ public class ReadBean {
         private String powerType;
         private int resetGpio;
         private List<Integer> gpio;
+        private List<String> gtGpio;
+        private List<String> gtResetGpio;
+
 
         public String getSerialPort() {
             return serialPort;
@@ -467,6 +479,22 @@ public class ReadBean {
 
         public void setGpio(List<Integer> gpio) {
             this.gpio = gpio;
+        }
+
+        public List<String> getGtGpio() {
+            return gtGpio;
+        }
+
+        public void setGtGpio(List<String> gtGpio) {
+            this.gtGpio = gtGpio;
+        }
+
+        public List<String> getGtResetGpio() {
+            return gtResetGpio;
+        }
+
+        public void setGtResetGpio(List<String> gtResetGpio) {
+            this.gtResetGpio = gtResetGpio;
         }
     }
 

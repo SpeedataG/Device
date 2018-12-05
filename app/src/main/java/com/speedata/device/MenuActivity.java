@@ -43,29 +43,25 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         // 然后在每个页面中重新集成页面统计的代码(包括调用了 onResume 和 onPause 的Activity)。
         MobclickAgent.openActivityDurationTrack(false);
         MobclickAgent.setScenarioType(mContext, MobclickAgent.EScenarioType.E_UM_NORMAL);
-
         initView();
-
         //        excelTest();
-
-
     }
 
     private void initView() {
         setContentView(R.layout.activity_menu);
-        tvConfig = (TextView) findViewById(R.id.tv_config);
-        tvGpio = (TextView) findViewById(R.id.tv_gpio);
-        tvSerialport = (TextView) findViewById(R.id.tv_serial_port);
-        tvI2C = (TextView) findViewById(R.id.tv_i2c);
+        tvConfig =  findViewById(R.id.tv_config);
+        tvGpio =  findViewById(R.id.tv_gpio);
+        tvSerialport =  findViewById(R.id.tv_serial_port);
+        tvI2C =  findViewById(R.id.tv_i2c);
         tvConfig.setOnClickListener(this);
         tvGpio.setOnClickListener(this);
         tvSerialport.setOnClickListener(this);
         tvI2C.setOnClickListener(this);
-        tvGPS = (TextView) findViewById(R.id.tv_gps);
-        tvGsm = (TextView) findViewById(R.id.tv_gsmcell);
+        tvGPS =  findViewById(R.id.tv_gps);
+        tvGsm =  findViewById(R.id.tv_gsmcell);
         tvGPS.setOnClickListener(this);
         tvGsm.setOnClickListener(this);
-        tvEditConfig = (TextView) findViewById(R.id.tv_edit);
+        tvEditConfig =  findViewById(R.id.tv_edit);
         tvEditConfig.setOnClickListener(this);
     }
 
