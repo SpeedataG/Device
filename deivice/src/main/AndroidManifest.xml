@@ -1,11 +1,14 @@
-<manifest package="com.speedata.deivice"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.speedata.deivice">
 
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:supportsRtl="true"
-    >
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
 
     </application>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

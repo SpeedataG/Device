@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical"
+    tools:context=".DoConfigAct">
+
+    <TextView
+        style="@style/adapter_config"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv1"
+        android:text="ceshi " />
+    <TextView
+        style="@style/adapter_config"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv2"
+        android:text="ceshi " />
+    <TextView
+        style="@style/adapter_config"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv3"
+        android:text="ceshi " />
+    <TextView
+        style="@style/adapter_config"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv4"
+        android:text="ceshi " />
+    <TextView
+        style="@style/adapter_config"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv5"
+        android:text="ceshi " />
+</LinearLayout>

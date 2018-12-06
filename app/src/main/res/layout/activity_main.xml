@@ -85,10 +85,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_ur2k"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
             <com.speedata.device.ModuleView
                 android:id="@+id/mv_zigbee"
@@ -98,6 +94,11 @@
                 android:id="@+id/mv_infrared"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_save"
+                android:text="@string/btn_save"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

@@ -2,14 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    def versions = rootProject.ext.versions
+    compileSdkVersion versions.sdkCompileVersion
+    buildToolsVersion versions.toolsBuildVersion
+
+
     defaultConfig {
         applicationId "com.speedata.device"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.2"
+        minSdkVersion versions.sdkMinVersion
+        targetSdkVersion versions.sdkTargetVersion
+        versionCode versions.appVersionCode
+        versionName versions.appVersionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -19,6 +23,15 @@ android {
         }
     }
 
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+//    greendao {
+//        schemaVersion 1
+//        daoPackage 'com.zgl.greentest.gen'
+//        targetGenDir 'src/main/java'
+//    }
     greendao {
         schemaVersion 1
         targetGenDir 'src/main/java'
@@ -40,13 +53,21 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation project(path: ':deivice')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
+//    implementation 'com.android.support:appcompat-v7:25.0.1'
+    def dependencies = rootProject.ext.deps
+    api dependencies.suport.appcompat
+    api dependencies.suport.design
+//    compile dependencies.suport.recyclerview
+
     implementation 'xyz.reginer:refresh:1.0.5'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'xyz.reginer.baseadapter:baseadapter:1.1.2'
     testImplementation 'junit:junit:4.12'
-    implementation 'org.greenrobot:greendao:3.2.2'
-    implementation 'com.umeng.analytics:analytics:6.1.4'
-}
+    implementation 'org.greenrobot:greendao:3.2.0'
+    implementation 'com.umeng.analytics:analytics:latest.integration'
+    implementation 'com.alibaba:fastjson:1.2.24'
+    implementation 'com.github.huangyanbin:SmartTable:2.2.0'
 
+    implementation "com.android.support:recyclerview-v7:25.4.0"
+    implementation 'com.github.arcadefire:nice-spinner:1.3.4'
+}

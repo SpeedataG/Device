@@ -1,5 +1,7 @@
 package com.speedata.libutils;
 
+import com.speedata.bean.BaseBean;
+
 import java.util.List;
 
 /**
@@ -24,8 +26,8 @@ import java.util.List;
  * ━━━━━━神兽出没━━━━━━
  *
  * @author :Reginer in  2017/3/10 9:57.
- *         联系方式:QQ:282921012
- *         功能描述:读取配置文件
+ * 联系方式:QQ:282921012
+ * 功能描述:读取配置文件
  */
 public class ReadBean {
 
@@ -257,76 +259,13 @@ public class ReadBean {
         this.infrared = infrared;
     }
 
-    public static class Id2Bean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class Id2Bean  extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class UhfBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
+    public static class UhfBean  extends BaseBean {
+
         private String module;
-        private List<Integer> gpio;
-        private List<String> gtGpio;
-
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
 
         public String getModule() {
             return module;
@@ -335,518 +274,62 @@ public class ReadBean {
         public void setModule(String module) {
             this.module = module;
         }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
-
-        public List<String> getGtGpio() {
-            return gtGpio;
-        }
-
-        public void setGtGpio(List<String> gtGpio) {
-            this.gtGpio = gtGpio;
-        }
     }
 
-    public static class R6Bean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class R6Bean  extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class PrintBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class PrintBean  extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class PasmBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
+    public static class PasmBean extends BaseBean {
+
         private int resetGpio;
-        private List<Integer> gpio;
-        private List<String> gtGpio;
-        private List<String> gtResetGpio;
-
-
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
         public int getResetGpio() {
             return resetGpio;
         }
-
         public void setResetGpio(int resetGpio) {
             this.resetGpio = resetGpio;
         }
 
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
-
-        public List<String> getGtGpio() {
-            return gtGpio;
-        }
-
-        public void setGtGpio(List<String> gtGpio) {
-            this.gtGpio = gtGpio;
-        }
-
-        public List<String> getGtResetGpio() {
-            return gtResetGpio;
-        }
-
-        public void setGtResetGpio(List<String> gtResetGpio) {
-            this.gtResetGpio = gtResetGpio;
-        }
     }
 
-    public static class FingerBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class FingerBean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class DistBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class DistBean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class TempBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class TempBean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class Lf1Bean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class Lf1Bean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class Lf2Bean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class Lf2Bean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class Sp433Bean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class Sp433Bean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class ScanBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class ScanBean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class ZigbeeBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class ZigbeeBean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
-    public static class InfraredBean {
-        private String serialPort;
-        private int braut;
-        private String powerType;
-        private List<Integer> gpio;
+    public static class InfraredBean extends BaseBean {
 
-        public String getSerialPort() {
-            return serialPort;
-        }
-
-        public void setSerialPort(String serialPort) {
-            this.serialPort = serialPort;
-        }
-
-        public int getBraut() {
-            return braut;
-        }
-
-        public void setBraut(int braut) {
-            this.braut = braut;
-        }
-
-        public String getPowerType() {
-            return powerType;
-        }
-
-        public void setPowerType(String powerType) {
-            this.powerType = powerType;
-        }
-
-        public List<Integer> getGpio() {
-            return gpio;
-        }
-
-        public void setGpio(List<Integer> gpio) {
-            this.gpio = gpio;
-        }
     }
 
 }

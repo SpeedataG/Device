@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,11 +36,11 @@ import java.io.InputStreamReader;
  * ━━━━━━神兽出没━━━━━━
  *
  * @author :Reginer in  2017/2/22 10:33.
- *         联系方式:QQ:282921012
- *         功能描述:文件流
+ * 联系方式:QQ:282921012
+ * 功能描述:文件流
  */
 public class CommonUtils {
-    private static final String FILE_PATH = "/system/SK80.config";
+    public static final String FILE_PATH = "/storage/emulated/0/speedata.config";
 
     /**
      * 读取文本文件中的内容 .
@@ -64,6 +65,33 @@ public class CommonUtils {
         }
 
         return content;
+    }
+
+
+    /**
+     * 写文件
+     *
+     * @return 文件内容
+     */
+    public static boolean writeTxtFile(String content) {
+
+        ShellUtils.execCmd("adb shell",false);
+        ShellUtils.execCmd("mount -o rw,remount -t yaffs2 /dev/block/mtdblock3 /system",false);
+        try {
+            File file = new File(FILE_PATH);
+            //            if (!file.exists()) {
+            file.createNewFile();
+            //            }
+            FileOutputStream fout = new FileOutputStream(file);
+            byte[] bytes = content.getBytes();
+            fout.write(bytes);
+            fout.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
     }
 
     public static boolean isExists() {
@@ -109,68 +137,51 @@ public class CommonUtils {
             return "kt55.config";
         } else if (subDeviceType.contains("80")) {
             return "kt80.config";
-        } else if (subDeviceType.contains("SD35")){
-            return "SD35.config";
-        }
-        else if (subDeviceType.contains("SD55")){
-            return "SD55.config";
-        }
-        else if (subDeviceType.contains("SD55L")){
-            return "SD55L.config";
-        }
-        else if (subDeviceType.contains("SD60")){
-            return "SD60.config";
-        }
-        else if (subDeviceType.contains("SD80")){
-            return "SD80.config";
-        }
-        else if (subDeviceType.contains("SD100")){
-            return "SD100.config";
-        }else {
-            return "TC01.config";
+        } else {
+            return "kt50.config";
         }
 
-//        switch (subDeviceType) {
-//            case "kt40":
-//            case "kt40_":
-//                return "kt40.config";
-//            case "kt40q":
-//            case "kt40q_":
-//                return "kt40q.config";
-//            case "kt45":
-//            case "kt45_":
-//                return "kt45.config";
-//            case "kt45q":
-//            case "kt45q_":
-//                return "kt45q.config";
-//            case "kt50":
-//            case "kt50_":
-//            case "t50":
-//            case "t50_":
-//                return "kt50.config";
-//            case "kt55":
-//            case "kt55_":
-//                return "kt55.config";
-//            case "kt80":
-//            case "kt80_":
-//            case "t80":
-//            case "t80_":
-//                return "kt80.config";
-//            default:
-//                return "kt55.config";
-//        }
+        //        switch (subDeviceType) {
+        //            case "kt40":
+        //            case "kt40_":
+        //                return "kt40.config";
+        //            case "kt40q":
+        //            case "kt40q_":
+        //                return "kt40q.config";
+        //            case "kt45":
+        //            case "kt45_":
+        //                return "kt45.config";
+        //            case "kt45q":
+        //            case "kt45q_":
+        //                return "kt45q.config";
+        //            case "kt50":
+        //            case "kt50_":
+        //            case "t50":
+        //            case "t50_":
+        //                return "kt50.config";
+        //            case "kt55":
+        //            case "kt55_":
+        //                return "kt55.config";
+        //            case "kt80":
+        //            case "kt80_":
+        //            case "t80":
+        //            case "t80_":
+        //                return "kt80.config";
+        //            default:
+        //                return "kt55.config";
+        //        }
     }
 
     public static String subDeviceType() {
-//        String model = Build.MODEL;
-//        if (model.length() < 4) {
-//            return model.toLowerCase();
-//        }
-//        if (model.length() > 4) {
-//            return model.toLowerCase().subSequence(0, 5).toString();
-//        } else {
-//            return model.toLowerCase().subSequence(0, 4).toString();
-//        }
+        //        String model = Build.MODEL;
+        //        if (model.length() < 4) {
+        //            return model.toLowerCase();
+        //        }
+        //        if (model.length() > 4) {
+        //            return model.toLowerCase().subSequence(0, 5).toString();
+        //        } else {
+        //            return model.toLowerCase().subSequence(0, 4).toString();
+        //        }
 
         return Build.MODEL.toLowerCase();
     }
@@ -178,7 +189,9 @@ public class CommonUtils {
     /**
      * 获取App版本号.
      *
-     * @param context 上下文
+     * @param context
+     *         上下文
+     *
      * @return App版本号
      */
     public static String getAppVersionName(Context context) {
@@ -188,8 +201,11 @@ public class CommonUtils {
     /**
      * 获取App版本号.
      *
-     * @param context     上下文
-     * @param packageName 包名
+     * @param context
+     *         上下文
+     * @param packageName
+     *         包名
+     *
      * @return App版本号
      */
     public static String getAppVersionName(Context context, String packageName) {

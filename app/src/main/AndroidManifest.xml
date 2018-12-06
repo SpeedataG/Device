@@ -41,10 +41,9 @@
             android:name="UMENG_CHANNEL"
             android:value="Umeng" />
 
-        <activity android:name=".TestActivity"></activity>
-        <activity android:name=".telephony.BaseStationActivity">
-
-        </activity>
+        <activity android:name=".TestActivity" />
+        <activity android:name=".telephony.BaseStationActivity"></activity>
+        <activity android:name=".DoConfigAct"></activity>
     </application>
 
 </manifest>

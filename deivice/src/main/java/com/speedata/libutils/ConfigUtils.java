@@ -33,4 +33,15 @@ public class ConfigUtils {
         }
         return mRead;
     }
+
+    /**
+     * 写入配置文件
+     * @param mRead
+     * @return
+     */
+
+    public static boolean  writeConfig(ReadBean mRead){
+        String content = JSON.toJSONString(mRead);
+        return  CommonUtils.writeTxtFile(content);
+    }
 }

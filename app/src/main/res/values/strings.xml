@@ -18,7 +18,7 @@
     <string name="gps">GPS</string>
     <string name="gsmcell">基站信息</string>
 
-
+    <string name="btn_save">保存</string>
     <!-- 串口助手使用的strings -->
     <string name="serialport">串口助手</string>
     <string name="acceptpart">接收区</string>

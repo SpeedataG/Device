@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static com.speedata.libutils.CommonUtils.FILE_PATH;
+
 /**
  * ----------Dragon be here!----------/
  * 　　　┏┓　　　┏┓
@@ -38,7 +40,7 @@ class FileUtils {
 
     private static final String TAG = "Reginer";
 
-    private static final String FILE_PATH = "/system/SK80.config";
+//    private static final String FILE_PATH = "/system/speedata.config";
 
     /**
      * 读取文本文件中的内容 .
