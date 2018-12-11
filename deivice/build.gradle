@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-group='com.github.SpeedataG'
+group = 'com.github.SpeedataG'
 
 android {
     def versions = rootProject.ext.versions
@@ -21,7 +20,7 @@ android {
     buildTypes {
         release {
 //            signingConfig signingConfigs.release
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -92,8 +91,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     compileOnly 'com.google.code.gson:gson:2.8.5'
     api 'com.alibaba:fastjson:1.2.54'
-//    compileOnly 'com.github.huangyanbin:SmartTable:2.2.0'
-//    provided files('libs/dom4j-full.jar')
+
 }
 
 
