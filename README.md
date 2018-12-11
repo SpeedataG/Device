@@ -22,7 +22,7 @@ allprojects {
 在modle的依赖中添加以下
 ```xml
 	dependencies {
-		implementation 'com.github.SpeedataG:Device:1.6.1'
+		implementation 'com.github.SpeedataG:Device:1.6.2'
 	}
 
  ``` 
