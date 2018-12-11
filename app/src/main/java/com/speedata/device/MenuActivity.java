@@ -106,6 +106,16 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         if (view == tvConfig) {
             //配置文件
             startActivity(new Intent(this, ConfigAct.class));
+//            SerialPortSpd serialPort=new SerialPortSpd();
+//            try {
+//                serialPort.OpenSerial("dev/ttyMT1",9600);
+//                int fd = serialPort.getFd();
+//                byte [] re=serialPort.writeThenRead(fd, "123123".getBytes(), 512, 50,
+//                        9600);
+//                Log.i("stw", "onClick: "+DataConversionUtils.byteArrayToAscii(re));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         } else if (view == tvGpio) {
             //GPIO控制
             startActivity(new Intent(this, MainGpiosAct.class));

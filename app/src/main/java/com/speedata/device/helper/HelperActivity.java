@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.serialport.SerialPort;
+import android.serialport.SerialPortSpd;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +40,7 @@ public class HelperActivity extends Activity {
 
 	static final String TAG = "SerialPortBackup";
 	int fd;
-	SerialPort mSerialPortBackup;
+	SerialPortSpd mSerialPortBackup;
 
 	private SettingsDialog setPBP;
 	private Handler handler = null;
@@ -65,7 +65,7 @@ public class HelperActivity extends Activity {
 		setContentView(R.layout.activity_helper);
 
 		mContext = this;
-		mSerialPortBackup = new SerialPort();
+		mSerialPortBackup = new SerialPortSpd();
 
 
 		mReadSerialTimer = new Timer();
@@ -195,7 +195,7 @@ public class HelperActivity extends Activity {
 				});
 	}
 
-	public SerialPort getmSerialPortBackup() {
+	public SerialPortSpd getmSerialPortBackup() {
 		return mSerialPortBackup;
 	}
 
@@ -213,7 +213,7 @@ public class HelperActivity extends Activity {
 
 				sendstring = EditTextsend.getText().toString();
 				temp_count++;
-				if ("".equals(sendstring)) {
+				if (!"".equals(sendstring)) {
 					if (!key_hex_send) {
 						send(sendstring);
 

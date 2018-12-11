@@ -3,20 +3,19 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 android {
-
     def versions = rootProject.ext.versions
     compileSdkVersion versions.sdkCompileVersion
     buildToolsVersion versions.toolsBuildVersion
-
 
     defaultConfig {
         minSdkVersion versions.sdkMinVersion
         targetSdkVersion versions.sdkTargetVersion
         versionCode versions.appVersionCode
         versionName versions.appVersionName
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+//        ndk {
+//            abiFilters 'arm64-v8a'
+//        }
     }
     buildTypes {
         release {
@@ -25,28 +24,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    splits {
-        abi {
-            enable true
-            reset()
-            include 'armeabi' //select ABIs to build APKs for
-            universalApk true //generate an additional APK that contains all the ABIs
-        }
-    }
+//    splits {
+//        abi {
+//            enable true
+//            reset()
+//            include 'arm64-v8a' //select ABIs to build APKs for
+//            universalApk true //generate an additional APK that contains all the ABIs
+//        }
+//    }
 //    lintOptions{
 //        abortOnbError false
 //    }
-
 }
-
-
-
-
 
 def siteUrl = 'https://github.com/SpeedataG/Device' // 项目的主页
 def gitUrl = 'https://github.com/SpeedataG/Device.git' // Git仓库的url
 group = "com.speedata" //一般填你唯一的包名
-version = "1.6.1"
+version = "1.6.2"
+
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -124,35 +119,11 @@ bintray {
     }
 }
 
-//
-//task makeJar(dependsOn: ['compileReleaseJavaWithJavac'], type: Jar) {
-//    delete 'build/libs/yourname1.jar'
-//    delete 'build/libs/yourname2.jar'
-//    appendix = "demo"
-//    baseName = "device"
-//    version = "1.4.6"
-//    classifier = "release"
-//    //后缀名
-//    extension = "jar"
-//    //最终的 Jar 包名，如果没设置，默认为 [baseName]-[appendix]-[version]-[classifier].[extension]
-////    archiveName = "yourname1.jar"
-//    //需打包的资源所在的路径集
-//    def srcClassDir = [project.buildDir.absolutePath + "/intermediates/classes/release"];
-//    //初始化资源路径集
-//    from srcClassDir
-//    //去除路径集下部分的资源
-//    exclude "okhttphelper/clz/com/okhttphelper/BuildConfig.class"
-//    exclude "**/R.class"
-//    exclude "**/R\$*.class"
-//    //只导入资源路径集下的部分资源
-//    include "okhttphelper/clz/com/okhttphelper/**/*.class"
-//
-//}
-task makeJar(type: Jar, dependsOn:['compileReleaseJavaWithJavac']) {
+task makeJar(type: Jar, dependsOn: ['compileReleaseJavaWithJavac']) {
     from file('build/intermediates/classes/release')
     from fileTree(dir: 'src/main', includes: ['assets/**'])
     //目标文件名称
-    archiveName = 'device_'+version+'.jar'
+    archiveName = 'device_' + version + '.jar'
     destinationDir = file('build/libs')
     exclude "lbs/tmplibary/BuildConfig.class"
     exclude "lbs/tmplibary/BuildConfig\$*.class"
@@ -185,8 +156,8 @@ dependencies {
     api dependencies.suport.appcompat
 
     testImplementation 'junit:junit:4.12'
-    compileOnly 'com.google.code.gson:gson:2.8.0'
-    compileOnly 'com.alibaba:fastjson:1.2.24'
+    compileOnly 'com.google.code.gson:gson:2.8.5'
+    api 'com.alibaba:fastjson:1.2.54'
 //    compileOnly 'com.github.huangyanbin:SmartTable:2.2.0'
 //    provided files('libs/dom4j-full.jar')
 }
