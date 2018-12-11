@@ -18,14 +18,14 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 	}
-    
+```
 在modle的依赖中添加以下
 ```xml
 	dependencies {
 		implementation 'com.github.SpeedataG:Device:1.6.1'
 	}
 
-    
+ ``` 
     
 2. DataCleanUtils
     可以清除本应用中的内/外缓存，清除数据库，清除sharedPreference，清除files和清除自定义目录。
