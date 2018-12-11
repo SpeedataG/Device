@@ -1,16 +1,20 @@
 package com.speedata.device;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.speedata.libutils.CommonUtils;
 import com.speedata.libutils.ConfigUtils;
 import com.speedata.libutils.ReadBean;
 
-public class ConfigAct extends AppCompatActivity {
+public class ConfigAct extends AppCompatActivity implements View.OnClickListener {
 
 
     private ModuleView mMvId2;
@@ -31,20 +35,26 @@ public class ConfigAct extends AppCompatActivity {
     private ReadBean mRead;
     private Button btnSave;
 
+    private ImageView imgFaq;
+    private ImageView imgBack;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
         initView();
         showView();
     }
 
     private void showView() {
         if (ConfigUtils.isConfigFileExists()) {
-            setTitle("V" + CommonUtils.getAppVersionName(this) + "    " + getString(R.string.config_content));
+
+            title.setText("V" + CommonUtils.getAppVersionName(this) + "    " + getString(R.string.config_content));
         } else {
-            setTitle("V" + CommonUtils.getAppVersionName(this) + "    " + getString(R.string.config_not_exists));
+            title.setText("V" + CommonUtils.getAppVersionName(this) + "    " + getString(R.string.config_not_exists));
         }
         mRead = ConfigUtils.readConfig(this);
         setView();
@@ -66,26 +76,10 @@ public class ConfigAct extends AppCompatActivity {
         setScan();
         setZigbee();
         setInfrared();
-        //        if(!ConfigUtils.isConfigFileExists()){
-        //            setUr2k();
-        //        }
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        Toolbar tToolBar = findViewById(R.id.toolbar);
+        setSupportActionBar(tToolBar);
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish(); // back button
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -381,11 +375,21 @@ public class ConfigAct extends AppCompatActivity {
                 finish();
             }
         });
+        title = findViewById(R.id.tv_title);
+        imgFaq = findViewById(R.id.img_faq);
+        imgBack = findViewById(R.id.img_back);
+        imgFaq.setOnClickListener(this);
+        imgBack.setOnClickListener(this);
     }
 
-    //    ReadBean getData() {
-    ////        mRead.setId2(new ReadBean.Id2Bean(mMvId2.getSerialPort(), mMvId2.getBraut(), mMvId2.getPowerType(), mMvId2.getGpio()));
-    //    }
+    @Override
+    public void onClick(View v) {
+        if (v == imgFaq) {
+            startActivity(new Intent(this, ConfigFaqActivity.class));
+        } else if (v == imgBack) {
+            finish();
+        }
+    }
 
 
 }
