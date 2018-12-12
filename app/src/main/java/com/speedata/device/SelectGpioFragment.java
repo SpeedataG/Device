@@ -2,7 +2,7 @@ package com.speedata.device;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.serialport.DeviceControl;
+import android.serialport.DeviceControlSpd;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.InputFilter;
@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.serialport.DeviceControl.POWER_MAIN;
+import static android.serialport.DeviceControlSpd.POWER_MAIN;
 
 /**
  * Created by brxu on 2017/3/23.
@@ -123,7 +123,7 @@ public class SelectGpioFragment extends BaseFrag {
 
     private void initData() {
         try {
-            deviceControl = new DeviceControl(POWER_MAIN);
+            deviceControl = new DeviceControlSpd(POWER_MAIN);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -161,7 +161,7 @@ public class SelectGpioFragment extends BaseFrag {
                     public void onClick(View view) {
                         int num = Integer.parseInt(item.getNum().trim().replace(" ", ""));
                         try {
-                            deviceControl = new DeviceControl(DeviceControl.PowerType.MAIN, num);
+                            deviceControl = new DeviceControlSpd(DeviceControlSpd.PowerType.MAIN, num);
                             if (dout.equals("0")) {
                                 deviceControl.PowerOnDevice();
                                 helper.setText(R.id.tv_3, "1");
@@ -188,7 +188,7 @@ public class SelectGpioFragment extends BaseFrag {
                     public void onClick(View view) {
                         int num = Integer.parseInt(item.getNum().trim().replace(" ", ""));
                         try {
-                            deviceControl = new DeviceControl(DeviceControl.PowerType.MAIN);
+                            deviceControl = new DeviceControlSpd(DeviceControlSpd.PowerType.MAIN);
                             if (dir.equals("0")) {
                                 deviceControl.setDir(num, 1, POWER_MAIN);
                                 helper.setText(R.id.tv_4, "1");
@@ -252,5 +252,5 @@ public class SelectGpioFragment extends BaseFrag {
         });
     }
 
-    private DeviceControl deviceControl;//= new DeviceControl(DeviceControl.PowerType.MAIN);
+    private DeviceControlSpd deviceControl;//= new DeviceControlSpd(DeviceControlSpd.PowerType.MAIN);
 }

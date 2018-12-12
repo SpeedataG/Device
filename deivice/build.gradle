@@ -142,13 +142,11 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     def dependencies = rootProject.ext.deps
     api dependencies.suport.appcompat
-
     testImplementation 'junit:junit:4.12'
     compileOnly 'com.google.code.gson:gson:2.8.5'
-    api 'com.alibaba:fastjson:1.2.54'
+    compileOnly 'com.alibaba:fastjson:1.2.54'
 
 }
 
