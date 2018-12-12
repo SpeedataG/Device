@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Device.iml" filepath="$PROJECT_DIR$/.idea/Device.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Device.iml" filepath="$PROJECT_DIR$/Device.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Device-master.iml" filepath="$PROJECT_DIR$/Device-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/deivice/deivice.iml" filepath="$PROJECT_DIR$/deivice/deivice.iml" />
     </modules>
