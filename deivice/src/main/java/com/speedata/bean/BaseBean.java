@@ -36,10 +36,19 @@ public abstract class BaseBean {
     private int braut;
     private String powerType;
     private List<Integer> gpio;
+    private List<String> gpioStr;
 
     //    private abstract
     private String module;
     private int resetGpio;
+
+    public List<String> getGpioStr() {
+        return gpioStr;
+    }
+
+    public void setGpioStr(List<String> gpioStr) {
+        this.gpioStr = gpioStr;
+    }
 
     public String getSerialPort() {
         return serialPort;

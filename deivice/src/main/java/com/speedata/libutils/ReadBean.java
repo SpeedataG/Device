@@ -29,7 +29,7 @@ import java.util.List;
  * 联系方式:QQ:282921012
  * 功能描述:读取配置文件
  */
-public class ReadBean {
+public class ReadBean  {
 
 
     /**

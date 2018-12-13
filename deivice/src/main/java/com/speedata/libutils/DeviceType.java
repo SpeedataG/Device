@@ -1,6 +1,6 @@
 package com.speedata.libutils;
 
-import android.serialport.DeviceControl;
+import android.serialport.DeviceControlSpd;
 
 /**
  * ----------Dragon be here!----------/
@@ -59,22 +59,22 @@ class DeviceType {
      *
      * @return PowerType
      */
-    static DeviceControl.PowerType getPowerType() {
+    static DeviceControlSpd.PowerType getPowerType() {
         switch (android.os.Build.MODEL) {
             case "kt45":
-                return DeviceControl.PowerType.MAIN;
+                return DeviceControlSpd.PowerType.MAIN;
             case "kt45q":
-                return DeviceControl.PowerType.MAIN;
+                return DeviceControlSpd.PowerType.MAIN;
             case "KT50":
-                return DeviceControl.PowerType.MAIN;
+                return DeviceControlSpd.PowerType.MAIN;
             case "KT55":
-                return DeviceControl.PowerType.MAIN_AND_EXPAND;
+                return DeviceControlSpd.PowerType.MAIN_AND_EXPAND;
             case "KT50_B2":
-                return DeviceControl.PowerType.MAIN;
+                return DeviceControlSpd.PowerType.MAIN;
             default:
                 break;
         }
-        return DeviceControl.PowerType.MAIN;
+        return DeviceControlSpd.PowerType.MAIN;
     }
 
     /**

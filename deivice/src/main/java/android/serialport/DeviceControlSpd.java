@@ -11,7 +11,7 @@ import java.io.IOException;
  * 注意：
  * 无论新老设备，操作主板gpio， 需要设置gpio模式和输出模式，代码调用需要先设置为gpio模式再设置输出模式再讲gpio拉高
  */
-public class DeviceControl {
+public class DeviceControlSpd {
     //kt系列
 
     public static final String POWER_MAIN = "/sys/class/misc/mtgpio/pin";
@@ -74,11 +74,11 @@ public class DeviceControl {
     private String poweroff = "";
     private String currentPath = "";
 
-    public DeviceControl() throws IOException {
+    public DeviceControlSpd() throws IOException {
 
     }
 
-    public DeviceControl(String path) throws IOException {
+    public DeviceControlSpd(String path) throws IOException {
         File DeviceName = new File(path);
         //open file
         CtrlFile = new BufferedWriter(new FileWriter(DeviceName, false));
@@ -115,12 +115,12 @@ public class DeviceControl {
      * @param gpios     若为主板上电 gpio[0]需为主板gpio 扩展gpio可以有多个
      * @throws IOException
      */
-    public DeviceControl(PowerType powerType, int... gpios) throws IOException {
+    public DeviceControlSpd(PowerType powerType, int... gpios) throws IOException {
         this.gpios = gpios;
         this.power_type = powerType;
     }
 
-    public DeviceControl(String powerType, String... gpios) throws IOException {
+    public DeviceControlSpd(String powerType, String... gpios) throws IOException {
         this.gtGpios = gpios;
         switch (powerType) {
             case "GAOTONG_MAIN":
@@ -136,7 +136,7 @@ public class DeviceControl {
      * @param gpios     若为主板上电 gpio[0]需为主板gpio 扩展gpio可以有多个
      * @throws IOException
      */
-    public DeviceControl(String powerType, int... gpios) throws IOException {
+    public DeviceControlSpd(String powerType, int... gpios) throws IOException {
         this.gpios = gpios;
         switch (powerType) {
             case "MAIN":
@@ -191,7 +191,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void MainPowerOn(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_MAIN);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(DeviceControlSpd.POWER_MAIN);
         deviceControl.setGpio(gpio);
         deviceControl.writeON();
         deviceControl.DeviceClose();
@@ -204,7 +204,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void MainPowerOff(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_MAIN);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(DeviceControlSpd.POWER_MAIN);
         deviceControl.setGpio(gpio);
         deviceControl.WriteOff();
         deviceControl.DeviceClose();
@@ -217,7 +217,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void ExpandPowerOn(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_EXTERNAL);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(DeviceControlSpd.POWER_EXTERNAL);
         deviceControl.setGpio(gpio);
         deviceControl.writeON();
         deviceControl.DeviceClose();
@@ -230,7 +230,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void Expand2PowerOn(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_EXTERNAL2);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(DeviceControlSpd.POWER_EXTERNAL2);
         deviceControl.setGpio(gpio);
         deviceControl.writeON();
         deviceControl.DeviceClose();
@@ -243,7 +243,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void ExpandPowerOff(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_EXTERNAL);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(DeviceControlSpd.POWER_EXTERNAL);
         deviceControl.setGpio(gpio);
         deviceControl.WriteOff();
         deviceControl.DeviceClose();
@@ -256,7 +256,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void Expand2PowerOff(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(DeviceControl.POWER_EXTERNAL2);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(DeviceControlSpd.POWER_EXTERNAL2);
         deviceControl.setGpio(gpio);
         deviceControl.WriteOff();
         deviceControl.DeviceClose();
@@ -456,7 +456,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void newSetGpioOn(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(POWER_NEWMAIN);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(POWER_NEWMAIN);
         //将GPIO设置为高电平
         deviceControl.CtrlFile.write("out " + gpio + " 1");
         deviceControl.CtrlFile.flush();
@@ -471,7 +471,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void newSetGpioOff(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(POWER_NEWMAIN);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(POWER_NEWMAIN);
         //将GPIO设置为低电平
         deviceControl.CtrlFile.write("out " + gpio + " 0");
         deviceControl.CtrlFile.flush();
@@ -484,7 +484,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void newSetMode(int gpio) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(POWER_NEWMAIN);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(POWER_NEWMAIN);
         //将GPIO设置为GPIO模式
         deviceControl.CtrlFile.write("mode " + gpio + " 0");
         deviceControl.CtrlFile.flush();
@@ -498,7 +498,7 @@ public class DeviceControl {
      * @throws IOException
      */
     public void newSetDir(int gpio, int dir) throws IOException {
-        DeviceControl deviceControl = new DeviceControl(POWER_NEWMAIN);
+        DeviceControlSpd deviceControl = new DeviceControlSpd(POWER_NEWMAIN);
         deviceControl.CtrlFile.write("dir " + gpio + " " + dir);
         deviceControl.CtrlFile.flush();
     }
