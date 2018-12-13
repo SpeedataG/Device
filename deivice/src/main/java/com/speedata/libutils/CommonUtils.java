@@ -75,8 +75,8 @@ public class CommonUtils {
      */
     public static boolean writeTxtFile(String content) {
 
-        ShellUtils.execCmd("adb shell",false);
-        ShellUtils.execCmd("mount -o rw,remount -t yaffs2 /dev/block/mtdblock3 /system",false);
+        ShellUtils.execCmd("adb shell", false);
+        ShellUtils.execCmd("mount -o rw,remount -t yaffs2 /dev/block/mtdblock3 /system", false);
         try {
             File file = new File(FILE_PATH);
             //            if (!file.exists()) {
@@ -137,9 +137,22 @@ public class CommonUtils {
             return "kt55.config";
         } else if (subDeviceType.contains("80")) {
             return "kt80.config";
+        } else if (subDeviceType.contains("SD35")) {
+            return "SD35.config";
+        } else if (subDeviceType.contains("SD55")) {
+            return "SD55.config";
+        } else if (subDeviceType.contains("SD55L")) {
+            return "SD55L.config";
+        } else if (subDeviceType.contains("SD60")) {
+            return "SD60.config";
+        } else if (subDeviceType.contains("SD80")) {
+            return "SD80.config";
+        } else if (subDeviceType.contains("SD100")) {
+            return "SD100.config";
         } else {
             return "kt50.config";
         }
+
 
         //        switch (subDeviceType) {
         //            case "kt40":
@@ -189,9 +202,7 @@ public class CommonUtils {
     /**
      * 获取App版本号.
      *
-     * @param context
-     *         上下文
-     *
+     * @param context 上下文
      * @return App版本号
      */
     public static String getAppVersionName(Context context) {
@@ -201,11 +212,8 @@ public class CommonUtils {
     /**
      * 获取App版本号.
      *
-     * @param context
-     *         上下文
-     * @param packageName
-     *         包名
-     *
+     * @param context     上下文
+     * @param packageName 包名
      * @return App版本号
      */
     public static String getAppVersionName(Context context, String packageName) {

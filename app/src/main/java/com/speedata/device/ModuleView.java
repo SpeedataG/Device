@@ -45,7 +45,7 @@ public class ModuleView extends LinearLayout {
     private AutoCompleteTextView mTvBraut;
     private AutoCompleteTextView mTvPowerType;
     private AutoCompleteTextView mTvGpio;
-    //测试
+
 
     public ModuleView(Context context) {
         this(context, null);
@@ -85,7 +85,6 @@ public class ModuleView extends LinearLayout {
     public void setModule(String module) {
         mTvModule.setText(module);
     }
-
 
     public String getSerialPort() {
         String serial = mTvSerialPort.getText().toString();

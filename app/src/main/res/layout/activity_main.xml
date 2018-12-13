@@ -14,95 +14,66 @@
         android:id="@+id/ll_header"
         layout="@layout/view_title" />
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/nsv_content"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="60dp"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@drawable/layout_divider_horizontal"
-            android:orientation="vertical"
-            android:showDividers="middle">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="模块" />
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_id2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SerialPort" />
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_uhf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="波特率" />
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_r6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="类型" />
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_print"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="gpio" />
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_pasm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_finger"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d6d7dc" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_dist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:background="#ff6613"
+        android:text="保存"
+        android:textColor="@color/white" />
 
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_temp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_lf1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_lf2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_sp433"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_scan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_zigbee"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <com.speedata.device.ModuleView
-                android:id="@+id/mv_infrared"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_save" />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

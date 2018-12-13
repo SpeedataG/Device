@@ -2,8 +2,6 @@ package com.speedata.libutils;
 
 import com.speedata.bean.BaseBean;
 
-import java.util.List;
-
 /**
  * ----------Dragon be here!----------/
  * 　　　┏┓　　　┏┓

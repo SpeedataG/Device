@@ -1,7 +1,6 @@
 package com.speedata.bean;
 
 
-
 import java.util.List;
 
 /**
@@ -36,18 +35,19 @@ public abstract class BaseBean {
     private int braut;
     private String powerType;
     private List<Integer> gpio;
-    private List<String> gpioStr;
+    private String name;
 
     //    private abstract
     private String module;
     private int resetGpio;
 
-    public List<String> getGpioStr() {
-        return gpioStr;
+    public String getName() {
+        return name;
     }
 
-    public void setGpioStr(List<String> gpioStr) {
-        this.gpioStr = gpioStr;
+    public BaseBean setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public String getSerialPort() {
