@@ -161,6 +161,9 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         if (v == imgFaq) {
             startActivity(new Intent(this, ConfigFaqActivity.class));
+//            Intent intent = new Intent("com.speedata.device");
+//            intent.putExtra("URL", "http://www.baidu.com");
+//            startActivity(intent);
         } else if (v == imgBack) {
             finish();
         }

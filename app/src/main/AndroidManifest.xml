@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.PERMISSION_GRANTED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
@@ -20,6 +19,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".WebViewActivity"
+            android:theme="@style/NoTitleTheme">
+            <intent-filter>
+                <action android:name="com.speedata.device" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ConfigAct"
             android:theme="@style/NoTitleTheme" />
@@ -47,9 +54,7 @@
         <activity android:name=".TestActivity" />
         <activity android:name=".telephony.BaseStationActivity" />
         <activity android:name=".DoConfigAct" />
-        <activity android:name=".ConfigFaqActivity">
-
-        </activity>
+        <activity android:name=".ConfigFaqActivity"></activity>
     </application>
 
 </manifest>
