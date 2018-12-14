@@ -4,7 +4,6 @@
     <string name="serial_port">SerialPort</string>
     <string name="brd">波特率</string>
     <string name="power_type">类型</string>
-    <string name="gpio">gpio</string>
     <string name="config_not_exists">配置文件不存在</string>
     <string name="config_content">配置文件存在</string>
 
@@ -18,7 +17,6 @@
     <string name="gps">GPS</string>
     <string name="gsmcell">基站信息</string>
 
-    <string name="btn_save">保存</string>
     <!-- 串口助手使用的strings -->
     <string name="serialport">串口助手</string>
     <string name="acceptpart">接收区</string>
@@ -65,6 +63,8 @@
     <string name="send_hex_hint_null" />
     <string name="xxx">xxx</string>
     <string name="i2c_push">I2C文件PUSH</string>
+    <string name="btn_save">保存</string>
+    <string name="gpio">gpio</string>
     <!-- 白色 -->
 
 

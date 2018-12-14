@@ -18,28 +18,12 @@ import java.util.List;
 
 public class SerialPortPop extends PopupWindow {
 
-    public enum STYLE {
-        SERIAL_PORT,
-        BRAUT,
-        TYPE
-    }
-
+    OnButtonClickListener onButtonClickListener;
     private List<String> serialPortList = new ArrayList<>();
     private List<String> brautList = new ArrayList<>();
     private List<String> typeList = new ArrayList<>();
 
     private SerialPortAdapter serialPortAdapter;
-
-    public interface OnButtonClickListener {
-        void onClick(STYLE style, int position, String content);
-    }
-
-    OnButtonClickListener onButtonClickListener;
-
-    public void setOnButtonClickListener(
-            OnButtonClickListener onButtonClickListener) {
-        this.onButtonClickListener = onButtonClickListener;
-    }
 
     @SuppressWarnings("deprecation")
     public SerialPortPop(Context context, View parentView, final int position, final STYLE style) {
@@ -63,8 +47,8 @@ public class SerialPortPop extends PopupWindow {
 
         setWidth(RelativeLayout.LayoutParams.MATCH_PARENT);
         setHeight(RelativeLayout.LayoutParams.MATCH_PARENT);
-//        view.startAnimation(AnimationUtils.loadAnimation(context,
-//                R.anim.popup_in));
+        //        view.startAnimation(AnimationUtils.loadAnimation(context,
+        //                R.anim.popup_in));
 
         ll.setOnClickListener(new View.OnClickListener() {
 
@@ -104,28 +88,33 @@ public class SerialPortPop extends PopupWindow {
         update();
     }
 
+    public void setOnButtonClickListener(
+            OnButtonClickListener onButtonClickListener) {
+        this.onButtonClickListener = onButtonClickListener;
+    }
+
     private void fillList() {
-        serialPortList.add("ttyMT1");
-        serialPortList.add("ttyG0");
-        serialPortList.add("ttyG1");
-        serialPortList.add("ttyG2");
-        serialPortList.add("ttyG3");
-        serialPortList.add("ttyO0");
-        serialPortList.add("ttyO1");
-        serialPortList.add("ttyO2");
-        serialPortList.add("ttyO3");
-        serialPortList.add("eser0");
-        serialPortList.add("eser1");
-        serialPortList.add("eser2");
-        serialPortList.add("eser3");
-        serialPortList.add("ttyMT0");
-        serialPortList.add("ttyMT2");
-        serialPortList.add("ttyMT3");
-        serialPortList.add("ttyHSL0");
-        serialPortList.add("ttyHSL1");
-        serialPortList.add("ttyHSL2");
-        serialPortList.add("ttyGS0");
-        serialPortList.add("other");
+        serialPortList.add("/dev/ttyMT1");
+        serialPortList.add("/dev/ttyG0");
+        serialPortList.add("/dev/ttyG1");
+        serialPortList.add("/dev/ttyG2");
+        serialPortList.add("/dev/ttyG3");
+        serialPortList.add("/dev/ttyO0");
+        serialPortList.add("/dev/ttyO1");
+        serialPortList.add("/dev/ttyO2");
+        serialPortList.add("/dev/ttyO3");
+        //        serialPortList.add("eser0");
+        //        serialPortList.add("eser1");
+        //        serialPortList.add("eser2");
+        //        serialPortList.add("eser3");
+        serialPortList.add("/dev/ttyMT0");
+        serialPortList.add("/dev/ttyMT2");
+        serialPortList.add("/dev/ttyMT3");
+        serialPortList.add("/dev/ttyHSL0");
+        serialPortList.add("/dev/ttyHSL1");
+        serialPortList.add("/dev/ttyHSL2");
+        serialPortList.add("/dev/ttyGS0");
+        //        serialPortList.add("other");
 
         brautList.add("1200");
         brautList.add("2400");
@@ -135,26 +124,24 @@ public class SerialPortPop extends PopupWindow {
         brautList.add("57600");
         brautList.add("115200");
 
-        typeList.add("ttyMT1");
-        typeList.add("ttyG0");
-        typeList.add("ttyG1");
-        typeList.add("ttyG2");
-        typeList.add("ttyG3");
-        typeList.add("ttyO0");
-        typeList.add("ttyO1");
-        typeList.add("ttyO2");
-        typeList.add("ttyO3");
-        typeList.add("eser0");
-        typeList.add("eser1");
-        typeList.add("eser2");
-        typeList.add("eser3");
-        typeList.add("ttyMT0");
-        typeList.add("ttyMT2");
-        typeList.add("ttyMT3");
-        typeList.add("ttyHSL0");
-        typeList.add("ttyHSL1");
-        typeList.add("ttyHSL2");
-        typeList.add("ttyGS0");
-        typeList.add("other");
+        typeList.add("MAIN");
+        typeList.add("EXPAND");
+        typeList.add("MAIN_AND_EXPAND");
+        typeList.add("NEW_MAIN");
+        typeList.add("EXPAND2");
+        typeList.add("MAIN_AND_EXPAND2");
+        typeList.add("GAOTONG_MAIN");
+
+
+    }
+
+    public enum STYLE {
+        SERIAL_PORT,
+        BRAUT,
+        TYPE
+    }
+
+    public interface OnButtonClickListener {
+        void onClick(STYLE style, int position, String content);
     }
 }
