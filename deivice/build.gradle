@@ -1,27 +1,24 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+group = 'com.github.SpeedataG'
 
 android {
-
     def versions = rootProject.ext.versions
     compileSdkVersion versions.sdkCompileVersion
     buildToolsVersion versions.toolsBuildVersion
-
 
     defaultConfig {
         minSdkVersion versions.sdkMinVersion
         targetSdkVersion versions.sdkTargetVersion
         versionCode versions.appVersionCode
         versionName versions.appVersionName
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {
         release {
-//            signingConfig signingConfigs.release
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

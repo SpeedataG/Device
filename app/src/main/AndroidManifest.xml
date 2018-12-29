@@ -29,7 +29,12 @@
         </activity>
         <activity
             android:name=".ConfigAct"
-            android:theme="@style/NoTitleTheme" />
+            android:theme="@style/NoTitleTheme" >
+            <intent-filter>
+                <action  android:name="speedata.config"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".OperationActivity" />
         <activity android:name=".MenuActivity">
             <intent-filter>

@@ -5,10 +5,10 @@ ext {
             sdkTargetVersion : 28,
 
             sdkCompileVersion: 28,
-            toolsBuildVersion: "28.0.0",
+            toolsBuildVersion: "28.0.3",
 
-            appVersionCode   : 2,
-            appVersionName   : "1.6.3"
+            appVersionCode   : 3,
+            appVersionName   : "1.6.5"
     ]
 
     // 依赖相关版本控制

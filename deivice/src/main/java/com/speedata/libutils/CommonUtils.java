@@ -107,8 +107,9 @@ public class CommonUtils {
             BufferedReader bufReader = new BufferedReader(inputReader);
             String line;
             String result = "";
-            while ((line = bufReader.readLine()) != null)
+            while ((line = bufReader.readLine()) != null) {
                 result += line;
+            }
             return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,16 +118,16 @@ public class CommonUtils {
     }
 
     public static String getFile() {
-        String subDeviceType = subDeviceType();
+        String subDeviceType = subDeviceType().toUpperCase();
 
         if (subDeviceType.contains("40")) {
-            if (subDeviceType.contains("40q")) {
+            if (subDeviceType.contains("40Q")) {
                 return "kt40q.config";
             } else {
                 return "kt40.config";
             }
         } else if (subDeviceType.contains("45")) {
-            if (subDeviceType.contains("45q")) {
+            if (subDeviceType.contains("45Q")) {
                 return "kt45q.config";
             } else {
                 return "kt45.config";
