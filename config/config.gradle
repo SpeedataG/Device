@@ -7,7 +7,7 @@ ext {
             sdkCompileVersion: 28,
             toolsBuildVersion: "28.0.3",
 
-            appVersionCode   : 3,
+            appVersionCode   : 4,
             appVersionName   : "1.6.5"
     ]
 
