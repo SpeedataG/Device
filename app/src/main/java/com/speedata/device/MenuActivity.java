@@ -48,7 +48,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_menu2);
         tvConfig =  findViewById(R.id.tv_config);
         tvGpio =  findViewById(R.id.tv_gpio);
         tvSerialport =  findViewById(R.id.tv_serial_port);
