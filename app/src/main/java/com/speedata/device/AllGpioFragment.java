@@ -61,7 +61,7 @@ public class AllGpioFragment extends BaseFrag implements RRefreshLayout.OnRefres
         mRvContent.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager
                 .VERTICAL));
 //        listView = (ListView) view.findViewById(R.id.list);
-        gpios = GpioUtils.GetAllGPIO(GpioUtils.MAIN);
+        gpios = GpioUtils.GetAllGPIO(GpioUtils.getMAIN());
         adapter = new CommonRvAdapter<Gpio>(getActivity(), R.layout.adapter_gpios, gpios) {
             @Override
             public void convert(BaseAdapterHelper helper, final Gpio item, int position) {
@@ -121,7 +121,7 @@ public class AllGpioFragment extends BaseFrag implements RRefreshLayout.OnRefres
     @Override
     public void onLoadMore() {
 //        gpios.clear();
-//        gpios = GpioUtils.GetAllGPIO(GpioUtils.MAIN);
+//        gpios = GpioUtils.GetAllGPIO(GpioUtils.getMAIN());
 //        if (adapter != null)
 //            adapter.notifyDataSetChanged();
         Toast.makeText(getActivity(), "no more", Toast.LENGTH_SHORT).show();
@@ -133,7 +133,7 @@ public class AllGpioFragment extends BaseFrag implements RRefreshLayout.OnRefres
     public void onRefresh() {
         if (gpios != null) {
             gpios.clear();
-            gpios.addAll(GpioUtils.GetAllGPIO(GpioUtils.MAIN));
+            gpios.addAll(GpioUtils.GetAllGPIO(GpioUtils.getMAIN()));
             if (adapter != null)
                 adapter.notifyDataSetChanged();
             mRrlLayout.setRefreshing(false);

@@ -36,7 +36,7 @@ public class AllGpiosAct extends BaseActivity {
         listView = (ListView) findViewById(R.id.list);
         List list = MainGPIO();
         list.remove(0);
-        List<Gpio> gpios = GpioUtils.GetAllGPIO(GpioUtils.MAIN);
+        List<Gpio> gpios = GpioUtils.GetAllGPIO(GpioUtils.getMAIN());
         adapter = new CommonAdapter<Gpio>(this, gpios, R.layout.adapter_gpios) {
             @Override
             public void convert(ViewHolder helper, final Gpio item) {

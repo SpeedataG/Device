@@ -1,5 +1,7 @@
 package com.speedata.libutils;
 
+import android.os.Build;
+
 import com.speedata.bean.Gpio;
 
 import java.io.BufferedReader;
@@ -18,6 +20,7 @@ public class GpioUtils {
      * 主板上电文件
      */
     public static String MAIN = "sys/class/misc/mtgpio/pin";
+//    public static String MAIN = "/sys/bus/platform/drivers/mediatek-pinctrl/10005000.pinctrl/mt_gpio";
 
     /**
      * 读取制定文件 解析List<Gpio>返回
@@ -68,6 +71,15 @@ public class GpioUtils {
             gpios.add(temp);
         }
         return gpios;
+    }
+    // 判断上电路径
+    public static String getMAIN(){
+        if (Build.MODEL.equals("SD55")){
+            MAIN = "/sys/bus/platform/drivers/mediatek-pinctrl/10005000.pinctrl/mt_gpio";
+        }else {
+            MAIN = "sys/class/misc/mtgpio/pin";
+        }
+        return MAIN;
     }
 
 }
