@@ -164,12 +164,12 @@ public class SelectGpioFragment extends BaseFrag {
                             deviceControl = new DeviceControlSpd(DeviceControlSpd.PowerType.MAIN, num);
                             if (dout.equals("0")) {
                                 deviceControl.PowerOnDevice();
-                                helper.setText(R.id.tv_3, "1");
-                                item.setDout("1");
+                                helper.setText(R.id.tv_3, "checkbox_pressed");
+                                item.setDout("checkbox_pressed");
                                 helper.getView(R.id.tv_3).setBackgroundColor(getResources()
                                         .getColor(R.color
                                                 .colorGreen));
-                            } else if (dout.equals("1")) {
+                            } else if (dout.equals("checkbox_pressed")) {
                                 deviceControl.PowerOffDevice();
                                 helper.setText(R.id.tv_3, "0");
                                 item.setDout("0");
@@ -191,12 +191,12 @@ public class SelectGpioFragment extends BaseFrag {
                             deviceControl = new DeviceControlSpd(DeviceControlSpd.PowerType.MAIN);
                             if (dir.equals("0")) {
                                 deviceControl.setDir(num, 1, POWER_MAIN);
-                                helper.setText(R.id.tv_4, "1");
-                                item.setDir("1");
+                                helper.setText(R.id.tv_4, "checkbox_pressed");
+                                item.setDir("checkbox_pressed");
                                 helper.getView(R.id.tv_4).setBackgroundColor(getResources()
                                         .getColor(R.color
                                                 .colorGreen));
-                            } else if (dir.equals("1")) {
+                            } else if (dir.equals("checkbox_pressed")) {
                                 deviceControl.setDir(num, 0, POWER_MAIN);
                                 helper.setText(R.id.tv_4, "0");
                                 item.setDir("0");
@@ -210,14 +210,14 @@ public class SelectGpioFragment extends BaseFrag {
                         }
                     }
                 });
-                if (dout.equals("1")) {
+                if (dout.equals("checkbox_pressed")) {
                     helper.getView(R.id.tv_3).setBackgroundColor(getResources().getColor(R.color
                             .colorGreen));
                 } else {
                     helper.getView(R.id.tv_3).setBackgroundColor(getResources().getColor(R.color
                             .colorBlack));
                 }
-                if (dir.equals("1")) {
+                if (dir.equals("checkbox_pressed")) {
                     helper.getView(R.id.tv_4).setBackgroundColor(getResources().getColor(R.color
                             .colorGreen));
                 } else {

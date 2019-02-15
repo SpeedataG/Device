@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="20dp"
-        android:background="@color/orangered"
+        android:background="@color/black"
         android:text="@string/btn_save"
         android:textColor="@color/white" />
 

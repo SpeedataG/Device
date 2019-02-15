@@ -47,7 +47,8 @@
         <activity android:name=".MainGpiosAct" />
         <activity android:name=".helper.HelperActivity" />
         <activity android:name=".I2CActivity" />
-        <activity android:name=".GPSAct" />
+        <activity android:name=".GPSAct"
+            android:theme="@style/NoTitleTheme"/>
 
         <meta-data
             android:name="UMENG_APPKEY"

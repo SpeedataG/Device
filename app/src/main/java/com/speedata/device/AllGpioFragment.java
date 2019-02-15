@@ -97,16 +97,16 @@ public class AllGpioFragment extends BaseFrag implements RRefreshLayout.OnRefres
 //                TextView tv = (TextView) view;
 //                String replace = tv.getText().toString().replace(" ", "");
 //                if (isChange) {
-//                    if (replace.equals("1")) {
+//                    if (replace.equals("checkbox_pressed")) {
 //
 //                        tv.setText("0");
 //                        view.setBackgroundColor(getResources().getColor(R.color.colorRed));
 //                    } else {
-//                        tv.setText("1");
+//                        tv.setText("checkbox_pressed");
 //                        view.setBackgroundColor(getResources().getColor(R.color.colorGreen));
 //                    }
 //                } else {
-//                    if (replace.equals("1")) {
+//                    if (replace.equals("checkbox_pressed")) {
 //                        view.setBackgroundColor(getResources().getColor(R.color.colorGreen));
 //                    } else {
 //                        view.setBackgroundColor(getResources().getColor(R.color.colorRed));

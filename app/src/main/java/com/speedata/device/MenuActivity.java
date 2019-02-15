@@ -3,6 +3,7 @@ package com.speedata.device;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.KeyEvent;
@@ -34,6 +35,8 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     private Context mContext;
     private String mPageName = "speedata_tools";
 
+    private TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,9 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
     private void initView() {
         setContentView(R.layout.activity_menu2);
+        title = (TextView)findViewById(R.id.tv_view_title);
+        title.setText(R.string.app_title);
+        title.setTextColor(Color.WHITE);
         tvConfig =  findViewById(R.id.tv_config);
         tvGpio =  findViewById(R.id.tv_gpio);
         tvSerialport =  findViewById(R.id.tv_serial_port);

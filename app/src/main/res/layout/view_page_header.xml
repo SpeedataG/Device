@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
-        android:textSize="@dimen/sp18"/>
+        android:textSize="@dimen/sp18" />
 
     <ImageView
         android:id="@+id/tv_view_right"
