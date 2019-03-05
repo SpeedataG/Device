@@ -3,6 +3,7 @@ package com.speedata.device.helper;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.serialport.SerialPortSpd;
 import android.support.annotation.NonNull;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -58,6 +61,7 @@ class SettingsDialog extends Dialog implements
 	}
 
 	// private Button ok;
+	private ImageView imggoback;
 	private Button goback;
 	private Button poweron;
 	private Button poweroff;
@@ -73,7 +77,7 @@ class SettingsDialog extends Dialog implements
 	private final String[] ArrayPowerPath;// = { "/proc/driver/scan",
 	// "/proc/driver/as3992", "/proc/driver/tda8029", "/proc/driver/sirf",
 	// "/proc/driver/printer", "/proc/geomobile/lf", "MT GPIO" };
-	private final String[] ArrayStopBit;// = { "1", "2" };
+	private final String[] ArrayStopBit;// = { "checkbox_pressed", "2" };
 	private final String[] ArrayCrc;// = { "NONE", "ODD", "EVEN" };
 	private Spinner b_Spinner;
 	private Spinner p_Spinner;
@@ -92,8 +96,10 @@ class SettingsDialog extends Dialog implements
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		设置布局背景为透明
+		getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 		setContentView(R.layout.second);
-
+		imggoback = (ImageView)this.findViewById(R.id.imgbackto);
 		goback = (Button) this.findViewById(R.id.backto);
 		poweron = (Button) this.findViewById(R.id.poweron);
 		openSerial = (Button) this.findViewById(R.id.openss);
@@ -104,6 +110,7 @@ class SettingsDialog extends Dialog implements
 		path_Spinner = (Spinner) this.findViewById(R.id.pathspinner);
 		s_Spinner = (Spinner) this.findViewById(R.id.spinner3);
 		crc_Spinner = (Spinner) this.findViewById(R.id.spinner4);
+		imggoback.setOnClickListener(this);
 		goback.setOnClickListener(this);
 		poweron.setOnClickListener(this);
 		poweroff.setOnClickListener(this);
@@ -193,12 +200,12 @@ class SettingsDialog extends Dialog implements
 						switch (select) {
 						case 0:
 							actual_path = "/sys/class/misc/mtgpio/pin";
-							power_on_write = "-wdout64 1";
+							power_on_write = "-wdout64 checkbox_pressed";
 							power_off_write = "-wdout64 0";
 							break;
 						case 1:
 							actual_path = "/sys/class/misc/mtgpio/pin";
-							power_on_write = "-wdout106 1";
+							power_on_write = "-wdout106 checkbox_pressed";
 							power_off_write = "-wdout106 0";
 							break;
 
@@ -381,6 +388,10 @@ class SettingsDialog extends Dialog implements
 
 		}
 		if (v == goback) {
+			dismiss();
+			HelperActivity.ShowState();
+		}
+		if (v == imggoback) {
 			dismiss();
 			HelperActivity.ShowState();
 		}

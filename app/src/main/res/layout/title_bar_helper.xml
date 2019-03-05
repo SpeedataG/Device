@@ -44,10 +44,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginRight="@dimen/dp5"
-                    android:paddingLeft="10sp"
-                    android:paddingRight="10sp"
-                    android:src="@mipmap/icon_faq"
-
+                    android:paddingLeft="-10sp"
+                    android:paddingRight="-10sp"
+                    android:src="@drawable/icon_set"
                     />
             </LinearLayout>
 

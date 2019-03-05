@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
+    android:orientation="vertical"
     tools:context="com.speedata.device.MenuActivity">
 
 
@@ -18,137 +19,144 @@
         tools:layout_editor_absoluteX="192dp"
         tools:layout_editor_absoluteY="0dp" />
 
-    <LinearLayout
+    <include layout="@layout/view_page_header" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_gpio"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_jgkz" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_config"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_mkpz" />
+            <TextView
+                android:id="@+id/tv_gpio"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_jgkz" />
 
-        <TextView
-            android:id="@+id/tv_serial"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/bg_selector"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="@string/help"
-            android:textColor="@color/colorWhite"
-            android:visibility="gone"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/tv_gpio" />
+            <TextView
+                android:id="@+id/tv_config"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_mkpz" />
 
-
-        <TextView
-            android:id="@+id/tv_set_gpio"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/bg_selector"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="@string/config_gpio"
-            android:textColor="@color/colorWhite"
-            android:visibility="gone"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintLeft_toLeftOf="@+id/guideline"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_config" />
-
-        <TextView
-            android:id="@+id/tv_serial_port"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_ckts" />
-
-        <TextView
-            android:id="@+id/tv_gps"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_gpsts" />
-
-        <TextView
-            android:id="@+id/tv_gsmcell"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_jzts" />
-
-        <TextView
-            android:id="@+id/tv_edit"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/bg_selector"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="@string/edit_config"
-            android:textColor="@color/colorWhite"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/tv_serial" />
-
-        <TextView
-            android:id="@+id/tv_i2c"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_selector"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="I2C查看"
-            android:textColor="@color/colorWhite"
-            android:visibility="gone"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_serial"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_selector"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/help"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tv_gpio" />
 
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_set_gpio"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_selector"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/config_gpio"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_config" />
+
+            <TextView
+                android:id="@+id/tv_serial_port"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_ckts" />
+
+            <TextView
+                android:id="@+id/tv_gps"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_gpsts" />
+
+            <TextView
+                android:id="@+id/tv_gsmcell"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_jzts" />
+
+            <TextView
+                android:id="@+id/tv_edit"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_selector"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/edit_config"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tv_serial" />
+
+            <TextView
+                android:id="@+id/tv_i2c"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_selector"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="I2C查看"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_edit" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

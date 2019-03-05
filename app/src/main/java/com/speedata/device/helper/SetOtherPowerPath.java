@@ -46,8 +46,8 @@ class SetOtherPowerPath extends Dialog implements
 		if (v == ok) {
 			String ss = eport.getText().toString();
 			if (!ss.equals("")) {
-				// -wdout64 1"
-				interface1.setPower("-wdout" + ss + " 1", "-wdout" + ss + " 0");
+				// -wdout64 checkbox_pressed"
+				interface1.setPower("-wdout" + ss + " checkbox_pressed", "-wdout" + ss + " 0");
 				dismiss();
 			} else
 				Toast.makeText(mContext, "can't be empty", Toast.LENGTH_SHORT).show();

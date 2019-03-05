@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,9 @@ import java.util.TimerTask;
 
 public class HelperActivity extends Activity {
 
+	private ImageView imgBack;//返回图标
+	private TextView title;//标题
+	private ImageView imgFaq;//设置
 	private Context mContext;
 	private Button close;
 	public Button sendButton;
@@ -62,7 +66,20 @@ public class HelperActivity extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_helper);
+		setContentView(R.layout.activity_helper2);
+
+		imgBack = (ImageView)findViewById(R.id.img_back);
+		title = (TextView)findViewById(R.id.tv_title);
+		imgFaq = (ImageView)findViewById(R.id.img_faq);
+		imgFaq.setImageDrawable(getResources().getDrawable(R.drawable.icon_set));
+		imgFaq.setOnClickListener(new ClickEvent());
+		title.setText(R.string.serialport);
+		imgBack.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				HelperActivity.this.finish();
+			}
+		});
 
 		mContext = this;
 		mSerialPortBackup = new SerialPortSpd();
@@ -235,6 +252,9 @@ public class HelperActivity extends Activity {
 				EditTextsend.setText("");
 			} else if (v == set) {
 
+				setPBP.setTitle(R.string.sure);
+				setPBP.show();
+			}else if (v == imgFaq){
 				setPBP.setTitle(R.string.sure);
 				setPBP.show();
 			}

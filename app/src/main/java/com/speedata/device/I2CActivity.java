@@ -46,7 +46,7 @@ public class I2CActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.i2c_detect_y1_btn:
                 try {
-                    execCommand("i2cdetect -y 1");
+                    execCommand("i2cdetect -y checkbox_pressed");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -36,7 +36,7 @@ public class AllGpiosAct extends BaseActivity {
         listView = (ListView) findViewById(R.id.list);
         List list = MainGPIO();
         list.remove(0);
-        List<Gpio> gpios = GpioUtils.GetAllGPIO(GpioUtils.MAIN);
+        List<Gpio> gpios = GpioUtils.GetAllGPIO(GpioUtils.getMAIN());
         adapter = new CommonAdapter<Gpio>(this, gpios, R.layout.adapter_gpios) {
             @Override
             public void convert(ViewHolder helper, final Gpio item) {
@@ -65,16 +65,16 @@ public class AllGpiosAct extends BaseActivity {
                 TextView tv = (TextView) view;
                 String replace = tv.getText().toString().replace(" ", "");
                 if (isChange) {
-                    if (replace.equals("1")) {
+                    if (replace.equals("checkbox_pressed")) {
 
                         tv.setText("0");
                         view.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     } else {
-                        tv.setText("1");
+                        tv.setText("checkbox_pressed");
                         view.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     }
                 } else {
-                    if (replace.equals("1")) {
+                    if (replace.equals("checkbox_pressed")) {
                         view.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     } else {
                         view.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -95,7 +95,9 @@ public class AllGpiosAct extends BaseActivity {
     public List<String> MainGPIO() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader("sys/class/misc/mtgpio/pin"));
+//            reader = new BufferedReader(new FileReader("sys/class/misc/mtgpio/pin"));
+//            试着添加sd55的路径
+            reader = new BufferedReader(new FileReader(GpioUtils.getMAIN()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

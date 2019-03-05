@@ -55,7 +55,7 @@ class DeviceControl {
 
 	public void MTGpioOn() {
 		try {
-			CtrlFile.write("-wdout64 1");
+			CtrlFile.write("-wdout64 checkbox_pressed");
 			CtrlFile.flush();
 			Toast.makeText(mContext, "open mtgpio driver success",
 					Toast.LENGTH_SHORT).show();

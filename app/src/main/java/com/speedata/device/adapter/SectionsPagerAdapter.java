@@ -27,7 +27,7 @@ import java.util.List;
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━神兽出没━━━━━━
  *
- * @author Reginer on  2017/1/14 23:48.
+ * @author Reginer on  2017/checkbox_pressed/14 23:48.
  *         Description:页卡
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {

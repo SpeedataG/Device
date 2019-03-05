@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,10 +53,17 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
     private TextView tvTime;
     private CheckBox checkBox;
 
+    private ImageView imgBack;//返回图标
+    private TextView title;//标题
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gps);
+
+        imgBack = (ImageView)findViewById(R.id.img_back);
+        title = (TextView)findViewById(R.id.tv_title);
+
         tvTime = (TextView) findViewById(R.id.tv_time);
         btnClear = (Button) findViewById(R.id.btn_clear);
         listView = (ListView) findViewById(R.id.list_satellites);
@@ -111,12 +119,19 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
 
         locationManager.requestLocationUpdates(provider, 1000 * 60, 1, ll);
 
-        bt_Quit.setOnClickListener(new View.OnClickListener() {
+        title.setText(R.string.GPS_title);
+        imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GPSAct.this.finish();
             }
         });
+//        bt_Quit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                GPSAct.this.finish();
+//            }
+//        });
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -377,27 +392,27 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
 
         } else if (v == tvSrn) {
             tvSrn.setBackgroundColor(getResources().getColor(R.color.colorRed));
-            tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            tvPrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            tvElevation.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+            tvAzimuth.setBackgroundColor(getResources().getColor(R.color.blue));
+            tvPrn.setBackgroundColor(getResources().getColor(R.color.blue));
+            tvElevation.setBackgroundColor(getResources().getColor(R.color.blue));
             paixu(CODE_SNR, checkBox.isChecked());
         } else if (v == tvElevation) {
-            tvSrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            tvPrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+            tvSrn.setBackgroundColor(getResources().getColor(R.color.blue));
+            tvAzimuth.setBackgroundColor(getResources().getColor(R.color.blue));
+            tvPrn.setBackgroundColor(getResources().getColor(R.color.blue));
             tvElevation.setBackgroundColor(getResources().getColor(R.color.colorRed));
             paixu(CODE_ELEVATION, checkBox.isChecked());
         } else if (v == tvPrn) {
-            tvSrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+            tvSrn.setBackgroundColor(getResources().getColor(R.color.blue));
+            tvAzimuth.setBackgroundColor(getResources().getColor(R.color.blue));
             tvPrn.setBackgroundColor(getResources().getColor(R.color.colorRed));
-            tvElevation.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+            tvElevation.setBackgroundColor(getResources().getColor(R.color.blue));
             paixu(CODE_PRN, checkBox.isChecked());
         } else if (v == tvAzimuth) {
-            tvSrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+            tvSrn.setBackgroundColor(getResources().getColor(R.color.blue));
             tvAzimuth.setBackgroundColor(getResources().getColor(R.color.colorRed));
-            tvPrn.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-            tvElevation.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+            tvPrn.setBackgroundColor(getResources().getColor(R.color.blue));
+            tvElevation.setBackgroundColor(getResources().getColor(R.color.blue));
             paixu(CODE_AZIMUTH, checkBox.isChecked());
         }
 

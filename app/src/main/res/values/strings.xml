@@ -22,12 +22,12 @@
     <string name="acceptpart">接收区</string>
     <string name="menu_settings">Settings</string>
     <string name="sentpart">发送区</string>
-    <string name="CheckBox1">16进制显示</string>
-    <string name="CheckBox2">16进制发送</string>
+    <string name="CheckBox1">十六进制显示</string>
+    <string name="CheckBox2">十六进制发送</string>
     <string name="close">退出</string>
     <string name="send">发送</string>
     <string name="set">设置</string>
-    <string name="clear">清空显示区</string>
+    <string name="clear">清空</string>
     <string name="port">端口:</string>
     <string name="baudrate">波特率:</string>
     <string name="sure">设置</string>
@@ -67,5 +67,10 @@
     <string name="gpio">gpio</string>
     <!-- 白色 -->
 
+    <!--GPS调试-->
+    <string name="GPS_title">调试工具</string>
+
+    <!--首页title-->
+    <string name="app_title">配置模块</string>
 
 </resources>

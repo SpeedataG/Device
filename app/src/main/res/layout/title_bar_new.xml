@@ -22,7 +22,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingRight="45sp">
 
                 <ImageView
                     android:id="@+id/img_back"
@@ -39,16 +40,6 @@
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
-                <ImageView
-                    android:id="@+id/img_faq"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginRight="@dimen/dp5"
-                    android:paddingLeft="10sp"
-                    android:paddingRight="10sp"
-                    android:src="@mipmap/icon_faq"
-
-                    />
             </LinearLayout>
 
         </android.support.v7.widget.Toolbar>

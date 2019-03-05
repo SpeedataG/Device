@@ -35,7 +35,7 @@ android {
         abortOnError false
     }
 //    greendao {
-//        schemaVersion 1
+//        schemaVersion checkbox_pressed
 //        daoPackage 'com.zgl.greentest.gen'
 //        targetGenDir 'src/main/java'
 //    }
@@ -60,8 +60,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation project(path: ':deivice')
-    //    api'com.github.SpeedataG:Device:1.6.2'
-    //    implementation 'com.android.support:appcompat-v7:25.0.1'
+    //    api'com.github.SpeedataG:Device:checkbox_pressed.6.2'
+    //    implementation 'com.android.support:appcompat-v7:25.0.checkbox_pressed'
     def dependencies = rootProject.ext.deps
     api dependencies.suport.appcompat
     api dependencies.suport.design
