@@ -1,11 +1,13 @@
 package com.speedata.device;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +18,10 @@ import com.speedata.device.helper.HelperActivity;
 import com.speedata.device.telephony.BaseStationActivity;
 import com.speedata.libutils.excel.ExcelUtils;
 import com.umeng.analytics.MobclickAgent;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionListener;
+import com.yanzhenjie.permission.Rationale;
+import com.yanzhenjie.permission.RationaleListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,28 +54,53 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         MobclickAgent.setScenarioType(mContext, MobclickAgent.EScenarioType.E_UM_NORMAL);
         initView();
         //        excelTest();
+        permission();
     }
 
     private void initView() {
         setContentView(R.layout.activity_menu2);
-        title = (TextView)findViewById(R.id.tv_view_title);
+        title = (TextView) findViewById(R.id.tv_view_title);
         title.setText(R.string.app_title);
         title.setTextColor(Color.WHITE);
-        tvConfig =  findViewById(R.id.tv_config);
-        tvGpio =  findViewById(R.id.tv_gpio);
-        tvSerialport =  findViewById(R.id.tv_serial_port);
-        tvI2C =  findViewById(R.id.tv_i2c);
+        tvConfig = findViewById(R.id.tv_config);
+        tvGpio = findViewById(R.id.tv_gpio);
+        tvSerialport = findViewById(R.id.tv_serial_port);
+        tvI2C = findViewById(R.id.tv_i2c);
         tvConfig.setOnClickListener(this);
         tvGpio.setOnClickListener(this);
         tvSerialport.setOnClickListener(this);
         tvI2C.setOnClickListener(this);
-        tvGPS =  findViewById(R.id.tv_gps);
-        tvGsm =  findViewById(R.id.tv_gsmcell);
+        tvGPS = findViewById(R.id.tv_gps);
+        tvGsm = findViewById(R.id.tv_gsmcell);
         tvGPS.setOnClickListener(this);
         tvGsm.setOnClickListener(this);
-        tvEditConfig =  findViewById(R.id.tv_edit);
+        tvEditConfig = findViewById(R.id.tv_edit);
         tvEditConfig.setOnClickListener(this);
     }
+
+    private void permission() {
+        AndPermission.with(this).permission(Manifest.permission.READ_EXTERNAL_STORAGE).callback(listener).rationale(new RationaleListener() {
+            @Override
+            public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
+                AndPermission.rationaleDialog(MenuActivity.this, rationale).show();
+            }
+        }).start();
+    }
+
+    PermissionListener listener = new PermissionListener() {
+        @Override
+        public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
+
+        }
+
+        @Override
+        public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
+            // 用户否勾选了不再提示并且拒绝了权限，那么提示用户到设置中授权。
+            if (AndPermission.hasAlwaysDeniedPermission(MenuActivity.this, deniedPermissions)) {
+                AndPermission.defaultSettingDialog(MenuActivity.this, 300).show();
+            }
+        }
+    };
 
     private void excelTest() {
         new Thread(new Runnable() {

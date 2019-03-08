@@ -2,223 +2,222 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eee"
     android:orientation="vertical"
-    tools:context=".helper.HelperActivity"
-    android:background="#eee">
+    tools:context=".helper.HelperActivity">
 
-    <include layout="@layout/title_bar"/>
+    <include layout="@layout/title_bar_helper" />
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="14dp">
 
-            <TextView
-                android:id="@+id/tv_state"
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/xxx"
-                 />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
                 android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_serialport">
+                android:padding="14dp">
 
-            <LinearLayout
-                android:id="@+id/layout1"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal" >
-
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/tv_state"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:gravity="center"
-                        android:text="@string/acceptpart"
-                         />
-
-                    <CheckBox
-                        android:id="@+id/checkBox1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp5"
-                        android:layout_marginStart="@dimen/dp5"
-                        android:layout_toRightOf="@+id/textView1"
-                        android:layout_toEndOf="@+id/textView1"
-                        android:paddingLeft="15dp"
-                        android:textSize="12dp"
-                        android:text="@string/CheckBox1"
-                        android:button="@null"
-                        android:drawableRight="@drawable/checkbox_style"/>
-
-                    <Button
-                        android:id="@+id/clear"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/checkBox1"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:gravity="center"
-                        android:background="@null"
-                        android:textSize="14dp"
-                        android:text="@string/clear" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <EditText
-                android:hint=""
-                android:layout_margin="@dimen/dp2"
-                android:background="@drawable/shape"
-                android:id="@+id/EditTextaccept"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:cursorVisible="false"
-                android:editable="false"
-                android:textColorHint="#ffff00"
-                android:textSize="12sp" >
-            </EditText>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="vertical"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_serialport">
-
-            <LinearLayout
-                android:id="@+id/layout_11"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal" >
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:gravity="center_horizontal"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
-                        android:text="@string/sentpart"
-                         />
-
-                    <CheckBox
-                        android:id="@+id/checkBox2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_toEndOf="@+id/textView2"
-                        android:layout_toRightOf="@+id/textView2"
-                        android:button="@null"
-                        android:drawableRight="@drawable/checkbox_style"
-                        android:paddingLeft="10dp"
-                        android:scaleX="0.6"
-                        android:scaleY="0.6"
-                        android:text="@string/CheckBox2"
-                        android:textSize="22dp" />
-                    <!-- android:layout_toRightOf="@+id/layout_11" -->
-
-                    <Button
-                        android:id="@+id/button1"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:layout_alignBaseline="@+id/checkBox2"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:background="@null"
-                        android:textSize="14dp"
-                        android:text="@string/clear" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <EditText
-                android:layout_margin="@dimen/dp2"
-                android:background="@drawable/shape"
-                android:id="@+id/EditTextsend"
-                android:layout_width="fill_parent"
-                android:layout_height="150dp"
-                android:includeFontPadding="true"
-                android:textSize="14sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="5"
-                android:orientation="vertical" >
+                    android:layout_height="wrap_content"
+                    android:text="" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayout1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_serialport"
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/send"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:includeFontPadding="false"
-                        android:text="@string/send"
-                        android:textSize="15sp"
-                        android:background="@color/black"
-                        android:textColor="@color/white"/>
-                    <Button
-                        android:id="@+id/set"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:visibility="gone"
-                        android:text="@string/setpbp"
-                        android:textSize="15sp" />
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
 
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:gravity="center"
+                                android:paddingLeft="16dp"
+                                android:paddingRight="16dp"
+                                android:text="@string/acceptpart" />
+
+                            <CheckBox
+                                android:id="@+id/checkBox1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBaseline="@+id/textView1"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginLeft="24dp"
+                                android:layout_toEndOf="@+id/textView1"
+                                android:layout_toRightOf="@+id/textView1"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox_style"
+                                android:drawablePadding="@dimen/dp_10"
+                                android:paddingLeft="15dp"
+                                android:text="@string/CheckBox1"
+                                android:textSize="15sp" />
+
+                            <Button
+                                android:id="@+id/clear"
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBaseline="@+id/checkBox1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:background="@null"
+                                android:gravity="center"
+                                android:text="@string/clear"
+                                android:textSize="18sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/EditTextaccept"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_margin="@dimen/dp2"
+                        android:background="@drawable/shape"
+                        android:cursorVisible="false"
+                        android:editable="false"
+                        android:hint=""
+                        android:textColorHint="#ffff00"
+                        android:textSize="12sp"></EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_serialport"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layout_11"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:gravity="center"
+                                android:paddingLeft="16dp"
+                                android:paddingRight="16dp"
+                                android:text="@string/sentpart" />
+
+                            <CheckBox
+                                android:id="@+id/checkBox2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginLeft="24dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_toEndOf="@+id/textView2"
+                                android:layout_toRightOf="@+id/textView2"
+                                android:button="@null"
+                                android:drawableRight="@drawable/checkbox_style"
+                                android:drawablePadding="@dimen/dp_10"
+                                android:paddingLeft="10dp"
+                                android:text="@string/CheckBox2"
+                                android:textSize="15sp" />
+
+                            <Button
+                                android:id="@+id/button1"
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_alignBaseline="@+id/checkBox2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+
+                                android:background="@null"
+                                android:text="@string/clear"
+                                android:textSize="18sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/EditTextsend"
+                        android:layout_width="fill_parent"
+                        android:layout_height="150dp"
+                        android:layout_margin="@dimen/dp2"
+                        android:background="@drawable/shape"
+                        android:includeFontPadding="true"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="fill_parent"
                     android:layout_weight="5"
-                    android:orientation="horizontal" >
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/close"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/close"
-                        android:textSize="15sp"
-                        android:visibility="gone"/>
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/send"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:background="@color/black"
+                            android:includeFontPadding="false"
+                            android:text="@string/send"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:id="@+id/set"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/setpbp"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="5"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/close"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 
