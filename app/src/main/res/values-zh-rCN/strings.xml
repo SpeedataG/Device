@@ -70,6 +70,15 @@
     <string name="send_hex_hint">请输入十六进制数以类似格式 "0a0b1f3d0a"</string>
     <!-- 白色 -->
     <string name="send_hex_hint_null"></string>
+    <string name="resetgpio">resetGpio</string>
+    <string name="gpio_number">只支持输入纯数字</string>
+    <string name="no_data_to_export">没有需要导出的数据</string>
+    <string name="base_station">获取基站</string>
+    <string name="clear_base">清空</string>
+    <string name="no_card_inserted">未插卡</string>
+    <string name="obtaining_base">获取邻区基站信息:</string>
+    <string name="total">总数 :</string>
+    <string name="obtaining_base_stat">获取邻区基站信息:null</string>
     <!-- 白色 -->
 
 </resources>

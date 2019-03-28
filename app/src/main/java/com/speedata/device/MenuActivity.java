@@ -1,6 +1,7 @@
 package com.speedata.device;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -78,8 +79,15 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         tvEditConfig.setOnClickListener(this);
     }
 
+    @SuppressLint("InlinedApi")
     private void permission() {
-        AndPermission.with(this).permission(Manifest.permission.READ_EXTERNAL_STORAGE).callback(listener).rationale(new RationaleListener() {
+        AndPermission.with(this).permission(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.BLUETOOTH,
+                Manifest.permission.BLUETOOTH_ADMIN,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.INTERNET
+        ).callback(listener).rationale(new RationaleListener() {
             @Override
             public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
                 AndPermission.rationaleDialog(MenuActivity.this, rationale).show();

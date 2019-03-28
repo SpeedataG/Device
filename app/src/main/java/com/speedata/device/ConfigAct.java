@@ -1,5 +1,6 @@
 package com.speedata.device;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.speedata.bean.BaseBean;
 import com.speedata.device.adapter.ModuleAdapter;
+import com.speedata.device.utils.AlertUtils;
 import com.speedata.device.widgt.GPIODeletePop;
 import com.speedata.device.widgt.GPIOPop;
 import com.speedata.device.widgt.SerialPortPop;
@@ -24,6 +28,7 @@ import com.speedata.libutils.ReadBean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ConfigAct extends AppCompatActivity implements View.OnClickListener {
 
@@ -90,9 +95,15 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
         recyclerView.setAdapter(moduleAdapter);
 
         moduleAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @SuppressLint("NewApi")
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()) {
+                    case R.id.tv_name:
+                        if ("Pasm".equals(Objects.requireNonNull(moduleList.get(position).getName()))) {
+                            showResetGpioDialog(mRead.getPasm().getResetGpio());
+                        }
+                        break;
                     case R.id.tv_serialPort:
                         new SerialPortPop(ConfigAct.this, view, position, SerialPortPop.STYLE.SERIAL_PORT).setOnButtonClickListener(new SerialPortPop.OnButtonClickListener() {
                             @Override
@@ -138,6 +149,8 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
                             }
                         });
                         break;
+                    default:
+                        break;
                 }
             }
         });
@@ -169,5 +182,24 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    private EditText editText;
+
+    /**
+     * resetgpio对话框
+     */
+    public void showResetGpioDialog(int resetgpio) {
+        editText = new EditText(ConfigAct.this);
+        editText.setText(String.valueOf(resetgpio));
+        AlertUtils.dialog(ConfigAct.this, 0, R.string.resetgpio, editText, (dialog, which) -> {
+
+            String reset = editText.getText().toString();
+            if (!AlertUtils.isNumeric(reset)){
+                Toast.makeText(ConfigAct.this, getString(R.string.gpio_number), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mRead.getPasm().setResetGpio(Integer.valueOf(reset));
+
+        });
+    }
 
 }

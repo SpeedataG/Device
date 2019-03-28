@@ -35,7 +35,7 @@ public class ModuleAdapter extends BaseQuickAdapter<BaseBean, BaseViewHolder> {
             }
         }
         helper.setText(R.id.tv_gpio, gpio);
-
+        helper.addOnClickListener(R.id.tv_name);
         helper.addOnClickListener(R.id.tv_serialPort);
         helper.addOnClickListener(R.id.tv_braut);
         helper.addOnClickListener(R.id.tv_power_type);

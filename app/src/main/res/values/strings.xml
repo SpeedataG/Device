@@ -65,5 +65,14 @@
     <string name="send_hex_hint_null"></string><!--白色 -->
     <string name="input_gpio">Setting Gpio</string>
     <string name="please_gpio">Please set the GPIO value!</string>
+    <string name="resetgpio">resetGpio</string>
+    <string name="gpio_number">Entering only pure number is supported</string>
+    <string name="no_data_to_export">No data to export</string>
+    <string name="base_station">base station</string>
+    <string name="clear_base">clear</string>
+    <string name="no_card_inserted">No card inserted</string>
+    <string name="obtaining_base">Obtaining Base Station Information in Neighbouring Areas:</string>
+    <string name="total">total :</string>
+    <string name="obtaining_base_stat">Obtaining Base Station Information in Neighbouring Areas:null</string>
 
 </resources>

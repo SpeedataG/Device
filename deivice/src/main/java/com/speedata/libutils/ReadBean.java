@@ -285,9 +285,11 @@ public class ReadBean  {
     public static class PasmBean extends BaseBean {
 
         private int resetGpio;
+
         public int getResetGpio() {
             return resetGpio;
         }
+
         public void setResetGpio(int resetGpio) {
             this.resetGpio = resetGpio;
         }

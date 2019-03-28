@@ -365,10 +365,15 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == btnExport) {
 //            ProgressDialogUtils.showProgressDialog(GPSAct.this, "正在导出，请稍后");
+            GPSSatelliteDao dap = App.getDaoInstant().getGPSSatelliteDao();
+            if (dap.loadAll().size() == 0) {
+                Toast.makeText(GPSAct.this, getString(R.string.no_data_to_export), Toast.LENGTH_SHORT).show();
+                return;
+            }
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    GPSSatelliteDao dap = App.getDaoInstant().getGPSSatelliteDao();
+
 //                    String[] test = {"id", "srn", "prn", "elevation", "azimuth", "time"};
 ////                    ExcelUtils.initExcel(getSDPath() + "/test.xls", test);
 //                    ExcelUtils.writeListToExcel(dap.loadAll(), getSDPath() + "/test.xls", GPSAct.this, "GPSSatellite", test);
