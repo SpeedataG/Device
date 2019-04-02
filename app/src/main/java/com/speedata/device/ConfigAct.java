@@ -65,20 +65,11 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
 
     private void fillList() {
         moduleList.clear();
-        moduleList.add(mRead.getId2().setName("id"));
-        moduleList.add(mRead.getUhf().setName("UHF"));
-        moduleList.add(mRead.getR6().setName("R6"));
-        moduleList.add(mRead.getPrint().setName("打印"));
-        moduleList.add(mRead.getPasm().setName("Pasm"));
+        moduleList.add(mRead.getId2().setName("二代证"));
         moduleList.add(mRead.getFinger().setName("指纹"));
-        moduleList.add(mRead.getDist().setName("测距"));
-        moduleList.add(mRead.getTemp().setName("测温"));
-        moduleList.add(mRead.getLf1().setName("LF1"));
-        moduleList.add(mRead.getLf2().setName("LF2"));
-        moduleList.add(mRead.getSp433().setName("SP433"));
-        moduleList.add(mRead.getScan().setName("扫描"));
-        moduleList.add(mRead.getZigbee().setName("Zigbee"));
-        moduleList.add(mRead.getInfrared().setName("Infrared"));
+        moduleList.add(mRead.getPasm().setName("Pasm"));
+        moduleList.add(mRead.getUhf().setName("UHF"));
+        moduleList.add(mRead.getPrint().setName("打印"));
     }
 
     private void setView() {
