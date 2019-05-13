@@ -103,7 +103,7 @@ public class SerialPortPop extends PopupWindow {
         serialPortList.add("/dev/ttyO1");
         serialPortList.add("/dev/ttyO2");
         serialPortList.add("/dev/ttyO3");
-        //        serialPortList.add("eser0");
+        serialPortList.add("USB");
         //        serialPortList.add("eser1");
         //        serialPortList.add("eser2");
         //        serialPortList.add("eser3");
