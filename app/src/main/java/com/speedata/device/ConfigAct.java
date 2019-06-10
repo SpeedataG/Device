@@ -67,7 +67,7 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
         moduleList.clear();
         moduleList.add(mRead.getId2().setName("二代证"));
         moduleList.add(mRead.getFinger().setName("指纹"));
-        moduleList.add(mRead.getPasm().setName("Pasm"));
+        moduleList.add(mRead.getPasm().setName("PSAM"));
         moduleList.add(mRead.getUhf().setName("UHF"));
         moduleList.add(mRead.getPrint().setName("打印"));
     }
