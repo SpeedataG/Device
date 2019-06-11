@@ -23,7 +23,6 @@ import com.speedata.device.gen.GPSSatellite;
 import com.speedata.device.gen.GPSSatelliteDao;
 import com.speedata.ui.adapter.CommonAdapter;
 import com.speedata.ui.adapter.ViewHolder;
-import com.speedata.utils.ProgressDialogUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -135,7 +134,7 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GPSSatelliteDao dap = App.getDaoInstant().getGPSSatelliteDao();
+                GPSSatelliteDao dap = MyApplication.getDaoInstant().getGPSSatelliteDao();
                 dap.deleteAll();
             }
         });
@@ -239,7 +238,7 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
                     count++;
                 }
             }
-            GPSSatelliteDao dap = App.getDaoInstant().getGPSSatelliteDao();
+            GPSSatelliteDao dap = MyApplication.getDaoInstant().getGPSSatelliteDao();
 
             sb2.append("搜索到卫星个数：" + numSatelliteList.size());
             for (GpsSatellite gpsSatellite : numSatelliteList) {
@@ -365,7 +364,7 @@ public class GPSAct extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == btnExport) {
 //            ProgressDialogUtils.showProgressDialog(GPSAct.this, "正在导出，请稍后");
-            GPSSatelliteDao dap = App.getDaoInstant().getGPSSatelliteDao();
+            GPSSatelliteDao dap = MyApplication.getDaoInstant().getGPSSatelliteDao();
             if (dap.loadAll().size() == 0) {
                 Toast.makeText(GPSAct.this, getString(R.string.no_data_to_export), Toast.LENGTH_SHORT).show();
                 return;

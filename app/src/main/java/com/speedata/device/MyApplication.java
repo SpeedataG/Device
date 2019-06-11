@@ -2,6 +2,8 @@ package com.speedata.device;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+import android.os.SystemProperties;
 
 import com.speedata.device.gen.DaoMaster;
 import com.speedata.device.gen.DaoSession;
@@ -10,12 +12,13 @@ import com.speedata.device.gen.DaoSession;
  * Created by echo on 2017/5/18.
  */
 
-public class App extends Application {
+public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
         setupDatabase();
     }
+
     /**
      * 配置数据库
      */
@@ -29,8 +32,12 @@ public class App extends Application {
         //获取Dao对象管理者
         daoSession = daoMaster.newSession();
     }
+
     public static DaoSession daoSession;
+
     public static DaoSession getDaoInstant() {
         return daoSession;
     }
+
+
 }

@@ -197,7 +197,7 @@ public class CommonUtils {
         //            return model.toLowerCase().subSequence(0, 4).toString();
         //        }
 
-        return Build.MODEL.toLowerCase();
+        return ConfigUtils.getModel().toLowerCase();
     }
 
     /**

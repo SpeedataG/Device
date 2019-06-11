@@ -24,6 +24,7 @@ public class GpioUtils {
 
     /**
      * 读取制定文件 解析List<Gpio>返回
+     *
      * @param path 上电文件
      * @return List<Gpio>
      */
@@ -37,8 +38,8 @@ public class GpioUtils {
         List lists = new ArrayList();
         String line = null;
         try {
-                while ((line = reader.readLine()) != null) {
-                    lists.add(line);
+            while ((line = reader.readLine()) != null) {
+                lists.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,11 +73,13 @@ public class GpioUtils {
         }
         return gpios;
     }
+
     // 判断上电路径
-    public static String getMAIN(){
-        if (Build.MODEL.equals("SD55")){
+    public static String getMAIN() {
+
+        if (ConfigUtils.getApiVersion() >= 23) {
             MAIN = "/sys/bus/platform/drivers/mediatek-pinctrl/10005000.pinctrl/mt_gpio";
-        }else {
+        } else {
             MAIN = "sys/class/misc/mtgpio/pin";
         }
         return MAIN;

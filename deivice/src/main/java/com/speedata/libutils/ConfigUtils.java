@@ -1,6 +1,8 @@
 package com.speedata.libutils;
 
 import android.content.Context;
+import android.os.Build;
+import android.os.SystemProperties;
 
 import com.alibaba.fastjson.JSON;
 
@@ -43,5 +45,19 @@ public class ConfigUtils {
     public static boolean  writeConfig(ReadBean mRead){
         String content = JSON.toJSONString(mRead);
         return  CommonUtils.writeTxtFile(content);
+    }
+
+    public static String model;
+
+    //    获取设备型号
+    public static String getModel() {
+        model = SystemProperties.get("ro.build.developer");
+        if (model == null || "".equals(model)) {
+            model = Build.MODEL;
+        }
+        return model;
+    }
+    public static int getApiVersion() {
+        return android.os.Build.VERSION.SDK_INT;
     }
 }
