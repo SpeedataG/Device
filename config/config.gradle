@@ -7,8 +7,8 @@ ext {
             sdkCompileVersion: 28,
             toolsBuildVersion: "28.0.3",
 
-            appVersionCode   : 6,
-            appVersionName   : "1.6.8"
+            appVersionCode   : 7,
+            appVersionName   : "1.6.9"
     ]
 
     // 依赖相关版本控制
