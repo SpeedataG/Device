@@ -67,7 +67,7 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
         moduleList.clear();
         moduleList.add(mRead.getId2().setName("二代证"));
         moduleList.add(mRead.getFinger().setName("指纹"));
-        moduleList.add(mRead.getPasm().setName("PSAM"));
+        moduleList.add(mRead.getPsam().setName("PSAM"));
         moduleList.add(mRead.getUhf().setName("UHF"));
         moduleList.add(mRead.getPrint().setName("打印"));
     }
@@ -92,7 +92,7 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
                 switch (view.getId()) {
                     case R.id.tv_name:
                         if ("Pasm".equals(Objects.requireNonNull(moduleList.get(position).getName()))) {
-                            showResetGpioDialog(mRead.getPasm().getResetGpio());
+                            showResetGpioDialog(mRead.getPsam().getResetGpio());
                         }
                         break;
                     case R.id.tv_serialPort:
@@ -188,7 +188,7 @@ public class ConfigAct extends AppCompatActivity implements View.OnClickListener
                 Toast.makeText(ConfigAct.this, getString(R.string.gpio_number), Toast.LENGTH_SHORT).show();
                 return;
             }
-            mRead.getPasm().setResetGpio(Integer.valueOf(reset));
+            mRead.getPsam().setResetGpio(Integer.valueOf(reset));
 
         });
     }

@@ -71,7 +71,7 @@ public class ReadBean  {
      * resetGpio : 44
      */
 
-    private PasmBean pasm;
+    private PsamBean psam;
     /**
      * serialPort : ttyMT2
      * braut : 115200
@@ -177,12 +177,12 @@ public class ReadBean  {
         this.print = print;
     }
 
-    public PasmBean getPasm() {
-        return pasm;
+    public PsamBean getPsam() {
+        return psam;
     }
 
-    public void setPasm(PasmBean pasm) {
-        this.pasm = pasm;
+    public void setPsam(PsamBean psam) {
+        this.psam = psam;
     }
 
     public FingerBean getFinger() {
@@ -282,7 +282,7 @@ public class ReadBean  {
 
     }
 
-    public static class PasmBean extends BaseBean {
+    public static class PsamBean extends BaseBean {
 
         private int resetGpio;
 
@@ -331,5 +331,7 @@ public class ReadBean  {
     public static class InfraredBean extends BaseBean {
 
     }
+
+
 
 }
