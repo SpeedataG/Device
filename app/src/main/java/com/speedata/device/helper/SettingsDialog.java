@@ -303,7 +303,7 @@ class SettingsDialog extends Dialog implements
                     gpios[i] = Integer.parseInt(strs[i]);
                     System.out.println(strs[i]);
                 }
-                setPower_path(powerPath + " gpio:"+tvGpioShow.getText().toString());
+                setPower_path(powerPath + " gpio:" + tvGpioShow.getText().toString());
                 DevCtrl = new DeviceControlSpd(powerPath, gpios);
                 DevCtrl.PowerOnDevice();
                 DisplayToast("open driver success  " + powerPath);
@@ -329,8 +329,8 @@ class SettingsDialog extends Dialog implements
                 Log.d(TAG, "open fd=" + fd);
                 // 使能发送按键
                 HelperActivity.sendButton.setEnabled(true);
-                HelperActivity.setReadSerialTask();
                 // 开始读串口
+                HelperActivity.startRead();
                 // setReadSerialTask();
                 closeSerial.setEnabled(true);
                 openSerial.setEnabled(false);
@@ -360,6 +360,7 @@ class SettingsDialog extends Dialog implements
             pathSpinner.setEnabled(true);
             powercount = 0;
         } else if (v == closeSerial) {
+            HelperActivity.stopRead();
             mSerialPortBackup.CloseSerial(fd);
             openSerial.setEnabled(true);
             closeSerial.setEnabled(false);

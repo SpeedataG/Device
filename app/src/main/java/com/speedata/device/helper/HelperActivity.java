@@ -21,6 +21,7 @@ import com.speedata.device.R;
 import com.speedata.libutils.DataConversionUtils;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,7 +44,7 @@ public class HelperActivity extends Activity {
     private EditText EditTextsend;
     public String sendstring = "";
 
-    private  static final String TAG = "SerialPortBackup";
+    private static final String TAG = "SerialPortBackup";
     private int fd;
     private SerialPortSpd mSerialPortBackup;
 
@@ -54,11 +55,11 @@ public class HelperActivity extends Activity {
     private String buff5 = "";
     private String buff6 = "";
     private boolean key_hex_send = false;
-    private boolean key1 = false;
+    private boolean key_hex_read = false;
     private CheckBox m_CheckBox1;
     private CheckBox m_CheckBox2;
     private ReadThread mReadThread;
-    private boolean debugtest = true;
+    private boolean debugtest = false;
     private DeviceControlSpd DevCtrl;
 
     @Override
@@ -79,7 +80,6 @@ public class HelperActivity extends Activity {
         });
         mContext = this;
         mSerialPortBackup = new SerialPortSpd();
-        mReadSerialTimer = new Timer();
         setPBP = new SettingsDialog(this, this);
         close = (Button) this.findViewById(R.id.close);
         sendButton = (Button) this.findViewById(R.id.send);
@@ -98,7 +98,8 @@ public class HelperActivity extends Activity {
         m_CheckBox1 = (CheckBox) findViewById(R.id.checkBox1);
         m_CheckBox2 = (CheckBox) findViewById(R.id.checkBox2);
         sendButton.setEnabled(false);
-        EditTextsend.setText("7e000ec00600000000000000d47e");
+//        EditTextsend.setText("7e000ec00600000000000000d47e");
+        EditTextsend.setText("bb0003000100047e");
         fd = mSerialPortBackup.getFd();
 
         mSerialPortBackup.WriteSerialByte(mSerialPortBackup.getFd(),
@@ -110,21 +111,22 @@ public class HelperActivity extends Activity {
                 if (msg.what == 1) {
                     super.handleMessage(msg);
                     temp2 = (byte[]) msg.obj;
-                    Log.d("read", "read len=" + temp2.length);
-                    if (EditTextaccept.getText().toString().length() > 1000) {
-                        EditTextaccept.setText("");
+                    if (temp2 != null) {
+                        Log.d("read", "read len=" + temp2.length);
+                        if (EditTextaccept.getText().toString().length() > 1000) {
+                            EditTextaccept.setText("");
+                        }
+                        if (key_hex_read) {
+                            String accept_show = bytesToHexString(temp2);
+                            EditTextaccept.append(accept_show + "\n");
+                        } else {
+
+                            EditTextaccept.append(DataConversionUtils
+                                    .byteArrayToAscii(temp2));
+
+                            EditTextaccept.append("\n");
+                        }
                     }
-                    if (key1) {
-                        String accept_show = bytesToHexString(temp2);
-                        EditTextaccept.append(accept_show + "\n");
-                    } else {
-
-                        EditTextaccept.append(DataConversionUtils
-                                .byteArrayToAscii(temp2));
-
-                        EditTextaccept.append("\n");
-                    }
-
                 }
             }
 
@@ -137,7 +139,7 @@ public class HelperActivity extends Activity {
                     public void onCheckedChanged(CompoundButton buttonView,
                                                  boolean isChecked) {
                         if (m_CheckBox1.isChecked()) {
-                            key1 = true;
+                            key_hex_read = true;
                             try {
                                 buff5 = "";
                                 buff6 = EditTextaccept.getText().toString();
@@ -171,7 +173,7 @@ public class HelperActivity extends Activity {
                             buff5 = toStringHex(buff5);
                             EditTextaccept.setText(buff5);
                             Log.e("checkbox", "m_CheckBox1.isnotChecked");
-                            key1 = false;
+                            key_hex_read = false;
                         }
                     }
                 });
@@ -245,62 +247,29 @@ public class HelperActivity extends Activity {
         }
     }
 
-    private Timer mReadSerialTimer;
-    private static final int TIME_TO_READDATA = 500;
-
-    public void setReadSerialTask() {
-        ReadTimerTask readTimerTask = new ReadTimerTask();
-        if (mReadSerialTimer == null) {
-            mReadSerialTimer = new Timer();
-            System.out.println("mReadSerialTimer new  mReadSerialTimer");
-        }
-
-        mReadSerialTimer.schedule(readTimerTask, 10, TIME_TO_READDATA);
-        System.out.println("mReadSerialTimer");
-    }
-
-    private class ReadTimerTask extends TimerTask {
-        @Override
-        public void run() {
-            try {
-                fd = mSerialPortBackup.getFd();
-                temp1 = mSerialPortBackup.ReadSerial(fd, 1024);
-                if (temp1 != null) {
-
-                    temp2 = temp1;
-                    Message msg = new Message();
-                    msg.what = 1;
-                    msg.obj = temp1;
-                    handler.sendMessage(msg);
-
-                }
-
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
     private class ReadThread extends Thread {
         @Override
         public void run() {
             super.run();
-            while (!isInterrupted()) {
+            while (debugtest && !isInterrupted()) {
 
                 try {
-                    temp1 = mSerialPortBackup.ReadSerial(fd, 2048);
-                    if (temp1 != null) {
-
-                        temp2 = temp1;
-                        Message msg = new Message();
-                        msg.what = 1;
-                        handler.sendMessage(msg);
-
+                    if (mSerialPortBackup != null) {
+                        temp1 = mSerialPortBackup.ReadSerial(mSerialPortBackup.getFd(), 1024);
+                        Log.d(TAG, "read " + Arrays.toString(temp1));
+                        if (temp1 != null) {
+                            Message msg = new Message();
+                            msg.what = 1;
+                            msg.obj = temp1;
+                            handler.sendMessage(msg);
+                            try {
+                                sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-
                 } catch (UnsupportedEncodingException e) {
-
                     e.printStackTrace();
                 }
 
@@ -325,13 +294,13 @@ public class HelperActivity extends Activity {
     }
 
     public static String toHexString(String s) {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             int ch = (int) s.charAt(i);
             String s4 = Integer.toHexString(ch) + " ";
-            str = str + s4;
+            str.append(s4);
         }
-        return str;
+        return str.toString();
     }
 
     public static String toStringHex(String s) {
@@ -356,15 +325,23 @@ public class HelperActivity extends Activity {
 
     @Override
     protected void onResume() {
-
-
         super.onResume();
+        ShowState();
+    }
+
+    public void startRead() {
         if (!debugtest) {
+            debugtest = true;
             mReadThread = new ReadThread();
             mReadThread.start();
             System.out.println("ReadThread_start");
+            Log.d(TAG, "read startRead()");
         }
-        ShowState();
+    }
+
+    public void stopRead() {
+        Log.d(TAG, "read stopRead()");
+        debugtest = false;
     }
 
     public void ShowState() {
@@ -383,6 +360,7 @@ public class HelperActivity extends Activity {
 
     @Override
     public void onDestroy() {
+        debugtest = false;
         setPBP.closeDev();
         setPBP.closeSerial();
         super.onDestroy();
@@ -390,11 +368,8 @@ public class HelperActivity extends Activity {
 
     @Override
     protected void onPause() {
-        super.onPause();
-        if (!debugtest) {
-            mReadThread.interrupt();
-        }
         Log.d(TAG, "onPause");
+        super.onPause();
     }
 
     int send(String passwd) {
