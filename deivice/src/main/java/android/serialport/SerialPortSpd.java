@@ -256,7 +256,24 @@ public class SerialPortSpd {
         }
         return tmp;
     }
-
+    /**
+     * @param fd    文件句柄
+     * @param len   读取的最大长度
+     * @param delay 最大阻塞延时
+     * @return byte[]
+     * @throws UnsupportedEncodingException
+     */
+    public byte[] ReadSerialOne(int fd, int len, int delay)
+            throws UnsupportedEncodingException {
+        byte[] tmp = null;
+        tmp = readport(fd, len, delay);
+        if (tmp != null) {
+            logger.d("read---" + DataConversionUtils.byteArrayToStringLog(tmp, tmp.length));
+        } else {
+            logger.d("read---null");
+        }
+        return tmp;
+    }
     /**
      * 读串口
      *
