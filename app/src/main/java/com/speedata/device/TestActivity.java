@@ -6,10 +6,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.GridView;
 
 import com.speedata.ui.adapter.CommonAdapter;
 import com.speedata.ui.adapter.ViewHolder;
+import com.speedata.utils.PlaySoundPool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,27 +19,30 @@ import java.util.concurrent.TimeoutException;
 
 public class TestActivity extends Activity {
 
-    private GridView noScrollgridview;
-    private CommonAdapter<String> adapter;
-    List<String> list = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+        PlaySoundPool.getPlaySoundPool(this);
+    }
 
+    public void aClick1(View v) {
+        PlaySoundPool.getPlaySoundPool(this).playLaser();
+    }
 
-//        String path = "http://218.247.237.138:8083/jgweb/file/device/20170821133219615.jpg";
-//        list.add(path);
-//        noScrollgridview = (GridView) findViewById(R.id.noScrollgridview);
-//        noScrollgridview.setSelector(new ColorDrawable(Color.TRANSPARENT));
-//        adapter = new CommonAdapter<String>(TestActivity.this, list, R.layout.adapter_bitmap) {
-//            @Override
-//            public void convert(ViewHolder helper, String item) {
-//                helper.setImageURL(R.id.img, item);
-//            }
-//        };
+    public void aClick2(View v) {
+        PlaySoundPool.getPlaySoundPool(this).playError();
+    }
 
-        noScrollgridview.setAdapter(adapter);
+    public void aClick3(View v) {
+        PlaySoundPool.getPlaySoundPool(this).playLaser();
+    }
+
+    public void aClick4(View v) {
+
+    }
+
+    public void aClick5(View v) {
+
     }
 }
