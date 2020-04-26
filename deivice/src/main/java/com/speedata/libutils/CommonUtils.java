@@ -3,7 +3,6 @@ package com.speedata.libutils;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.text.TextUtils;
 
 import java.io.BufferedReader;
@@ -101,12 +100,12 @@ public class CommonUtils {
     }
 
     public static String getFromAssets(Context context) {
+        String result = "";
         try {
             InputStreamReader inputReader = new InputStreamReader(context.getResources()
                     .getAssets().open(getFile()));
             BufferedReader bufReader = new BufferedReader(inputReader);
             String line;
-            String result = "";
             while ((line = bufReader.readLine()) != null) {
                 result += line;
             }
@@ -114,75 +113,95 @@ public class CommonUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        if ("".equals(result)) {
+            try {
+                InputStreamReader inputReader = new InputStreamReader(context.getResources()
+                        .getAssets().open("KT50.config"));
+                BufferedReader bufReader = new BufferedReader(inputReader);
+                String line;
+                result = "";
+                while ((line = bufReader.readLine()) != null) {
+                    result += line;
+                }
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 
     public static String getFile() {
-        String subDeviceType = subDeviceType().toUpperCase();
+        String subDeviceType = ConfigUtils.getModel().toUpperCase();
+        return subDeviceType + ".config";
 
-        if (subDeviceType.contains("40")) {
-            if (subDeviceType.contains("40Q")) {
-                return "kt40q.config";
-            } else {
-                return "kt40.config";
-            }
-        } else if (subDeviceType.contains("45")) {
-            if (subDeviceType.contains("45Q")) {
-                return "kt45q.config";
-            } else {
-                return "kt45.config";
-            }
-        } else if (subDeviceType.contains("50")) {
-            return "kt50.config";
-        } else if (subDeviceType.contains("55")) {
-            return "kt55.config";
-        } else if (subDeviceType.contains("80")) {
-            return "kt80.config";
-        } else if (subDeviceType.contains("SD35")) {
-            return "SD35.config";
-        } else if (subDeviceType.contains("SD55")) {
-            return "SD55.config";
-        } else if (subDeviceType.contains("SD55L")) {
-            return "SD55L.config";
-        } else if (subDeviceType.contains("SD60")) {
-            return "SD60.config";
-        } else if (subDeviceType.contains("SD80")) {
-            return "SD80.config";
-        } else if (subDeviceType.contains("SD100")) {
-            return "SD100.config";
-        } else {
-            return "kt50.config";
-        }
+//        if (subDeviceType.contains("40")) {
+//            if (subDeviceType.contains("40Q")) {
+//                return "KT40Q.config";
+//            } else {
+//                return "KT40.config";
+//            }
+//        } else if (subDeviceType.contains("45")) {
+//            if (subDeviceType.contains("45Q")) {
+//                return "KT45Q.config";
+//            } else {
+//                return "KT45.config";
+//            }
+//        } else if (subDeviceType.contains("50")) {
+//            return "KT50.config";
+//        } else if (subDeviceType.contains("55")) {
+//            return "KT55.config";
+//        } else if (subDeviceType.contains("80")) {
+//            return "KT80.config";
+//        } else if (subDeviceType.contains("SD35")) {
+//            return "SD35.config";
+//        } else if ("SD55L".equals(subDeviceType)) {
+//            return "SD55L.config";
+//        } else if (subDeviceType.contains("SD55")) {
+//            return "SD55.config";
+//        } else if (subDeviceType.contains("SD55L")) {
+//            return "SD55L.config";
+//        } else if (subDeviceType.contains("SD60")) {
+//            return "SD60.config";
+//        } else if (subDeviceType.contains("SD80")) {
+//            return "SD80.config";
+//        } else if ("SD100".equals(subDeviceType)) {
+//            return "SD100.config";
+//        } else if ("SD100T".equals(subDeviceType)) {
+//            return "SD100T.config";
+//        } else {
+//            return "KT50.config";
+//        }
 
 
         //        switch (subDeviceType) {
         //            case "kt40":
         //            case "kt40_":
-        //                return "kt40.config";
+        //                return "KT40.config";
         //            case "kt40q":
         //            case "kt40q_":
-        //                return "kt40q.config";
+        //                return "KT40Q.config";
         //            case "kt45":
         //            case "kt45_":
-        //                return "kt45.config";
+        //                return "KT45.config";
         //            case "kt45q":
         //            case "kt45q_":
-        //                return "kt45q.config";
+        //                return "KT45Q.config";
         //            case "kt50":
         //            case "kt50_":
         //            case "t50":
         //            case "t50_":
-        //                return "kt50.config";
+        //                return "KT50.config";
         //            case "kt55":
         //            case "kt55_":
-        //                return "kt55.config";
+        //                return "KT55.config";
         //            case "kt80":
         //            case "kt80_":
         //            case "t80":
         //            case "t80_":
-        //                return "kt80.config";
+        //                return "KT80.config";
         //            default:
-        //                return "kt55.config";
+        //                return "KT55.config";
         //        }
     }
 
